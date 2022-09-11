@@ -1,0 +1,20 @@
+@use './src/mixins';
+
+.developed-by{
+    display: flex;
+    align-items: center;
+    column-gap: var(--two-spaces);
+    font-size: 1.25rem;
+    color: var(--grey-color);
+    font-weight: 500;
+
+    & &__logo{
+        @include mixins.fix-size(75px);
+
+        border-radius: var(--one-space);
+    }
+
+    & &__link{
+        color: var(--red-color);
+    }
+}
