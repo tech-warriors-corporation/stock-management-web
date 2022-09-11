@@ -1,5 +1,5 @@
 # stock-management-web
-Stock management web.
+Stock management system for Casulo Social (NGO).
 
 ## Development
 Run `ng serve`.
