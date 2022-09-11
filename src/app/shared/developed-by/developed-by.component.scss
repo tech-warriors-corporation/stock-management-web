@@ -4,12 +4,12 @@
     display: flex;
     align-items: center;
     column-gap: var(--two-spaces);
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--grey-color);
     font-weight: 500;
 
     & &__logo{
-        @include mixins.fix-size(75px);
+        @include mixins.fix-size(50px);
 
         border-radius: var(--one-space);
     }
