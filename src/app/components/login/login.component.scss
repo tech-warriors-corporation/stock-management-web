@@ -1,0 +1,37 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    > *{
+        padding: var(--three-spaces);
+        flex-basis: 50%;
+        width: 100%;
+        height: inherit;
+        display: inherit;
+        justify-content: inherit;
+        align-items: inherit;
+    }
+
+    & &__banner{
+        background-color: var(--primary-color);
+    }
+
+    & &__logo{
+        width: 100%;
+        max-width: 526px;
+        border-radius: var(--one-space);
+    }
+
+    & &__enter{
+        display: flex;
+        flex-direction: column;
+    }
+
+    & &__title{
+        font-weight: 600;
+        font-size: 3rem;
+        text-decoration: underline;
+    }
+}
