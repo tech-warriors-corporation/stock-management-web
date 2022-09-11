@@ -1,4 +1,7 @@
 :root{
     --white-color: #fff;
     --primary-color: #0060a8;
+    --one-space: 4px;
+    --two-spaces: calc(var(--one-space) * 2);
+    --three-spaces: calc(var(--one-space) * 3);
 }
