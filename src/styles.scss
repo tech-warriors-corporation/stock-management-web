@@ -1,20 +1,41 @@
 @use './variables';
+@use './mixins';
 
 @import "~reset-css/reset.css";
 
-html{
+html, body{
     font-family: 'Inter', sans-serif;
     background-color: var(--white-color);
+    color: var(--black-color);
     font-size: 16px;
+    line-height: 1.2;
+    font-weight: 400;
 }
 
 html, body, app-root, .app{
     min-height: 100vh;
     height: 100%;
     display: block;
+    overflow-x: hidden;
 }
 
 .app > *:not(router-outlet){
     height: inherit;
     display: inherit;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: underline;
+}
+
+::-moz-selection {
+    @include mixins.selection;
+}
+
+::selection {
+    @include mixins.selection;
 }
