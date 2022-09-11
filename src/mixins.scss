@@ -1,3 +1,20 @@
+@mixin fix-width($width) {
+    width: $width;
+    min-width: $width;
+    max-width: $width;
+}
+
+@mixin fix-height($height) {
+    height: $height;
+    min-height: $height;
+    max-height: $height;
+}
+
+@mixin fix-size($size) {
+    @include fix-width($size);
+    @include fix-height($size);
+}
+
 @mixin selection {
     background: var(--primary-color);
     color: var(--white-color);
