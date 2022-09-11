@@ -33,5 +33,11 @@
         font-weight: 600;
         font-size: 3rem;
         text-decoration: underline;
+        flex-grow: 1;
+    }
+
+    & &__developed-by{
+        display: block;
+        align-self: flex-start;
     }
 }
