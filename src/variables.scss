@@ -5,7 +5,11 @@
     --secondary-color: #fab429;
     --grey-color: #aaa;
     --red-color: #fb181f;
+    --border: 1px solid;
+    --grey-border: var(--border) var(--grey-color);
     --one-space: 4px;
     --two-spaces: calc(var(--one-space) * 2);
     --three-spaces: calc(var(--one-space) * 3);
+    --four-spaces: calc(var(--one-space) * 4);
+    --eight-spaces: calc(var(--one-space) * 8);
 }
