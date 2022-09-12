@@ -1,0 +1,38 @@
+@use './src/mixins';
+
+.not-found{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+
+    & &__card{
+        display: inherit;
+        align-items: inherit;
+        justify-content: inherit;
+        flex-direction: column;
+        width: 100%;
+        margin: var(--eight-spaces);
+        padding: var(--eight-spaces);
+        border: var(--grey-border);
+        border-radius: var(--one-space);
+        max-width: 400px;
+        row-gap: var(--four-spaces);
+    }
+
+    & &__icon{
+        $size: 64px;
+
+        @include mixins.fix-size($size);
+
+        font-size: $size;
+        color: var(--primary-color);
+    }
+
+    & &__title{
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+}
