@@ -10,6 +10,10 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard.module').then(module => module.DashboardModule),
     },
+    {
+        path: '**',
+        loadChildren: () => import('./pages/not-found/not-found.module').then(module => module.NotFoundModule),
+    },
 ];
 
 @NgModule({
