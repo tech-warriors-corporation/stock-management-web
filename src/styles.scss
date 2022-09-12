@@ -1,15 +1,17 @@
 @use './variables';
 @use './mixins';
 
+@import "./theme";
 @import "~reset-css/reset.css";
 
 html, body{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
     background-color: var(--white-color);
     color: var(--black-color);
     font-size: 16px;
     line-height: 1.2;
     font-weight: 400;
+    margin: 0;
 }
 
 html, body, app-root, .app{

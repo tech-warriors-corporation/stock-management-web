@@ -1,0 +1,109 @@
+@use 'node_modules/@angular/material' as mat;
+
+@include mat.core();
+
+$primary-palette: (
+    50: #e0ecf5,
+    100: #b3cfe5,
+    200: #80b0d4,
+    300: #4d90c2,
+    400: #2678b5,
+    500: var(--primary-color),
+    600: #0058a0,
+    700: #004e97,
+    800: #00448d,
+    900: #00337d,
+    A100: #aac6ff,
+    A200: #77a3ff,
+    A400: #4481ff,
+    A700: #2a70ff,
+    contrast: (
+        50: var(--black-color),
+        100: var(--black-color),
+        200: var(--black-color),
+        300: var(--black-color),
+        400: var(--white-color),
+        500: var(--white-color),
+        600: var(--white-color),
+        700: var(--white-color),
+        800: var(--white-color),
+        900: var(--white-color),
+        A100: var(--black-color),
+        A200: var(--black-color),
+        A400: var(--white-color),
+        A700: var(--white-color)
+    )
+);
+
+$secondary-palette: (
+    50: #fef6e5,
+    100: #fee9bf,
+    200: #fdda94,
+    300: #fccb69,
+    400: #fbbf49,
+    500: var(--secondary-color),
+    600: #f9ad24,
+    700: #f9a41f,
+    800: #f89c19,
+    900: #f68c0f,
+    A100: #ffffff,
+    A200: #fff7ef,
+    A400: #ffdebc,
+    A700: #ffd1a2,
+    contrast: (
+        50: var(--black-color),
+        100: var(--black-color),
+        200: var(--black-color),
+        300: var(--black-color),
+        400: var(--black-color),
+        500: var(--black-color),
+        600: var(--black-color),
+        700: var(--black-color),
+        800: var(--black-color),
+        900: var(--black-color),
+        A100: var(--black-color),
+        A200: var(--black-color),
+        A400: var(--black-color),
+        A700: var(--black-color)
+    )
+);
+
+$error-palette: (
+    50: #ffe3e4,
+    100: #febabc,
+    200: #fd8c8f,
+    300: #fc5d62,
+    400: #fc3b41,
+    500: var(--red-color),
+    600: #fa151b,
+    700: #fa1117,
+    800: #f90e12,
+    900: #f8080a,
+    A100: #ffffff,
+    A200: #ffeded,
+    A400: #ffbaba,
+    A700: #ffa1a1,
+    contrast: (
+        50: var(--black-color),
+        100: var(--black-color),
+        200: var(--black-color),
+        300: var(--black-color),
+        400: var(--white-color),
+        500: var(--white-color),
+        600: var(--white-color),
+        700: var(--white-color),
+        800: var(--white-color),
+        900: var(--white-color),
+        A100: var(--black-color),
+        A200: var(--black-color),
+        A400: var(--black-color),
+        A700: var(--black-color)
+    )
+);
+
+$primary-theme: mat.define-palette($primary-palette);
+$secondary-theme: mat.define-palette($secondary-palette);
+$error-theme: mat.define-palette($error-palette);
+$full-theme: mat.define-light-theme((color: (primary: $primary-theme, accent: $secondary-theme, warn: $error-theme)));
+
+@include mat.all-component-themes($full-theme);
