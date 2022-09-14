@@ -48,7 +48,8 @@
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
                         "assets": [
-                            "src/assets"
+                            "src/assets",
+                            "src/robots.txt"
                         ],
                         "styles": [
                             "src/styles.scss"
