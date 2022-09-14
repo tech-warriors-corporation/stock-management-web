@@ -21,7 +21,7 @@ html, body, app-root, .app{
     overflow-x: hidden;
 }
 
-.app > *:not(router-outlet){
+.app > *:not(router-outlet):not(app-full-loading){
     height: inherit;
     display: inherit;
 }
