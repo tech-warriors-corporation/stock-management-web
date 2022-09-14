@@ -1,6 +1,10 @@
 [build]
     command = "npm run build"
     publish = "dist/stock-management-web"
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 301
 [[headers]]
     for = "/*"
         [headers.values]
