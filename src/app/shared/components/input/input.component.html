@@ -1,0 +1,27 @@
+<mat-form-field class="input"
+                *ngIf="control"
+                [formGroup]="form"
+                appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+
+    <input [type]="type"
+           [attr.inputmode]="inputMode"
+           [required]="required"
+           matInput
+           [appAutofocus]="autofocus"
+           [formControl]="control"
+           [placeholder]="placeholder">
+
+    <button mat-icon-button
+            matSuffix
+            *ngIf="isPassword"
+            type="button"
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="hidePassword ? 'Mostrar senha' : 'Esconder senha'"
+            [attr.aria-pressed]="hidePassword">
+        <mat-icon aria-hidden="true">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+
+    <mat-error *ngIf="control.invalid | formControlInvalid: control.touched">{{ control.errors | formControlError }}</mat-error>
+    <mat-hint *ngIf="maxlength" align="end">{{ control.value?.length || 0 }}/{{ maxlength }}</mat-hint>
+</mat-form-field>
