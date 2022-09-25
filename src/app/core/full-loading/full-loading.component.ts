@@ -10,7 +10,7 @@ import { FullLoadingService } from "./full-loading.service";
     styleUrls: ['./full-loading.component.scss']
 })
 export class FullLoadingComponent implements OnInit, OnDestroy{
-    show = true;
+    show = false;
 
     private showSubscription: Subscription | null = null;
 
