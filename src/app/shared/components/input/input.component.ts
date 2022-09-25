@@ -29,7 +29,7 @@ export class InputComponent implements OnInit{
     }
 
     get type(): InputType{
-        if (this.isPassword && this.hidePassword) return InputType.PASSWORD
+        if (this.isPassword) return this.hidePassword ? InputType.PASSWORD : InputType.TEXT
 
         return this.inputType
     }
