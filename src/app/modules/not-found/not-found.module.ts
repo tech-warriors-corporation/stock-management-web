@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from "@angular/material/icon";
 
 import { NotFoundComponent } from './not-found.component';
-import { LayoutModule } from "../../global/layout/layout.module";
+import { LayoutModule } from "../../core/layout/layout.module";
 import { NotFoundRoutingModule } from "./not-found-routing.module";
 
 @NgModule({

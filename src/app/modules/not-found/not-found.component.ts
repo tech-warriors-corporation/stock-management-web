@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
-import { AuthService } from "../../global/auth/auth.service";
+import { AuthService } from "../../core/auth/auth.service";
 import { Path } from "../../shared/enums/path";
 
 @Component({
