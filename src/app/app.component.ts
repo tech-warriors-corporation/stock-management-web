@@ -1,6 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
-
-import { FullLoadingService } from "./core/full-loading/full-loading.service";
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -11,10 +9,4 @@ import { FullLoadingService } from "./core/full-loading/full-loading.service";
         </div>
     `
 })
-export class AppComponent implements AfterViewInit{
-    constructor(private fullLoadingService: FullLoadingService) {}
-
-    ngAfterViewInit(): void {
-        this.fullLoadingService.setShow(false); // TODO: remove this in the future
-    }
-}
+export class AppComponent{}
