@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from "rxjs";
 
@@ -14,10 +14,13 @@ export class FullLoadingComponent implements OnInit, OnDestroy{
 
     private showSubscription: Subscription | null = null;
 
-    constructor(private fullLoadingService: FullLoadingService){}
+    constructor(private fullLoadingService: FullLoadingService, private changeDetector: ChangeDetectorRef){}
 
     ngOnInit(): void{
-        this.showSubscription = this.fullLoadingService.getShow().subscribe(show => this.show = show);
+        this.showSubscription = this.fullLoadingService.getShow().subscribe(show => {
+            this.show = show;
+            this.changeDetector.detectChanges();
+        });
     }
 
     ngOnDestroy(): void{
