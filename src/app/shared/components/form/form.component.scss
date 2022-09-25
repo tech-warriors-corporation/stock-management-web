@@ -1,0 +1,12 @@
+.form{
+    &, & &__fieldset{
+        width: 100%;
+        display: block;
+    }
+
+    & &__legend{
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-bottom: var(--six-spaces);
+    }
+}
