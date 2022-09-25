@@ -1,0 +1,9 @@
+<button [disabled]="disabled"
+        (click)="inClick.next()"
+        [type]="type"
+        [color]="color"
+        [attr.aria-label]="label"
+        *ngIf="layout === buttonLayout.RAISED"
+        mat-raised-button>
+  {{ label }}
+</button>
