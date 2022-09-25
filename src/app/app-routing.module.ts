@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from "./global/auth/auth.guard";
+import { AuthGuard } from "./core/auth/auth.guard";
 import { Path } from "./shared/enums/path";
 
 const routes: Routes = [
     {
         path: Path.LOGIN,
-        loadChildren: () => import('./pages/login/login.module').then(module => module.LoginModule),
+        loadChildren: () => import('./modules/login/login.module').then(module => module.LoginModule),
         canLoad: [AuthGuard],
     },
     {
         path: Path.DASHBOARD,
-        loadChildren: () => import('./pages/dashboard/dashboard.module').then(module => module.DashboardModule),
+        loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule),
         canLoad: [AuthGuard],
     },
     {
@@ -22,7 +22,7 @@ const routes: Routes = [
     },
     {
         path: '**',
-        loadChildren: () => import('./pages/not-found/not-found.module').then(module => module.NotFoundModule),
+        loadChildren: () => import('./modules/not-found/not-found.module').then(module => module.NotFoundModule),
     },
 ];
 
