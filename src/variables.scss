@@ -11,5 +11,8 @@
     --two-spaces: calc(var(--one-space) * 2);
     --three-spaces: calc(var(--one-space) * 3);
     --four-spaces: calc(var(--one-space) * 4);
+    --six-spaces: calc(var(--one-space) * 6);
     --eight-spaces: calc(var(--one-space) * 8);
+    --twenty-spaces: calc(var(--one-space) * 20);
+    --fifty-spaces: calc(var(--one-space) * 50);
 }
