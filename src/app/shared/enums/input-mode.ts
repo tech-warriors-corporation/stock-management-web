@@ -1,3 +1,4 @@
 export enum InputMode{
-    TEXT = 'text'
+    TEXT = 'text',
+    EMAIL = 'email',
 }

@@ -1,3 +1,4 @@
 export enum InputType{
-    TEXT = 'text'
+    TEXT = 'text',
+    EMAIL = 'email',
 }
