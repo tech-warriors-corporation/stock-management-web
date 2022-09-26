@@ -1,0 +1,38 @@
+<section class="login">
+    <div class="login__banner">
+        <img class="login__logo" src="../../../assets/images/logo.png" alt="Logo do Casulo Social">
+    </div>
+    <div class="login__enter">
+        <h1 class="login__title">Sistema de estoque</h1>
+        <app-form class="login__form" [form]="form" (formSubmit)="submit()" formTitle="Login">
+            <div class="login__form-content">
+                <app-input [form]="form"
+                           label="E-mail"
+                           [autofocus]="true"
+                           [maxlength]="formConstants.EMAIL_MAXLENGTH"
+                           name="email"
+                           placeholder="Coloque o e-mail"
+                           [required]="true"
+                           [inputType]="inputType.EMAIL"
+                           [inputMode]="inputMode.EMAIL">
+                </app-input>
+                <app-input [form]="form"
+                           label="Senha"
+                           [maxlength]="formConstants.PASSWORD_MAXLENGTH"
+                           [minlength]="formConstants.PASSWORD_MINLENGTH"
+                           name="userPassword"
+                           placeholder="Coloque a senha"
+                           [required]="true"
+                           [isPassword]="true"
+                           [inputType]="inputType.PASSWORD">
+                </app-input>
+                <app-button class="login__submit"
+                            [type]="buttonType.SUBMIT"
+                            [disabled]="loading || form.invalid | formInvalid: form.pristine"
+                            label="Entrar">
+                </app-button>
+            </div>
+        </app-form>
+        <app-developed-by class="login__developed-by"></app-developed-by>
+    </div>
+</section>
