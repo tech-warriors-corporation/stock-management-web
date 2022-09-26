@@ -56,8 +56,7 @@
                         ],
                         "scripts": [],
                         "allowedCommonJsDependencies": [
-                            "@ridi/object-case-converter",
-                            "ngx-snake-to-camel"
+                            "@ridi/object-case-converter"
                         ]
                     },
                     "configurations": {
