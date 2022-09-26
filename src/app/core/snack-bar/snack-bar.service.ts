@@ -11,7 +11,7 @@ export class SnackBarService {
         this.snackBar.open(message, 'Fechar', {
             duration: 8000,
             horizontalPosition: 'right',
-            verticalPosition: 'top'
+            verticalPosition: 'bottom'
         });
     }
 }
