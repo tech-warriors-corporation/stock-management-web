@@ -16,13 +16,18 @@ const routes: Routes = [
         canLoad: [AuthGuard],
     },
     {
+        path: Path.NOT_FOUND,
+        loadChildren: () => import('./modules/not-found/not-found.module').then(module => module.NotFoundModule),
+        canLoad: [AuthGuard],
+    },
+    {
         path: '',
         pathMatch: 'full',
         redirectTo: Path.DASHBOARD,
     },
     {
         path: '**',
-        loadChildren: () => import('./modules/not-found/not-found.module').then(module => module.NotFoundModule),
+        redirectTo: Path.NOT_FOUND,
     },
 ];
 
