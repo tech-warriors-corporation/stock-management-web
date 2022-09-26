@@ -32,12 +32,32 @@
     & &__title{
         font-weight: 600;
         font-size: 2.5rem;
-        text-decoration: underline;
+        text-decoration: none;
+        margin-top: var(--twenty-spaces);
+    }
+
+    & &__form{
+        display: flex;
         flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 560px;
+        margin: calc(var(--twenty-five-spaces) * -1) auto 0 auto;
+    }
+
+    & &__form-content{
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--two-spaces);
     }
 
     & &__developed-by{
         display: block;
         align-self: flex-start;
+    }
+
+    & &__submit{
+        align-self: flex-end;
     }
 }
