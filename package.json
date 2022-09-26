@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ng serve",
-    "build": "npm i --force && ng build"
+    "build": "ng build"
   },
   "private": false,
   "dependencies": {
