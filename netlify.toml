@@ -9,6 +9,8 @@
     from = "/api/*"
     to = "https://casulo-stock-management-api.herokuapp.com/api/:splat"
     status = 200
+    force = true
+    headers = {X-From = "Netlify"}
 [[headers]]
     for = "/*"
         [headers.values]
