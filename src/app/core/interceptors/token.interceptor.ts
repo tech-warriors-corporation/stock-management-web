@@ -14,11 +14,11 @@ export class TokenInterceptor implements HttpInterceptor{
 
     intercept (request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.authService.token;
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*' })
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' })
 
         if (token) headers = headers.append(HeaderName.TOKEN, token)
 
-        const clonedRequest = request.clone({ headers, withCredentials: true });
+        const clonedRequest = request.clone({ headers });
 
         return next.handle(clonedRequest);
     }
