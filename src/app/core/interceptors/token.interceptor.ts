@@ -14,7 +14,7 @@ export class TokenInterceptor implements HttpInterceptor{
 
     intercept (request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.authService.token;
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*' })
 
         if (token) headers = headers.append(HeaderName.TOKEN, token)
 
