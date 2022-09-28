@@ -41,3 +41,10 @@ a {
 ::selection {
     @include mixins.selection;
 }
+
+.mat-menu-panel {
+    .mat-menu-content, .mat-menu-content:not(:empty){
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
