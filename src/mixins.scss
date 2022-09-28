@@ -26,3 +26,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@mixin set-icon-size($size){
+    @include fix-size($size);
+
+    font-size: $size;
+    line-height: $size;
+}
