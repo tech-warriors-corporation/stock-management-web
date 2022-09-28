@@ -6,7 +6,7 @@ import { Env } from "../app/shared/types/env";
 
 export const environment: Env = {
     production: false,
-    api: 'http://127.0.0.1:5000/api'
+    api: 'http://127.0.0.1:8000/api'
 };
 
 /*
