@@ -1,1 +1,28 @@
-<header class="header"></header>
+<header class="header mat-elevation-z3">
+    <ng-container *ngIf="title && userName">
+        <h2 class="header__title">{{ title }}</h2>
+        <p class="header__user-name">{{ userName }}</p>
+
+        <button mat-icon-button
+                [matMenuTriggerFor]="userOptions"
+                type="button"
+                [attr.aria-label]="isUserOptionsOpened ? 'Fechar opções do usuário' : 'Abrir opções do usuário'">
+            <mat-icon aria-hidden="true">{{ isUserOptionsOpened ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>
+        </button>
+
+        <mat-menu #userOptions="matMenu" xPosition="before">
+            <button mat-menu-item type="button" disabled>
+                <mat-icon aria-hidden="true">lock</mat-icon>
+                <span>Alterar senha</span>
+            </button>
+            <button mat-menu-item type="button" disabled>
+                <mat-icon aria-hidden="true">headset_mic</mat-icon>
+                <span>Suporte</span>
+            </button>
+            <button mat-menu-item type="button" (click)="logout()">
+                <mat-icon aria-hidden="true">logout</mat-icon>
+                <span>Sair</span>
+            </button>
+        </mat-menu>
+    </ng-container>
+</header>
