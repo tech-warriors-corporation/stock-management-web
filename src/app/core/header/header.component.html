@@ -1,5 +1,12 @@
 <header class="header mat-elevation-z3">
     <ng-container *ngIf="title && userName">
+        <button mat-icon-button
+                (click)="toggleMenu()"
+                type="button"
+                [attr.aria-label]="'Alternar entre menu aberto ou fechado'">
+            <mat-icon class="header__menu-icon" aria-hidden="true">menu</mat-icon>
+        </button>
+
         <h2 class="header__title">{{ title }}</h2>
         <p class="header__user-name">{{ userName }}</p>
 

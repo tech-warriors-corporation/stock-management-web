@@ -6,6 +6,7 @@ import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth/auth.service";
 import { ButtonType } from "../../shared/enums/button-type";
+import { MenuService } from "../menu/menu.service";
 
 @Component({
     selector: 'app-header',
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
     private data$!: Subscription
 
-    constructor(private authService: AuthService, private route: ActivatedRoute){}
+    constructor(private authService: AuthService, private route: ActivatedRoute, private menuService: MenuService){}
 
     ngOnInit(): void{
         this.userName = this.authService.user?.userName || null
@@ -34,6 +35,10 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
     logout(){
         this.authService.logout()
+    }
+
+    toggleMenu(){
+        this.menuService.emitToggle()
     }
 
     ngOnDestroy(): void{

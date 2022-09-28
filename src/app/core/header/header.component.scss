@@ -1,3 +1,5 @@
+@use "src/mixins";
+
 .header{
     height: 60px;
     width: 100%;
@@ -5,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 var(--four-spaces);
+    padding: 0 var(--two-spaces);
     column-gap: var(--two-spaces);
     color: var(--white-color);
 
@@ -17,5 +19,9 @@
 
     & &__user-name{
         font-size: 1rem;
+    }
+
+    & &__menu-icon{
+        @include mixins.set-icon-size(32px);
     }
 }
