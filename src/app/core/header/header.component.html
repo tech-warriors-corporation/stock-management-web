@@ -11,15 +11,15 @@
         </button>
 
         <mat-menu #userOptions="matMenu" xPosition="before">
-            <button mat-menu-item type="button" disabled>
+            <button mat-menu-item [type]="buttonType.BUTTON" disabled>
                 <mat-icon aria-hidden="true">lock</mat-icon>
                 <span>Alterar senha</span>
             </button>
-            <button mat-menu-item type="button" disabled>
+            <button mat-menu-item [type]="buttonType.BUTTON" disabled>
                 <mat-icon aria-hidden="true">headset_mic</mat-icon>
                 <span>Suporte</span>
             </button>
-            <button mat-menu-item type="button" (click)="logout()">
+            <button mat-menu-item [type]="buttonType.BUTTON" (click)="logout()">
                 <mat-icon aria-hidden="true">logout</mat-icon>
                 <span>Sair</span>
             </button>

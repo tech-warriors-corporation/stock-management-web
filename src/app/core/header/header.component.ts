@@ -5,6 +5,7 @@ import { MatMenuTrigger } from "@angular/material/menu";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth/auth.service";
+import { ButtonType } from "../../shared/enums/button-type";
 
 @Component({
     selector: 'app-header',
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
     title!: string
     userName!: string|null
+    buttonType = ButtonType
 
     private data$!: Subscription
 
