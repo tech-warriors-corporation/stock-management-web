@@ -1,0 +1,21 @@
+@use "src/mixins";
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+
+    &.button--loading{
+        .button__label{
+            visibility: hidden;
+        }
+
+        .button__loading{
+            @include mixins.force-center();
+
+            margin: 0;
+        }
+    }
+}

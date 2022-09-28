@@ -7,6 +7,7 @@ import { ColorPalette } from "../../enums/color-palette";
 @Component({
     selector: 'app-button',
     templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent{
     buttonLayout = ButtonLayout
@@ -16,5 +17,20 @@ export class ButtonComponent{
     @Input() layout: ButtonLayout = this.buttonLayout.RAISED
     @Input() type: ButtonType = ButtonType.BUTTON
     @Input() disabled = false;
+    @Input() loading = false;
     @Input() color: ColorPalette = ColorPalette.PRIMARY;
+
+    loadingColor = ColorPalette.PRIMARY
+
+    get isDisabled(): boolean{
+        return this.disabled || this.loading
+    }
+
+    get classes(): string{
+        const classes = ['button']
+
+        if (this.loading) classes.push('button--loading')
+
+        return classes.join(' ')
+    }
 }

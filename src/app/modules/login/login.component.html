@@ -28,7 +28,8 @@
                 </app-input>
                 <app-button class="login__submit"
                             [type]="buttonType.SUBMIT"
-                            [disabled]="loading || form.invalid | formInvalid: form.pristine"
+                            [loading]="loading"
+                            [disabled]="form.invalid | formInvalid: form.pristine"
                             label="Entrar">
                 </app-button>
             </div>

@@ -1,9 +1,25 @@
-<button [disabled]="disabled"
+<button [disabled]="isDisabled"
         (click)="inClick.next()"
         [type]="type"
         [color]="color"
         [attr.aria-label]="label"
+        [class]="classes"
         *ngIf="layout === buttonLayout.RAISED"
         mat-raised-button>
-  {{ label }}
+  <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
+  <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
 </button>
+
+<ng-template #loadingTemplate>
+  <mat-spinner *ngIf="loading"
+               class="button__loading"
+               strokeWidth="2"
+               diameter="20"
+               aria-label="Carregando"
+               [color]="loadingColor">
+  </mat-spinner>
+</ng-template>
+
+<ng-template #labelTemplate>
+  <span class="button__label">{{ label }}</span>
+</ng-template>
