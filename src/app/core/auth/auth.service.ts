@@ -53,11 +53,12 @@ export class AuthService {
     userByToken(): Observable<Response<AuthUser>>{
         return this.httpClient.get<Response<AuthUser>>(`${environment.api}/user_by_token`).pipe(tap({
             next: response => this.loggedUser = response.data,
-            error: () => {
-                this.loggedUser = null;
-                this.currentToken = null;
-                this.router.navigateByUrl(`/${Path.LOGIN}`);
-            }
+            error: () => this.logout()
         }));
+    }
+
+    logout(){
+        this.currentToken = this.loggedUser = null;
+        this.router.navigateByUrl(`/${Path.LOGIN}`);
     }
 }
