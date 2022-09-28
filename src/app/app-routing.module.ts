@@ -14,11 +14,17 @@ const routes: Routes = [
         path: Path.DASHBOARD,
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule),
         canLoad: [AuthGuard],
+        data: {
+            title: "Dashboard"
+        }
     },
     {
         path: Path.NOT_FOUND,
         loadChildren: () => import('./modules/not-found/not-found.module').then(module => module.NotFoundModule),
         canLoad: [AuthGuard],
+        data: {
+            title: "Página não encontrada"
+        }
     },
     {
         path: '',
