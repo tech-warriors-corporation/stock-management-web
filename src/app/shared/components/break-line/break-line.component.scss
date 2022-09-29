@@ -1,6 +1,9 @@
+@use "src/mixins";
+
 .break-line{
     width: 100%;
-    height: 1px;
     background-color: var(--grey-color);
     display: block;
+
+    @include mixins.fix-height(1px);
 }
