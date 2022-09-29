@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutComponent } from "./layout.component";
 import { HeaderModule } from "../header/header.module";
+import { MenuModule } from "../menu/menu.module";
 
 @NgModule({
     declarations: [LayoutComponent],
     exports: [LayoutComponent],
-    imports: [CommonModule, HeaderModule]
+    imports: [CommonModule, HeaderModule, MenuModule]
 })
 export class LayoutModule{}
