@@ -5,6 +5,6 @@ export enum Path{
     STOCK = 'estoque',
     PRODUCTS = 'produtos',
     CATEGORIES = 'categorias',
-    USERS = 'users',
+    USERS = 'usuarios',
     NOT_FOUND = 'pagina-nao-encontrada',
 }
