@@ -1,0 +1,22 @@
+.menu-link{
+    display: flex;
+    align-items: center;
+    padding: var(--three-spaces);
+    column-gap: var(--three-spaces);
+    background-color: transparent;
+    border: var(--grey-border);
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: var(--one-space);
+    color: var(--black-color);
+    text-decoration: none;
+
+    & &__icon{
+        color: var(--black-color);
+    }
+
+    &.menu-link--active{
+        border-color: var(--primary-color);
+        background-color: var(--primary-color-24-percent);
+    }
+}
