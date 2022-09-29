@@ -9,6 +9,7 @@ import { BreakLineModule } from "../../shared/components/break-line/break-line.m
 import { DevelopedByModule } from "../../shared/components/developed-by/developed-by.module";
 import { MenuLinkComponent } from './menu-link.component';
 import { ButtonModule } from "../../shared/components/button/button.module";
+import { CanAccessRouteModule } from "../../shared/pipes/can-access-route/can-access-route.module";
 
 @NgModule({
     declarations: [MenuComponent, MenuLinkComponent],
@@ -19,7 +20,8 @@ import { ButtonModule } from "../../shared/components/button/button.module";
         DevelopedByModule,
         RouterModule,
         MatIconModule,
-        ButtonModule
+        ButtonModule,
+        CanAccessRouteModule
     ],
     exports: [MenuComponent]
 })

@@ -27,8 +27,8 @@ export class MenuComponent implements AfterViewInit{
             icon: 'dashboard',
         },
         {
-            text: PageTitle.INPUTS_AND_OUTPUTS,
-            href: `/${Path.INPUTS_AND_OUTPUTS}`,
+            text: PageTitle.INPUTS_OUTPUTS,
+            href: `/${Path.INPUTS_OUTPUTS}`,
             icon: 'sync_alt',
         },
         {
