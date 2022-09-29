@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from "./core/auth/auth.guard";
 import { Path } from "./shared/enums/path";
+import { PageTitle } from "./shared/enums/page-title";
 
 const routes: Routes = [
     {
@@ -15,7 +16,7 @@ const routes: Routes = [
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule),
         canLoad: [AuthGuard],
         data: {
-            title: "Dashboard"
+            title: PageTitle.DASHBOARD
         }
     },
     {
@@ -23,7 +24,7 @@ const routes: Routes = [
         loadChildren: () => import('./modules/not-found/not-found.module').then(module => module.NotFoundModule),
         canLoad: [AuthGuard],
         data: {
-            title: "Página não encontrada"
+            title: PageTitle.NOT_FOUND
         }
     },
     {
