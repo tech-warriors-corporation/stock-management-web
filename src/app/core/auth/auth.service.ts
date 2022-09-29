@@ -38,6 +38,10 @@ export class AuthService {
         return !!this.user?.userId
     }
 
+    get isAmin(): boolean{
+        return !!this.user?.isAdmin
+    }
+
     login({ email, userPassword }: { email: string, userPassword: string }): Observable<Response<AuthUser>>{
         return this.httpClient
                    .post<Response<AuthToken>>(`${environment.api}/login`, { email, userPassword })
