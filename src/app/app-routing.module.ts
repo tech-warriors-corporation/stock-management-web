@@ -20,6 +20,14 @@ const routes: Routes = [
         }
     },
     {
+        path: Path.USERS,
+        loadChildren: () => import('./modules/users/users.module').then(module => module.UsersModule),
+        canLoad: [AuthGuard],
+        data: {
+            title: PageTitle.USERS
+        }
+    },
+    {
         path: Path.NOT_FOUND,
         loadChildren: () => import('./modules/not-found/not-found.module').then(module => module.NotFoundModule),
         canLoad: [AuthGuard],
