@@ -20,11 +20,11 @@ const routes: Routes = [
         }
     },
     {
-        path: Path.USERS,
-        loadChildren: () => import('./modules/users/users.module').then(module => module.UsersModule),
+        path: Path.PRODUCTS,
+        loadChildren: () => import('./modules/products/products.module').then(module => module.ProductsModule),
         canLoad: [AuthGuard],
         data: {
-            title: PageTitle.USERS
+            title: PageTitle.PRODUCTS
         }
     },
     {
@@ -33,6 +33,14 @@ const routes: Routes = [
         canLoad: [AuthGuard],
         data: {
             title: PageTitle.CATEGORIES
+        }
+    },
+    {
+        path: Path.USERS,
+        loadChildren: () => import('./modules/users/users.module').then(module => module.UsersModule),
+        canLoad: [AuthGuard],
+        data: {
+            title: PageTitle.USERS
         }
     },
     {
