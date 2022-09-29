@@ -18,17 +18,14 @@
         </button>
 
         <mat-menu #userOptions="matMenu" xPosition="before">
-            <button mat-menu-item [type]="buttonType.BUTTON" disabled>
-                <mat-icon aria-hidden="true">lock</mat-icon>
-                <span>Alterar senha</span>
+            <button mat-menu-item [type]="buttonType.BUTTON">
+                <mat-icon aria-hidden="true">lock</mat-icon> Alterar senha
             </button>
-            <button mat-menu-item [type]="buttonType.BUTTON" disabled>
-                <mat-icon aria-hidden="true">headset_mic</mat-icon>
-                <span>Suporte</span>
+            <button mat-menu-item [type]="buttonType.BUTTON">
+                <mat-icon aria-hidden="true">headset_mic</mat-icon> Suporte
             </button>
             <button mat-menu-item [type]="buttonType.BUTTON" (click)="logout()">
-                <mat-icon aria-hidden="true">logout</mat-icon>
-                <span>Sair</span>
+                <mat-icon aria-hidden="true">logout</mat-icon> Sair
             </button>
         </mat-menu>
     </ng-container>
