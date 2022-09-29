@@ -10,6 +10,8 @@
     border-radius: var(--one-space);
     color: var(--black-color);
     text-decoration: none;
+    outline: none;
+    transition: background-color var(--time-to-transition);
 
     & &__icon{
         color: var(--black-color);
@@ -17,6 +19,13 @@
 
     &.menu-link--active{
         border-color: var(--primary-color);
-        background-color: var(--primary-color-24-percent);
+        background-color: var(--primary-color-36-percent);
+    }
+
+    &:hover, &:focus{
+        &:not(.menu-link--active){
+            background-color: var(--primary-color-12-percent);
+            border-color: var(--primary-color);
+        }
     }
 }

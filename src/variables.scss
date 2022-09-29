@@ -2,12 +2,15 @@
     --white-color: #fff;
     --black-color: #000;
     --primary-color: #0060a8;
-    --primary-color-24-percent: rgba(0, 96, 168, 0.24);
+    --primary-rgb-color: 0, 96, 168;
+    --primary-color-36-percent: rgba(var(--primary-rgb-color), .36);
+    --primary-color-12-percent: rgba(var(--primary-rgb-color), .12);
     --secondary-color: #fab429;
     --grey-color: #aaa;
     --red-color: #fb181f;
     --border: 1px solid;
     --grey-border: var(--border) var(--grey-color);
+    --time-to-transition: 200ms;
     --one-space: 4px;
     --two-spaces: calc(var(--one-space) * 2);
     --three-spaces: calc(var(--one-space) * 3);
