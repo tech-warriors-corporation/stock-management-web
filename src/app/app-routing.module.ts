@@ -28,6 +28,14 @@ const routes: Routes = [
         }
     },
     {
+        path: Path.CATEGORIES,
+        loadChildren: () => import('./modules/categories/categories.module').then(module => module.CategoriesModule),
+        canLoad: [AuthGuard],
+        data: {
+            title: PageTitle.CATEGORIES
+        }
+    },
+    {
         path: Path.NOT_FOUND,
         loadChildren: () => import('./modules/not-found/not-found.module').then(module => module.NotFoundModule),
         canLoad: [AuthGuard],
