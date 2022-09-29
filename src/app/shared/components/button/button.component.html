@@ -10,6 +10,18 @@
   <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
 </button>
 
+<button [disabled]="isDisabled"
+        (click)="inClick.next()"
+        [type]="type"
+        [color]="color"
+        [attr.aria-label]="label"
+        [class]="classes"
+        *ngIf="layout === buttonLayout.STROKED"
+        mat-stroked-button>
+  <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
+  <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+</button>
+
 <ng-template #loadingTemplate>
   <mat-spinner *ngIf="loading"
                class="button__loading"
@@ -21,5 +33,6 @@
 </ng-template>
 
 <ng-template #labelTemplate>
+  <mat-icon *ngIf="icon" class="button__icon" aria-hidden="true">{{ icon }}</mat-icon>
   <span class="button__label">{{ label }}</span>
 </ng-template>
