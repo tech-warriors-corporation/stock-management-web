@@ -1,7 +1,7 @@
 export enum PageTitle{
     DASHBOARD = 'Dashboard',
     STOCK = 'Estoque',
-    INPUTS_AND_OUTPUTS = 'Entradas e saídas',
+    INPUTS_OUTPUTS = 'Entradas e saídas',
     PRODUCTS = 'Produtos',
     CATEGORIES = 'Categorias',
     USERS = 'Usuários',
