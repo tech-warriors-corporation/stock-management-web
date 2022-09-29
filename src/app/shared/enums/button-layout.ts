@@ -1,3 +1,4 @@
 export enum ButtonLayout{
-    RAISED
+    RAISED,
+    STROKED,
 }
