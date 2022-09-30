@@ -11,3 +11,5 @@ export type User = {
     dtUpdated?: Date,
     createdByUserId?: number,
 }
+
+export type Users = User[]
