@@ -1,3 +1,4 @@
 export type Response<T> = {
-    data: T
+    data: T,
+    count: number | null,
 }
