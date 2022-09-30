@@ -1,0 +1,19 @@
+@use "src/mixins";
+
+.empty-state{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: var(--mat-grey-border);
+    border-radius: var(--one-space);
+    row-gap: var(--two-spaces);
+    padding: var(--four-spaces);
+    width: 100%;
+    margin: 0 auto;
+
+    & &__icon{
+        @include mixins.set-icon-size(40px);
+    }
+}
