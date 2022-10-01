@@ -7,11 +7,14 @@
 html, body{
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
     background-color: var(--white-color);
-    color: var(--black-color);
     font-size: 16px;
     line-height: 1.2;
     font-weight: 400;
     margin: 0;
+}
+
+html, body, .mat-drawer-container{
+    color: var(--black-color);
 }
 
 html, body, app-root, .app{
@@ -42,9 +45,26 @@ a {
     @include mixins.selection;
 }
 
+.w-100{
+    width: 100%;
+}
+
+.mat-table-border{
+    border: var(--mat-grey-border);
+}
+
 .mat-menu-panel {
     .mat-menu-content, .mat-menu-content:not(:empty){
         padding-top: 0;
         padding-bottom: 0;
     }
+}
+
+th.mat-header-cell{
+    font-weight: 600;
+}
+
+mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+    vertical-align: middle;
+    font-size: 1rem;
 }

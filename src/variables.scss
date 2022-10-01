@@ -7,9 +7,11 @@
     --primary-color-12-percent: rgba(var(--primary-rgb-color), .12);
     --secondary-color: #fab429;
     --grey-color: #aaa;
+    --mat-grey-color: rgba(0, 0, 0, .12);
     --red-color: #fb181f;
     --border: 1px solid;
     --grey-border: var(--border) var(--grey-color);
+    --mat-grey-border: var(--border) var(--mat-grey-color);
     --time-to-transition: 200ms;
     --one-space: 4px;
     --two-spaces: calc(var(--one-space) * 2);
