@@ -1,0 +1,29 @@
+<app-layout>
+    <table *ngIf="!loading && list.length; else loadingTemplate" mat-table [dataSource]="list" [class]="tableService.TABLE_CLASSES">
+        <ng-container matColumnDef="userName">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>E-mail</th>
+            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="isAdmin">
+            <th mat-header-cell *matHeaderCellDef>É administrador</th>
+            <td mat-cell *matCellDef="let element">{{ element.isAdmin | booleanAsNumberToText }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+
+    <ng-template #loadingTemplate>
+        <app-content-loading *ngIf="loading; else emptyStateTemplate"></app-content-loading>
+    </ng-template>
+
+    <ng-template #emptyStateTemplate>
+        <app-empty-state></app-empty-state>
+    </ng-template>
+</app-layout>
