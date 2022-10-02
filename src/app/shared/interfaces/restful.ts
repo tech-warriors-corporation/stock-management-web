@@ -9,3 +9,7 @@ export interface API {
 export interface GetList<T> {
     getList(...args: any[]): Observable<Response<T[]>>
 }
+
+export interface DeleteItem{
+    deleteItem(id: number): Observable<Response<null>>
+}
