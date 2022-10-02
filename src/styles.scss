@@ -22,6 +22,7 @@ html, body, app-root, .app{
     height: 100%;
     display: block;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .app > *:not(router-outlet):not(app-full-loading){
@@ -71,4 +72,11 @@ mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat
 
 .mat-form-field-appearance-outline .mat-form-field-wrapper{
     margin: 0 !important;
+}
+
+.mat-drawer-content{
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @include mixins.fix-height(calc(100vh - var(--header-height)))
 }

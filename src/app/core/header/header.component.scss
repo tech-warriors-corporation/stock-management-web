@@ -1,7 +1,8 @@
 @use "src/mixins";
 
 .header{
-    height: 60px;
+    @include mixins.fix-height(var(--header-height));
+
     width: 100%;
     background-color: var(--primary-color);
     display: flex;
