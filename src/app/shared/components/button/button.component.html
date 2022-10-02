@@ -34,6 +34,19 @@
         <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
         <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
     </button>
+
+    <button [disabled]="isDisabled"
+            (click)="inClick.next()"
+            [type]="type"
+            [color]="color"
+            [attr.aria-label]="label"
+            [class]="classes"
+            [matTooltip]="label"
+            *ngIf="layout === buttonLayout.ICON"
+            mat-icon-button>
+        <ng-container *ngTemplateOutlet="iconTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+    </button>
 </ng-container>
 
 <ng-container *ngIf="buttonOperation.LINK === operation">
@@ -44,6 +57,17 @@
        *ngIf="layout === buttonLayout.RAISED"
        mat-raised-button>
         <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+    </a>
+
+    <a [routerLink]="link"
+       [color]="color"
+       [attr.aria-label]="label"
+       [class]="classes"
+       [matTooltip]="label"
+       *ngIf="layout === buttonLayout.ICON"
+       mat-icon-button>
+        <ng-container *ngTemplateOutlet="iconTemplate"></ng-container>
         <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
     </a>
 </ng-container>
@@ -59,6 +83,10 @@
 </ng-template>
 
 <ng-template #labelTemplate>
-    <mat-icon *ngIf="icon" class="button__icon" aria-hidden="true">{{ icon }}</mat-icon>
+    <ng-container *ngTemplateOutlet="iconTemplate"></ng-container>
     <span class="button__label">{{ label }}</span>
+</ng-template>
+
+<ng-template #iconTemplate>
+    <mat-icon *ngIf="icon" class="button__icon" aria-hidden="true">{{ icon }}</mat-icon>
 </ng-template>

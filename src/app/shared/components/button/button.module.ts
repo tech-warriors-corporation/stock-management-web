@@ -4,6 +4,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from "@angular/router";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 import { ButtonComponent } from './button.component';
 
@@ -16,7 +17,8 @@ import { ButtonComponent } from './button.component';
         MatButtonModule,
         MatProgressSpinnerModule,
         MatIconModule,
-        RouterModule
+        RouterModule,
+        MatTooltipModule
     ],
     exports: [
         ButtonComponent
