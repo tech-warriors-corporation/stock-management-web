@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FullLoadingModule } from "./core/full-loading/full-loading.module";
 import { TokenInterceptor } from "./core/interceptors/token.interceptor";
+import { LayoutModule } from "./core/layout/layout.module";
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { TokenInterceptor } from "./core/interceptors/token.interceptor";
         BrowserAnimationsModule,
         HttpClientModule,
         MatSnackBarModule,
-        NgxSnakeToCamelModule.forRoot()
+        NgxSnakeToCamelModule.forRoot(),
+        LayoutModule,
     ],
     providers: [
         {
