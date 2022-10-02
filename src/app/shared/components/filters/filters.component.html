@@ -1,0 +1,12 @@
+<form class="filters" [formGroup]="form" (ngSubmit)="inSubmit.next()">
+    <h3 class="filters__title">Filtros:</h3>
+    <div class="filters__content">
+        <ng-content></ng-content>
+        <app-button [layout]="buttonLayout.FLAT"
+                    icon="search"
+                    [type]="buttonType.SUBMIT"
+                    [disabled]="disabledSubmit || (form.invalid | formInvalid)"
+                    label="Buscar">
+        </app-button>
+    </div>
+</form>

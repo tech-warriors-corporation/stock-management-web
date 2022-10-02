@@ -1,0 +1,29 @@
+.filters{
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--two-spaces);
+
+    & &__content{
+        display: flex;
+        column-gap: var(--two-spaces);
+    }
+
+    & &__title{
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    ::ng-deep{
+        .mat-form-field-subscript-wrapper{
+            display: none;
+        }
+
+        .mat-form-field-wrapper{
+            padding-bottom: 0;
+        }
+
+        .button{
+            height: 100%;
+        }
+    }
+}
