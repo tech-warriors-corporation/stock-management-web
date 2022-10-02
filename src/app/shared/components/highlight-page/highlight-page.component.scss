@@ -1,0 +1,11 @@
+.highlight-page{
+    display: flex;
+    align-items: center;
+    column-gap: var(--two-spaces);
+
+    & &__title{
+        flex-grow: 1;
+        font-weight: 600;
+        font-size: 1.375rem;
+    }
+}
