@@ -80,3 +80,23 @@ mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat
 
     @include mixins.fix-height(calc(100vh - var(--header-height)))
 }
+
+.mat-header-cell.cdk-header-cell.cdk-column-actions.mat-column-actions{
+    visibility: hidden;
+    padding-right: 0;
+}
+
+.mat-cell.cdk-cell.cdk-column-actions.mat-column-actions{
+    text-align: right;
+    padding-right: var(--two-spaces);
+
+    > * {
+        width: fit-content;
+        display: inline-block;
+        margin: auto 0 auto auto;
+
+        &:not(:first-child){
+            margin-left: var(--two-spaces);
+        }
+    }
+}
