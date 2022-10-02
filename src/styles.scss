@@ -68,3 +68,7 @@ mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat
     vertical-align: middle;
     font-size: 1rem;
 }
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper{
+    margin: 0 !important;
+}
