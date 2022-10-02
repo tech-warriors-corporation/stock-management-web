@@ -12,6 +12,9 @@ import { FormConstants } from "../../shared/components/form/form-constants";
 import { ButtonLayout } from "../../shared/enums/button-layout";
 import { Path } from "../../shared/enums/path";
 import { ButtonOperation } from "../../shared/enums/button-operation";
+import { BooleanAsNumber } from "../../shared/enums/boolean-as-number";
+import { ColorPalette } from "../../shared/enums/color-palette";
+import { SnackBarService } from "../../core/snack-bar/snack-bar.service";
 
 @Component({
     selector: 'app-users',
@@ -22,12 +25,15 @@ export class UsersComponent extends Base<User> implements OnInit, Columns, OnDes
     loading = false;
     showMoreLoading = false;
     list: Users = [];
-    columns = ['userName', 'email', 'isAdmin']
+    columns = ['userName', 'email', 'isAdmin', 'actions']
     formConstants = FormConstants
     buttonLayout = ButtonLayout
     buttonOperation = ButtonOperation
     count = 0
     path = Path
+    booleanAsNumber = BooleanAsNumber
+    colorPalette = ColorPalette
+    userIdThatIsDeleting: number | null = null
 
     form = this.formBuilder.group({
         userName: [null, Validators.maxLength(this.formConstants.USER_NAME_MAXLENGTH)],
@@ -38,8 +44,14 @@ export class UsersComponent extends Base<User> implements OnInit, Columns, OnDes
     protected readonly perPage = 10
 
     private getList$!: Subscription
+    private deleteItem$!: Subscription
 
-    constructor(private usersService: UsersService, public tableService: TableService, private formBuilder: FormBuilder){
+    constructor(
+        private usersService: UsersService,
+        public tableService: TableService,
+        private formBuilder: FormBuilder,
+        private snackBarService: SnackBarService,
+    ){
         super()
     }
 
@@ -60,8 +72,13 @@ export class UsersComponent extends Base<User> implements OnInit, Columns, OnDes
                                          })
     }
 
-    ngOnInit(): void{
+    private init(): void{
+        this.page = 0
         this.get()
+    }
+
+    ngOnInit(): void{
+        this.init()
     }
 
     showMore(): void{
@@ -71,11 +88,19 @@ export class UsersComponent extends Base<User> implements OnInit, Columns, OnDes
     }
 
     submitForm(): void{
-        this.page = 0
-        this.get()
+        this.init()
+    }
+
+    delete(userId: number): void{
+        this.userIdThatIsDeleting = userId
+        this.deleteItem$ = this.usersService.deleteItem(userId).pipe(finalize(() => this.userIdThatIsDeleting = null)).subscribe({
+            next: () => this.init(),
+            error: () => this.snackBarService.open('Ocorreu um problema ao deletar o usuário'),
+        })
     }
 
     ngOnDestroy(){
         this.getList$?.unsubscribe()
+        this.deleteItem$?.unsubscribe()
     }
 }

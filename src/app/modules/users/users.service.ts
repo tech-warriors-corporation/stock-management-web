@@ -4,12 +4,12 @@ import { HttpClient } from "@angular/common/http";
 import { User, Users } from "../../shared/types/user";
 import { Response } from "../../shared/types/response";
 import { environment } from "../../../environments/environment";
-import { API, GetList } from "../../shared/interfaces/restful";
+import { API, DeleteItem, GetList } from "../../shared/interfaces/restful";
 
 @Injectable({
     providedIn: 'root'
 })
-export class UsersService implements API, GetList<User>{
+export class UsersService implements API, GetList<User>, DeleteItem{
     readonly API = `${environment.api}/users`
 
     constructor(private httpClient: HttpClient){}
@@ -21,5 +21,9 @@ export class UsersService implements API, GetList<User>{
         if (email) Object.assign(params, { email })
 
         return this.httpClient.get<Response<Users>>(this.API, { params })
+    }
+
+    deleteItem(id: number){
+        return this.httpClient.delete<Response<null>>(`${this.API}/${id}`)
     }
 }
