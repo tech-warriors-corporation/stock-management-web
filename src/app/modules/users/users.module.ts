@@ -9,6 +9,11 @@ import { BuildingPageModule } from "../../shared/components/building-page/buildi
 import { ContentLoadingModule } from "../../shared/components/content-loading/content-loading.module";
 import { EmptyStateModule } from "../../shared/components/empty-state/empty-state.module";
 import { BooleanAsNumberToTextModule } from "../../shared/pipes/boolean-as-number-to-text/boolean-as-number-to-text.module";
+import { FiltersModule } from "../../shared/components/filters/filters.module";
+import { InputModule } from "../../shared/components/input/input.module";
+import { ButtonModule } from "../../shared/components/button/button.module";
+import { HasShowMoreModule } from "../../shared/pipes/has-show-more/has-show-more.module";
+import { HighlightPageModule } from "../../shared/components/highlight-page/highlight-page.module";
 
 @NgModule({
     declarations: [UsersComponent],
@@ -20,7 +25,12 @@ import { BooleanAsNumberToTextModule } from "../../shared/pipes/boolean-as-numbe
         MatTableModule,
         ContentLoadingModule,
         EmptyStateModule,
-        BooleanAsNumberToTextModule
+        BooleanAsNumberToTextModule,
+        FiltersModule,
+        InputModule,
+        ButtonModule,
+        HasShowMoreModule,
+        HighlightPageModule
     ]
 })
 export class UsersModule {}

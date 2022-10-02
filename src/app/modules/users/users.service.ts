@@ -14,7 +14,12 @@ export class UsersService implements API, GetList<User>{
 
     constructor(private httpClient: HttpClient){}
 
-    getList(page: number) {
-        return this.httpClient.get<Response<Users>>(this.API, { params: { page } })
+    getList(page: number, perPage: number, userName: string | null = null, email: string | null = null) {
+        const params = { page, per_page: perPage }
+
+        if (userName) Object.assign(params, { user_name: userName })
+        if (email) Object.assign(params, { email })
+
+        return this.httpClient.get<Response<Users>>(this.API, { params })
     }
 }
