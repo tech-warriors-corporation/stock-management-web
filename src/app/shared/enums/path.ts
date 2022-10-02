@@ -1,10 +1,11 @@
 export enum Path{
     LOGIN = 'login',
+    NOT_FOUND = 'pagina-nao-encontrada',
     DASHBOARD = 'dashboard',
     INPUTS_OUTPUTS = 'entradas-e-saidas',
     STOCK = 'estoque',
     PRODUCTS = 'produtos',
     CATEGORIES = 'categorias',
     USERS = 'usuarios',
-    NOT_FOUND = 'pagina-nao-encontrada',
+    NEW_USER = 'novo-usuario',
 }
