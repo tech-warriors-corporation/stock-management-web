@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { CategoriesRoutingModule } from "./categories-routing.module";
 import { CategoriesComponent } from "./categories.component";
-import { LayoutModule } from "../../core/layout/layout.module";
 import { BuildingPageModule } from "../../shared/components/building-page/building-page.module";
 
 @NgModule({
@@ -11,7 +10,6 @@ import { BuildingPageModule } from "../../shared/components/building-page/buildi
     imports: [
         CommonModule,
         CategoriesRoutingModule,
-        LayoutModule,
         BuildingPageModule
     ]
 })

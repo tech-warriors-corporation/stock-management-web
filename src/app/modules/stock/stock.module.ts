@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { StockRoutingModule } from "./stock-routing.module";
 import { StockComponent } from "./stock.component";
-import { LayoutModule } from "../../core/layout/layout.module";
 import { BuildingPageModule } from "../../shared/components/building-page/building-page.module";
 
 @NgModule({
@@ -11,7 +10,6 @@ import { BuildingPageModule } from "../../shared/components/building-page/buildi
     imports: [
         CommonModule,
         StockRoutingModule,
-        LayoutModule,
         BuildingPageModule
     ]
 })
