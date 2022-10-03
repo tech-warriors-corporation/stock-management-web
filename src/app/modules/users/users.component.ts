@@ -72,13 +72,13 @@ export class UsersComponent extends Base<User> implements OnInit, Columns, OnDes
                                          })
     }
 
-    private init(): void{
+    private startListing(): void{
         this.page = 0
         this.get()
     }
 
     ngOnInit(): void{
-        this.init()
+        this.startListing()
     }
 
     showMore(): void{
@@ -88,13 +88,16 @@ export class UsersComponent extends Base<User> implements OnInit, Columns, OnDes
     }
 
     submitForm(): void{
-        this.init()
+        this.startListing()
     }
 
     delete(userId: number): void{
         this.userIdThatIsDeleting = userId
         this.deleteItem$ = this.usersService.deleteItem(userId).pipe(finalize(() => this.userIdThatIsDeleting = null)).subscribe({
-            next: () => this.init(),
+            next: () => {
+                this.startListing()
+                this.snackBarService.open('Usuário deletado')
+            },
             error: () => this.snackBarService.open('Ocorreu um problema ao deletar o usuário'),
         })
     }
