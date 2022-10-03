@@ -1,4 +1,6 @@
+import { ControlError } from "../enums/ControlError";
+
 export type FormControlError = {
-    key: string,
+    key: ControlError,
     getMessage: (error: any) => string
 };
