@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
-import { Observable, switchMap, tap } from "rxjs";
+import { Observable, Subject, switchMap, tap } from "rxjs";
 
 import { User } from "../../shared/types/user";
 import { environment } from "../../../environments/environment";
@@ -19,12 +19,22 @@ type AuthToken = string | null;
     providedIn: 'root'
 })
 export class AuthService {
+    private userChanged = new Subject<void>();
     private loggedUser: AuthUser = null
 
     @LocalStorage(StorageName.TOKEN)
     private currentToken!: AuthToken;
 
     constructor(private httpClient: HttpClient, private router: Router){}
+
+    private setUser(user: AuthUser){
+        this.loggedUser = user
+        this.userChanged.next()
+    }
+
+    watchUserChanged(): Observable<void>{
+        return this.userChanged.asObservable()
+    }
 
     get token(): AuthToken {
         return copy(this.currentToken)
@@ -56,13 +66,14 @@ export class AuthService {
 
     userByToken(): Observable<Response<AuthUser>>{
         return this.httpClient.get<Response<AuthUser>>(`${environment.api}/user_by_token`).pipe(tap({
-            next: response => this.loggedUser = response.data,
+            next: response => this.setUser(response.data),
             error: () => this.logout()
         }));
     }
 
     logout(){
-        this.currentToken = this.loggedUser = null;
+        this.currentToken = null;
+        this.setUser(null);
         this.router.navigateByUrl(`/${Path.LOGIN}`);
     }
 }
