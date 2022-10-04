@@ -27,4 +27,5 @@
 
     <mat-error *ngIf="control.invalid | formControlInvalid: control.touched">{{ control.errors | formControlError }}</mat-error>
     <mat-hint *ngIf="maxlength" align="end">{{ control.value?.length || 0 }}/{{ maxlength }}</mat-hint>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
 </mat-form-field>

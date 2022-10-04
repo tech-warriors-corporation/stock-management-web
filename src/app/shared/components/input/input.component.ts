@@ -14,6 +14,7 @@ export class InputComponent implements OnInit{
     @Input() label!: string;
     @Input() placeholder!: string;
     @Input() name!: string;
+    @Input() hint!: string;
     @Input() maxlength!: number;
     @Input() minlength!: number;
     @Input() inputType = InputType.TEXT;
