@@ -36,19 +36,19 @@ export class AuthGuard implements CanLoad {
         }
 
         if (isLogged && !isAdmin && adminRoutes.includes(path as Path)){
-            await this.router.navigateByUrl(`/${Path.DASHBOARD}`);
+            await this.router.navigate([Path.DEFAULT, Path.DASHBOARD]);
 
             return false
         }
 
         if (isLogged && path === Path.LOGIN){
-            await this.router.navigateByUrl(`/${Path.DASHBOARD}`);
+            await this.router.navigate([Path.DEFAULT, Path.DASHBOARD]);
 
             return false;
         }
 
         if (!isLogged && path !== Path.LOGIN){
-            await this.router.navigateByUrl(`/${Path.LOGIN}`);
+            await this.router.navigate([Path.DEFAULT, Path.LOGIN]);
 
             return false;
         }

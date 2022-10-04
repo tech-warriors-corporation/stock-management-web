@@ -74,6 +74,6 @@ export class AuthService {
     logout(){
         this.currentToken = null;
         this.setUser(null);
-        this.router.navigateByUrl(`/${Path.LOGIN}`);
+        this.router.navigate([Path.DEFAULT, Path.LOGIN]);
     }
 }

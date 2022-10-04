@@ -40,7 +40,7 @@ export class LoginComponent {
         this.loading = true;
 
         this.authService.login(this.form.getRawValue()).pipe(finalize(() => this.loading = false)).subscribe({
-            next: () => this.router.navigateByUrl(`/${Path.DASHBOARD}`),
+            next: () => this.router.navigate([Path.DEFAULT, Path.DASHBOARD]),
             error: () => this.snackBarService.open('Dados de login inválidos')
         });
     }
