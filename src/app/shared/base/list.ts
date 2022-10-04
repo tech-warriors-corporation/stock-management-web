@@ -1,4 +1,4 @@
-export abstract class Base<T> {
+export abstract class List<T> {
     abstract loading: boolean
     abstract list: T[]
     abstract count: number

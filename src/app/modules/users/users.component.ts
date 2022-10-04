@@ -5,7 +5,7 @@ import { finalize, Subscription } from "rxjs";
 
 import { UsersService } from "./users.service";
 import { User, Users } from "../../shared/types/user";
-import { Base } from "../../shared/base/base";
+import { List } from "../../shared/base/list";
 import { Columns } from "../../shared/interfaces/table";
 import { TableService } from "../../shared/components/table/table.service";
 import { FormConstants } from "../../shared/components/form/form-constants";
@@ -21,7 +21,7 @@ import { SnackBarService } from "../../core/snack-bar/snack-bar.service";
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.scss']
 })
-export class UsersComponent extends Base<User> implements OnInit, Columns, OnDestroy{
+export class UsersComponent extends List<User> implements OnInit, Columns, OnDestroy{
     loading = false;
     showMoreLoading = false;
     list: Users = [];
