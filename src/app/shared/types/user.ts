@@ -13,3 +13,11 @@ export type User = {
 }
 
 export type Users = User[]
+
+export type NewUser = {
+    userName: string,
+    email: string,
+    userPassword: string,
+    userPasswordConfirmation: string,
+    isAdmin: BooleanAsNumber
+}
