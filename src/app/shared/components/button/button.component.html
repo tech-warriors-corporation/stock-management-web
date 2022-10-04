@@ -57,7 +57,15 @@
        *ngIf="layout === buttonLayout.RAISED"
        mat-raised-button>
         <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
-        <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+    </a>
+
+    <a [routerLink]="link"
+       [color]="color"
+       [attr.aria-label]="label"
+       [class]="classes"
+       *ngIf="layout === buttonLayout.STROKED"
+       mat-stroked-button>
+        <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
     </a>
 
     <a [routerLink]="link"
@@ -68,7 +76,6 @@
        *ngIf="layout === buttonLayout.ICON"
        mat-icon-button>
         <ng-container *ngTemplateOutlet="iconTemplate"></ng-container>
-        <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
     </a>
 </ng-container>
 
