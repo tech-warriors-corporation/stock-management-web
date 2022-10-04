@@ -17,7 +17,7 @@ export class ButtonComponent{
     @Output() inClick = new EventEmitter<void>();
     @Input() label!: string
     @Input() icon!: string
-    @Input() link!: string
+    @Input() link!: string | string[]
     @Input() layout: ButtonLayout = this.buttonLayout.RAISED
     @Input() type: ButtonType = ButtonType.BUTTON
     @Input() disabled = false;
