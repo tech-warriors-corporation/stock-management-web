@@ -13,7 +13,7 @@ export class CanAccessRoutePipe implements PipeTransform {
     transform(route: string): boolean {
         const adminRoutes = getAdminRoutes()
 
-        route = route.split('/').filter(Boolean)[0] as string;
+        route = route.split(Path.DEFAULT).filter(Boolean)[0] as string;
 
         if (adminRoutes.includes(route as Path)) return this.authService.isAmin
 

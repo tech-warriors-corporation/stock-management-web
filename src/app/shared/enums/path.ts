@@ -1,4 +1,6 @@
 export enum Path{
+    NONE = '',
+    DEFAULT = '/',
     LOGIN = 'login',
     NOT_FOUND = 'pagina-nao-encontrada',
     DASHBOARD = 'dashboard',
