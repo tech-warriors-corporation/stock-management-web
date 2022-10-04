@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class MenuLinkComponent {
     @Input() text!: string
-    @Input() href!: string
+    @Input() href!: string[]
     @Input() icon!: string
 }

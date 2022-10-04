@@ -3,7 +3,7 @@
         <div class="menu__side-container">
             <ul class="menu__list">
                 <li *ngFor="let item of items" [hidden]="!(item.href | canAccessRoute)">
-                    <app-menu-link [href]="item.href" [text]="item.text" [icon]="item.icon"></app-menu-link>
+                    <app-menu-link [href]="[path.DEFAULT, item.href]" [text]="item.text" [icon]="item.icon"></app-menu-link>
                 </li>
             </ul>
 
