@@ -68,7 +68,7 @@ const routes: Routes = [
         }
     },
     {
-        path: '',
+        path: Path.NONE,
         pathMatch: 'full',
         redirectTo: Path.DASHBOARD,
     },
