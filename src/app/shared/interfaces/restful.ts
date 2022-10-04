@@ -13,3 +13,7 @@ export interface GetList<T> {
 export interface DeleteItem{
     deleteItem(id: number): Observable<Response<null>>
 }
+
+export interface NewItem{
+    newItem(...args: any[]): Observable<Response<null>>
+}
