@@ -6,12 +6,13 @@ import { BooleanAsNumber } from "../../enums/boolean-as-number";
 
 @Component({
     selector: 'app-checkbox',
-    template: '<mat-checkbox [checked]="isChecked" (change)="onChange($event)">{{ label }}</mat-checkbox>',
+    template: '<mat-checkbox [disabled]="disabled" [checked]="isChecked" (change)="onChange($event)">{{ label }}</mat-checkbox>',
 })
 export class CheckboxComponent {
     @Input() form!: FormGroup
     @Input() name!: string
     @Input() label!: string
+    @Input() disabled = false
 
     private control!: FormControl
 
