@@ -1,5 +1,5 @@
-<app-form class="users-new" [form]="form" (formSubmit)="submit()" formTitle="Novo usuário">
-    <div class="users-new__content">
+<app-form class="users-form" [form]="form" (formSubmit)="submit()" formTitle="Novo usuário">
+    <div class="users-form__content">
         <app-input [form]="form"
                    label="Nome"
                    [autofocus]="true"
@@ -38,8 +38,8 @@
                    [isPassword]="true"
                    [inputType]="inputType.PASSWORD">
         </app-input>
-        <app-checkbox class="users-new__is-admin" name="isAdmin" [form]="form" label="É administrador"></app-checkbox>
-        <div class="users-new__actions">
+        <app-checkbox class="users-form__checkbox" name="isAdmin" [form]="form" label="É administrador"></app-checkbox>
+        <div class="users-form__actions">
             <app-button [link]="[path.DEFAULT, path.USERS]"
                         [operation]="buttonOperation.LINK"
                         [layout]="buttonLayout.STROKED"

@@ -22,7 +22,7 @@ import { SnackBarService } from "../../../core/snack-bar/snack-bar.service";
 @Component({
     selector: 'app-users-new',
     templateUrl: './users-new.component.html',
-    styleUrls: ['./users-new.component.scss']
+    styleUrls: ['../form/users-form.component.scss']
 })
 export class UsersNewComponent extends New{
     inputType = InputType
