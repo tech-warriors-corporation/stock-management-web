@@ -10,4 +10,5 @@ export enum Path{
     CATEGORIES = 'categorias',
     USERS = 'usuarios',
     NEW_USER = 'novo-usuario',
+    EDIT_USER = ':userId',
 }

@@ -14,6 +14,14 @@ export interface DeleteItem{
     deleteItem(id: number): Observable<Response<null>>
 }
 
-export interface NewItem{
-    newItem(...args: any[]): Observable<Response<null>>
+export interface NewItem<T>{
+    newItem(item: T): Observable<Response<null>>
+}
+
+export interface GetItem<T>{
+    getItem(id: number): Observable<Response<T>>
+}
+
+export interface EditItem<T>{
+    editItem(id: number, item: T): Observable<Response<null>>
 }
