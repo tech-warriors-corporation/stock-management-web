@@ -16,9 +16,10 @@ import { UsersNewComponent } from './new/users-new.component';
 import { FormModule } from "../../shared/components/form/form.module";
 import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 import { CheckboxModule } from "../../shared/components/checkbox/checkbox.module";
+import { UsersEditComponent } from "./edit/users-edit.component";
 
 @NgModule({
-    declarations: [UsersComponent, UsersNewComponent],
+    declarations: [UsersComponent, UsersNewComponent, UsersEditComponent],
     imports: [
         CommonModule,
         UsersRoutingModule,

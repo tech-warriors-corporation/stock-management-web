@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from "./users.component";
 import { UsersNewComponent } from "./new/users-new.component";
 import { Path } from "../../shared/enums/path";
+import { UsersEditComponent } from "./edit/users-edit.component";
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
     {
         path: Path.NEW_USER,
         component: UsersNewComponent,
+    },
+    {
+        path: Path.EDIT_USER,
+        component: UsersEditComponent,
     },
 ];
 
