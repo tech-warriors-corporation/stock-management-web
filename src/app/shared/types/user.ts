@@ -21,3 +21,13 @@ export type NewUser = {
     userPasswordConfirmation: string,
     isAdmin: BooleanAsNumber
 }
+
+export type EditUser = {
+    userName: string,
+    email: string,
+}
+
+export type ChangePasswordUser = {
+    userPassword: string,
+    userPasswordConfirmation: string,
+}
