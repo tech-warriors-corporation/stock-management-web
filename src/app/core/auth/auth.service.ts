@@ -11,6 +11,7 @@ import { LocalStorage } from "../../shared/decorators/local-storage";
 import { StorageName } from "../../shared/enums/storage-name";
 import { Path } from "../../shared/enums/path";
 import { copy } from "../../shared/helpers/manipulate";
+import { AuthLogin } from "../../shared/types/auth";
 
 type AuthUser = User | null;
 type AuthToken = string | null;
@@ -52,7 +53,7 @@ export class AuthService {
         return !!this.user?.isAdmin
     }
 
-    login({ email, userPassword }: { email: string, userPassword: string }): Observable<Response<AuthUser>>{
+    login({ email, userPassword }: AuthLogin): Observable<Response<AuthUser>>{
         return this.httpClient
                    .post<Response<AuthToken>>(`${environment.api}/login`, { email, userPassword })
                    .pipe(
