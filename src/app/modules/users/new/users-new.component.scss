@@ -1,0 +1,25 @@
+.users-new{
+    & &__content{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: var(--two-spaces);
+    }
+
+    & &__actions{
+        grid-column: 2 / 3;
+        display: flex;
+        justify-content: flex-end;
+        column-gap: var(--two-spaces);
+
+        > * {
+            display: block;
+            width: 100%;
+            max-width: 124px;
+        }
+    }
+
+    & &__is-admin{
+        display: block;
+        grid-column: 1 / 3;
+    }
+}

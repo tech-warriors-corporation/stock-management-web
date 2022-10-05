@@ -1,0 +1,56 @@
+<app-form class="users-new" [form]="form" (formSubmit)="submit()" formTitle="Novo usuário">
+    <div class="users-new__content">
+        <app-input [form]="form"
+                   label="Nome"
+                   [autofocus]="true"
+                   [maxlength]="formConstants.USER_NAME_MAXLENGTH"
+                   name="userName"
+                   placeholder="Coloque o nome"
+                   [required]="true">
+        </app-input>
+        <app-input [form]="form"
+                   label="E-mail"
+                   [maxlength]="formConstants.EMAIL_MAXLENGTH"
+                   name="email"
+                   placeholder="Coloque o e-mail"
+                   hint="Atenção: não coloque um e-mail de um usuário já cadastrado"
+                   [required]="true"
+                   [inputType]="inputType.EMAIL"
+                   [inputMode]="inputMode.EMAIL">
+        </app-input>
+        <app-input [form]="form"
+                   label="Senha"
+                   [maxlength]="formConstants.PASSWORD_MAXLENGTH"
+                   [minlength]="formConstants.PASSWORD_MINLENGTH"
+                   name="userPassword"
+                   placeholder="Coloque a senha"
+                   [required]="true"
+                   [isPassword]="true"
+                   [inputType]="inputType.PASSWORD">
+        </app-input>
+        <app-input [form]="form"
+                   label="Repetir senha"
+                   [maxlength]="formConstants.PASSWORD_MAXLENGTH"
+                   [minlength]="formConstants.PASSWORD_MINLENGTH"
+                   name="userPasswordConfirmation"
+                   placeholder="Coloque a repetição da senha"
+                   [required]="true"
+                   [isPassword]="true"
+                   [inputType]="inputType.PASSWORD">
+        </app-input>
+        <app-checkbox class="users-new__is-admin" name="isAdmin" [form]="form" label="É administrador"></app-checkbox>
+        <div class="users-new__actions">
+            <app-button [link]="[path.DEFAULT, path.USERS]"
+                        [operation]="buttonOperation.LINK"
+                        [layout]="buttonLayout.STROKED"
+                        [color]="colorPalette.SECONDARY"
+                        label="Voltar">
+            </app-button>
+            <app-button [type]="buttonType.SUBMIT"
+                        [loading]="submitting"
+                        [disabled]="form.invalid | formInvalid: form.pristine"
+                        label="Criar usuário">
+            </app-button>
+        </div>
+    </div>
+</app-form>
