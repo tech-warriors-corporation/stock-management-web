@@ -6,7 +6,10 @@
     justify-content: center;
     text-align: center;
     position: relative;
-    width: 100%;
+
+    &.button--full{
+        width: 100%;
+    }
 
     &.button--loading{
         .button__label, .button__icon{

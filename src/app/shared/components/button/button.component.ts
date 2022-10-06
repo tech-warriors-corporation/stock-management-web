@@ -35,6 +35,7 @@ export class ButtonComponent{
         const classes = ['button']
 
         if (this.loading) classes.push('button--loading')
+        if (this.operation === this.buttonOperation.BUTTON) classes.push('button--full')
 
         return classes.join(' ')
     }

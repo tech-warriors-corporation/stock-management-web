@@ -14,10 +14,16 @@ const routes: Routes = [
     {
         path: Path.NEW_USER,
         component: UsersNewComponent,
+        data: {
+            title: 'Novo usuário'
+        }
     },
     {
         path: Path.EDIT_USER,
         component: UsersEditComponent,
+        data: {
+            title: 'Editar usuário'
+        }
     },
 ];
 
