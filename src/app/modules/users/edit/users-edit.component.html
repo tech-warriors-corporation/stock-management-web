@@ -23,6 +23,7 @@
             <app-checkbox class="users-form__checkbox" name="wantToChangePassword" [form]="form" label="Desejo alterar a senha"></app-checkbox>
             <app-input [form]="form"
                        *ngIf="showPasswordFields"
+                       [autofocus]="true"
                        class="users-form__password users-form__password--space-top"
                        label="Senha"
                        [maxlength]="formConstants.PASSWORD_MAXLENGTH"
@@ -65,4 +66,3 @@
         <app-content-loading></app-content-loading>
     </ng-template>
 </div>
-
