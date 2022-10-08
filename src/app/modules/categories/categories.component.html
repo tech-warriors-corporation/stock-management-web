@@ -1,0 +1,68 @@
+<div class="categories">
+    <app-highlight-page highlightTitle="Lista de categorias">
+        <app-button [link]="path.NEW_CATEGORY"
+                    [operation]="buttonOperation.LINK"
+                    icon="add"
+                    label="Nova categoria">
+        </app-button>
+    </app-highlight-page>
+
+    <app-filters [form]="form" [disabledSubmit]="loading" (inSubmit)="submitForm()">
+        <app-input [form]="form"
+                   class="categories__field"
+                   label="Nome"
+                   [autofocus]="true"
+                   [maxlength]="formConstants.CATEGORY_NAME_MAXLENGTH"
+                   name="categoryName"
+                   placeholder="Pesquise pelo nome">
+        </app-input>
+    </app-filters>
+
+    <div *ngIf="!loading && list.length; else loadingTemplate" class="categories__list">
+        <table mat-table [dataSource]="list" [class]="tableService.TABLE_CLASSES">
+            <ng-container matColumnDef="categoryName">
+                <th mat-header-cell *matHeaderCellDef>Nome</th>
+                <td mat-cell *matCellDef="let element">{{ element.categoryName }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef aria-label="Ações"></th>
+                <td mat-cell *matCellDef="let element">
+                    <app-button [operation]="buttonOperation.LINK"
+                                [link]="element.categoryId"
+                                icon="edit"
+                                [layout]="buttonLayout.ICON"
+                                label="Editar categoria">
+                    </app-button>
+                    <app-button (inClick)="delete(element.categoryId)"
+                                [color]="colorPalette.ERROR"
+                                [loading]="categoryIdThatIsDeleting === element.categoryId"
+                                [disabled]="!!categoryIdThatIsDeleting && categoryIdThatIsDeleting !== element.categoryId"
+                                icon="delete"
+                                [layout]="buttonLayout.ICON"
+                                label="Deletar categoria">
+                    </app-button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        </table>
+
+        <app-button *ngIf="list | hasShowMore: count"
+                    [loading]="showMoreLoading"
+                    (inClick)="showMore()"
+                    icon="cached"
+                    [layout]="buttonLayout.STROKED"
+                    label="Carregar mais">
+        </app-button>
+    </div>
+
+    <ng-template #loadingTemplate>
+        <app-content-loading *ngIf="loading; else emptyStateTemplate"></app-content-loading>
+    </ng-template>
+
+    <ng-template #emptyStateTemplate>
+        <app-empty-state></app-empty-state>
+    </ng-template>
+</div>
