@@ -7,8 +7,9 @@ export enum Path{
     INPUTS_OUTPUTS = 'entradas-e-saidas',
     STOCK = 'estoque',
     PRODUCTS = 'produtos',
-    CATEGORIES = 'categorias',
     USERS = 'usuarios',
     NEW_USER = 'novo-usuario',
     EDIT_USER = ':userId',
+    CATEGORIES = 'categorias',
+    NEW_CATEGORY = 'nova-categoria',
 }
