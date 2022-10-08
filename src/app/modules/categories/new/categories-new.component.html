@@ -1,0 +1,25 @@
+<app-form class="categories-form" [form]="form" (formSubmit)="submit()" formTitle="Nova categoria">
+    <div class="categories-form__content">
+        <app-input [form]="form"
+                   label="Nome"
+                   [autofocus]="true"
+                   [maxlength]="formConstants.CATEGORY_NAME_MAXLENGTH"
+                   name="categoryName"
+                   placeholder="Coloque o nome"
+                   [required]="true">
+        </app-input>
+        <div class="categories-form__actions">
+            <app-button [link]="[path.DEFAULT, path.CATEGORIES]"
+                        [operation]="buttonOperation.LINK"
+                        [layout]="buttonLayout.STROKED"
+                        [color]="colorPalette.SECONDARY"
+                        label="Voltar">
+            </app-button>
+            <app-button [type]="buttonType.SUBMIT"
+                        [loading]="submitting"
+                        [disabled]="form.invalid | formInvalid: form.pristine"
+                        label="Criar categoria">
+            </app-button>
+        </div>
+    </div>
+</app-form>
