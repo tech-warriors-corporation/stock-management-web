@@ -15,6 +15,7 @@ import { ButtonOperation } from "../../shared/enums/button-operation";
 import { BooleanAsNumber } from "../../shared/enums/boolean-as-number";
 import { ColorPalette } from "../../shared/enums/color-palette";
 import { SnackBarService } from "../../core/snack-bar/snack-bar.service";
+import { InputType } from "../../shared/enums/input-type";
 
 @Component({
     selector: 'app-users',
@@ -27,6 +28,7 @@ export class UsersComponent extends List<User> implements OnInit, Columns, OnDes
     list: Users = [];
     columns = ['userName', 'email', 'isAdmin', 'actions']
     formConstants = FormConstants
+    inputType = InputType
     buttonLayout = ButtonLayout
     buttonOperation = ButtonOperation
     count = 0
