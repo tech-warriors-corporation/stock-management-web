@@ -3,13 +3,13 @@ import { HttpClient } from "@angular/common/http";
 
 import { Response } from "../../shared/types/response";
 import { environment } from "../../../environments/environment";
-import { API, DeleteItem, GetList } from "../../shared/interfaces/restful";
-import { Categories, Category } from "../../shared/types/category";
+import { API, DeleteItem, GetList, NewItem } from "../../shared/interfaces/restful";
+import { Categories, Category, NewCategory } from "../../shared/types/category";
 
 @Injectable({
     providedIn: 'root'
 })
-export class CategoriesService implements API, GetList<Category>, DeleteItem {
+export class CategoriesService implements API, GetList<Category>, DeleteItem, NewItem<NewCategory>{
     readonly API = `${environment.api}/categories`
 
     constructor(private httpClient: HttpClient){}
@@ -24,5 +24,9 @@ export class CategoriesService implements API, GetList<Category>, DeleteItem {
 
     deleteItem(id: number){
         return this.httpClient.delete<Response<null>>(`${this.API}/${id}`)
+    }
+
+    newItem(category: NewCategory){
+        return this.httpClient.post<Response<null>>(this.API, category);
     }
 }

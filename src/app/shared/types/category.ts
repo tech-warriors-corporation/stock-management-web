@@ -10,3 +10,7 @@ export type Category = {
 }
 
 export type Categories = Category[]
+
+export type NewCategory = {
+    categoryName: string
+}
