@@ -12,9 +12,12 @@ import { InputModule } from "../../shared/components/input/input.module";
 import { HasShowMoreModule } from "../../shared/pipes/has-show-more/has-show-more.module";
 import { ContentLoadingModule } from "../../shared/components/content-loading/content-loading.module";
 import { EmptyStateModule } from "../../shared/components/empty-state/empty-state.module";
+import { CategoriesNewComponent } from "./new/categories-new.component";
+import { FormModule } from "../../shared/components/form/form.module";
+import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 
 @NgModule({
-    declarations: [CategoriesComponent],
+    declarations: [CategoriesComponent, CategoriesNewComponent],
     imports: [
         CommonModule,
         CategoriesRoutingModule,
@@ -26,7 +29,9 @@ import { EmptyStateModule } from "../../shared/components/empty-state/empty-stat
         MatTableModule,
         HasShowMoreModule,
         ContentLoadingModule,
-        EmptyStateModule
+        EmptyStateModule,
+        FormModule,
+        FormInvalidModule
     ]
 })
 export class CategoriesModule {}
