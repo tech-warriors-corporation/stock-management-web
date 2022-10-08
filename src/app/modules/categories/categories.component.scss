@@ -1,0 +1,18 @@
+@use "/src/mixins";
+
+.categories{
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--eight-spaces);
+
+    & &__field{
+        @include mixins.fix-width(400px);
+    }
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--two-spaces);
+        align-items: center;
+    }
+}
