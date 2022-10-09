@@ -12,4 +12,5 @@ export enum Path{
     EDIT_USER = ':userId',
     CATEGORIES = 'categorias',
     NEW_CATEGORY = 'nova-categoria',
+    EDIT_CATEGORY = ':categoryId',
 }

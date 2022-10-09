@@ -14,3 +14,7 @@ export type Categories = Category[]
 export type NewCategory = {
     categoryName: string
 }
+
+export type EditCategory = {
+    categoryName: string
+}
