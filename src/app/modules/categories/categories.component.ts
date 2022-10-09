@@ -63,9 +63,12 @@ export class CategoriesComponent extends List<Category> implements OnInit, Colum
         this.getList$ = this.categoriesService
                             .getList(this.page, this.perPage, categoryName)
                             .pipe(finalize(() => this.showMoreLoading = this.loading = false))
-                            .subscribe(({ data, count }) => {
-                                this.list = this.page === 0 ? data : [...this.list, ...data]
-                                this.count = count as number
+                            .subscribe({
+                                next: ({ data, count }) => {
+                                    this.list = this.page === 0 ? data : [...this.list, ...data]
+                                    this.count = count as number
+                                },
+                                error: () => this.snackBarService.open('Ocorreu um problema ao carregar a lista de categorias')
                             })
     }
 
