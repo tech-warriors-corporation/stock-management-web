@@ -68,9 +68,12 @@ export class UsersComponent extends List<User> implements OnInit, Columns, OnDes
                                              this.loading = false
                                              this.showMoreLoading = false
                                          }))
-                                         .subscribe(({ data, count }) => {
-                                             this.list = this.page === 0 ? data : [...this.list, ...data]
-                                             this.count = count as number
+                                         .subscribe({
+                                             next: ({ data, count }) => {
+                                                 this.list = this.page === 0 ? data : [...this.list, ...data]
+                                                 this.count = count as number
+                                             },
+                                             error: () => this.snackBarService.open('Ocorreu um problema ao carregar a lista de usuários')
                                          })
     }
 
