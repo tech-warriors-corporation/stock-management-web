@@ -33,3 +33,8 @@
     font-size: $size;
     line-height: $size;
 }
+
+@mixin title-page-style{
+    font-weight: 600;
+    font-size: 1.375rem;
+}

@@ -1,3 +1,5 @@
+@use "src/mixins";
+
 .form{
     &, & &__fieldset{
         width: 100%;
@@ -5,8 +7,8 @@
     }
 
     & &__legend{
-        font-size: 1.75rem;
-        font-weight: 500;
         margin-bottom: var(--six-spaces);
+
+        @include mixins.title-page-style;
     }
 }
