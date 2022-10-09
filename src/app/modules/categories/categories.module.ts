@@ -15,9 +15,10 @@ import { EmptyStateModule } from "../../shared/components/empty-state/empty-stat
 import { CategoriesNewComponent } from "./new/categories-new.component";
 import { FormModule } from "../../shared/components/form/form.module";
 import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
+import { CategoriesEditComponent } from "./edit/categories-edit.component";
 
 @NgModule({
-    declarations: [CategoriesComponent, CategoriesNewComponent],
+    declarations: [CategoriesComponent, CategoriesNewComponent, CategoriesEditComponent],
     imports: [
         CommonModule,
         CategoriesRoutingModule,
