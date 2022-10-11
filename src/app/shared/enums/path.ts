@@ -6,11 +6,12 @@ export enum Path{
     DASHBOARD = 'dashboard',
     INPUTS_OUTPUTS = 'entradas-e-saidas',
     STOCK = 'estoque',
-    PRODUCTS = 'produtos',
     USERS = 'usuarios',
     NEW_USER = 'novo-usuario',
     EDIT_USER = ':userId',
     CATEGORIES = 'categorias',
     NEW_CATEGORY = 'nova-categoria',
     EDIT_CATEGORY = ':categoryId',
+    PRODUCTS = 'produtos',
+    NEW_PRODUCT = 'novo-produto',
 }
