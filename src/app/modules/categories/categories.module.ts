@@ -4,7 +4,6 @@ import { MatTableModule } from "@angular/material/table";
 
 import { CategoriesRoutingModule } from "./categories-routing.module";
 import { CategoriesComponent } from "./categories.component";
-import { BuildingPageModule } from "../../shared/components/building-page/building-page.module";
 import { HighlightPageModule } from "../../shared/components/highlight-page/highlight-page.module";
 import { ButtonModule } from "../../shared/components/button/button.module";
 import { FiltersModule } from "../../shared/components/filters/filters.module";
@@ -22,7 +21,6 @@ import { CategoriesEditComponent } from "./edit/categories-edit.component";
     imports: [
         CommonModule,
         CategoriesRoutingModule,
-        BuildingPageModule,
         HighlightPageModule,
         ButtonModule,
         FiltersModule,
