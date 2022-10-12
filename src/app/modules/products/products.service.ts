@@ -3,13 +3,13 @@ import { HttpClient } from "@angular/common/http";
 
 import { Response } from "../../shared/types/response";
 import { environment } from "../../../environments/environment";
-import { API, DeleteItem, GetList } from "../../shared/interfaces/restful";
-import { Product, Products } from "../../shared/types/product";
+import { API, DeleteItem, GetList, NewItem } from "../../shared/interfaces/restful";
+import { NewProduct, Product, Products } from "../../shared/types/product";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductsService implements API, GetList<Product>, DeleteItem{
+export class ProductsService implements API, GetList<Product>, DeleteItem, NewItem<NewProduct>{
     readonly API = `${environment.api}/products`
 
     constructor(private httpClient: HttpClient){}
@@ -25,5 +25,9 @@ export class ProductsService implements API, GetList<Product>, DeleteItem{
 
     deleteItem(id: number){
         return this.httpClient.delete<Response<null>>(`${this.API}/${id}`)
+    }
+
+    newItem(product: NewProduct){
+        return this.httpClient.post<Response<null>>(this.API, product);
     }
 }

@@ -14,3 +14,8 @@ export type Product = {
 }
 
 export type Products = Product[]
+
+export type NewProduct = {
+    productName: string
+    categoryId: number
+}
