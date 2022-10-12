@@ -13,9 +13,12 @@ import { HighlightPageModule } from "../../shared/components/highlight-page/high
 import { HasShowMoreModule } from "../../shared/pipes/has-show-more/has-show-more.module";
 import { SituationTextModule } from "../../shared/pipes/situation-text/situation-text.module";
 import { AutocompleteModule } from "../../shared/components/autocomplete/autocomplete.module";
+import { ProductsNewComponent } from "./new/products-new.component";
+import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
+import { FormModule } from "../../shared/components/form/form.module";
 
 @NgModule({
-    declarations: [ProductsComponent],
+    declarations: [ProductsComponent, ProductsNewComponent],
     imports: [
         CommonModule,
         ProductsRoutingModule,
@@ -29,6 +32,8 @@ import { AutocompleteModule } from "../../shared/components/autocomplete/autocom
         HasShowMoreModule,
         SituationTextModule,
         AutocompleteModule,
+        FormInvalidModule,
+        FormModule,
     ]
 })
 export class ProductsModule {}
