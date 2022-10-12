@@ -17,6 +17,8 @@ import { NewProduct } from "../../../shared/types/product";
 import { AutocompleteOptions } from "../../../shared/types/autocomplete";
 import { CategoriesService } from "../../categories/categories.service";
 import { BooleanAsNumber } from "../../../shared/enums/boolean-as-number";
+import { InputType } from "../../../shared/enums/input-type";
+import { InputMode } from "../../../shared/enums/input-mode";
 
 @Component({
     selector: 'app-products-new',
@@ -27,6 +29,8 @@ export class ProductsNewComponent extends New implements OnInit{
     submitting = false
     categoriesOptions: AutocompleteOptions = []
     formConstants = FormConstants
+    inputType = InputType
+    inputMode = InputMode
     buttonType = ButtonType
     path = Path
     buttonOperation = ButtonOperation
@@ -36,6 +40,7 @@ export class ProductsNewComponent extends New implements OnInit{
     form = this.formBuilder.group({
         productName: [null, [Validators.required, Validators.maxLength(this.formConstants.PRODUCT_NAME_MAXLENGTH)]],
         categoryId: [{ value: null, disabled: true }, Validators.required],
+        quantity: [this.formConstants.DEFAULT_QUANTITY, [Validators.required, Validators.min(this.formConstants.QUANTITY_MIN), Validators.max(this.formConstants.QUANTITY_MAX)]],
     })
 
     constructor(
@@ -65,8 +70,11 @@ export class ProductsNewComponent extends New implements OnInit{
 
     submit(): void{
         this.submitting = true;
+
+        const { quantity, ...formValues } = this.form.getRawValue()
+
         this.productsService
-            .newItem(this.form.getRawValue() as any as NewProduct)
+            .newItem({ ...formValues, quantity: +(quantity as number) } as any as NewProduct)
             .pipe(finalize(() => this.submitting = false))
             .subscribe({
                 next: () => {

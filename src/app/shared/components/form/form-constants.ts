@@ -5,4 +5,7 @@ export class FormConstants{
     static readonly PRODUCT_NAME_MAXLENGTH = 50;
     static readonly PASSWORD_MAXLENGTH = 80;
     static readonly PASSWORD_MINLENGTH = 8;
+    static readonly DEFAULT_QUANTITY = 0;
+    static readonly QUANTITY_MIN = 0;
+    static readonly QUANTITY_MAX = 99999999;
 }
