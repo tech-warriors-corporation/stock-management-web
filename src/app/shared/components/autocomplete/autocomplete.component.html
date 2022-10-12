@@ -1,0 +1,26 @@
+<mat-form-field *ngIf="control"
+                class="autocomplete"
+                [formGroup]="form"
+                appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+
+    <input [type]="inputType"
+           [attr.inputmode]="inputMode"
+           [required]="required"
+           matInput
+           [appAutofocus]="autofocus"
+           [name]="name"
+           [formControl]="control"
+           [matAutocomplete]="autocompleteTemplate"
+           [placeholder]="placeholder">
+
+    <mat-autocomplete #autocompleteTemplate="matAutocomplete" [displayWith]="displayText.bind(this)">
+        <mat-option *ngFor="let option of filteredOptions | async"
+                    [value]="option.value">
+            {{ option.text | situationText: option.isActive }}
+        </mat-option>
+    </mat-autocomplete>
+
+    <mat-error *ngIf="control.invalid | formControlInvalid: control.touched">{{ control.errors | formControlError }}</mat-error>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+</mat-form-field>
