@@ -3,5 +3,7 @@ export enum ControlError{
     EMAIL = 'email',
     MAXLENGTH = 'maxlength',
     MINLENGTH = 'minlength',
-    PASSWORD_EQUALS_PASSWORD_CONFIRMATION = 'passwordEqualsPasswordConfirmation'
+    PASSWORD_EQUALS_PASSWORD_CONFIRMATION = 'passwordEqualsPasswordConfirmation',
+    MAX = 'max',
+    MIN = 'min',
 }

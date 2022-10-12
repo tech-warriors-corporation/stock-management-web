@@ -1,4 +1,4 @@
-import { ControlError } from "../enums/ControlError";
+import { ControlError } from "../enums/control-error";
 
 export type FormControlError = {
     key: ControlError,

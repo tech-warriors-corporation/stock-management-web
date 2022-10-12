@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { BooleanAsNumber } from "../../enums/boolean-as-number";
-import { ValueToText } from "../../enums/ValueToText";
+import { ValueToText } from "../../enums/value-to-text";
 
 @Pipe({
     name: 'booleanAsNumberToText'

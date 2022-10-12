@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
-import { ControlError } from "../../enums/ControlError";
+import { ControlError } from "../../enums/control-error";
 
 @Injectable({
     providedIn: 'root'
