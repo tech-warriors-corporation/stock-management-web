@@ -32,6 +32,10 @@ html, body, app-root, .app{
 
 *{
     box-sizing: border-box;
+
+    &:not(.mat-drawer-content){
+        @include mixins.pretty-scroll;
+    }
 }
 
 a {
