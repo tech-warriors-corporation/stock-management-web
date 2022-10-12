@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ValidationErrors } from "@angular/forms";
 
 import { FormControlError } from "../../types/form-control-error";
-import { ControlError } from "../../enums/ControlError";
+import { ControlError } from "../../enums/control-error";
 
 @Pipe({
     name: 'formControlError'
@@ -20,6 +20,8 @@ export class FormControlErrorPipe implements PipeTransform {
                 return `O mínimo é de ${error.requiredLength} caractere${length >= 2 ? 's' : ''}`;
             }
         },
+        { key: ControlError.MIN, getMessage: ({ min }) => `O valor mínimo é ${min}` },
+        { key: ControlError.MAX, getMessage: ({ max }) => `O valor máximo é ${max}` },
         { key: ControlError.PASSWORD_EQUALS_PASSWORD_CONFIRMATION, getMessage: () => 'As senhas não estão iguais' }
     ];
 
