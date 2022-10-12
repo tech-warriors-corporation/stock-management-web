@@ -69,10 +69,7 @@ export class ProductsComponent extends List<Product> implements OnInit, Columns,
             .getAutocompleteList()
             .subscribe(({ data: categories }) => {
                 const categoryIdControl = this.form.get('categoryId') as FormControl
-
-                this.categoriesOptions = categories.map(({ categoryId, categoryName, isActive }) =>
-                    ({ value: categoryId, text: categoryName, isActive })
-                )
+                this.categoriesOptions = categories
 
                 categoryIdControl.enable()
             })

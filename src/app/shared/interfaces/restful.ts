@@ -27,5 +27,5 @@ export interface EditItem<T>{
 }
 
 export interface GetAutocompleteList<T> {
-    getAutocompleteList(): Observable<Response<T[]>>
+    getAutocompleteList(...args: any[]): Observable<Response<T[]>>
 }

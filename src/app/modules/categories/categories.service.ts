@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 
 import { Response } from "../../shared/types/response";
 import { environment } from "../../../environments/environment";
@@ -15,11 +15,13 @@ import {
     NewItem
 } from "../../shared/interfaces/restful";
 import { Categories, Category, EditCategory, NewCategory } from "../../shared/types/category";
+import { BooleanAsNumber } from "../../shared/enums/boolean-as-number";
+import { AutocompleteOption, AutocompleteOptions } from "../../shared/types/autocomplete";
 
 @Injectable({
     providedIn: 'root'
 })
-export class CategoriesService implements API, GetList<Category>, DeleteItem, NewItem<NewCategory>, GetItem<Category>, EditItem<EditCategory>, GetAutocompleteList<Category>{
+export class CategoriesService implements API, GetList<Category>, DeleteItem, NewItem<NewCategory>, GetItem<Category>, EditItem<EditCategory>, GetAutocompleteList<AutocompleteOption>{
     readonly API = `${environment.api}/categories`
 
     constructor(private httpClient: HttpClient){}
@@ -48,7 +50,19 @@ export class CategoriesService implements API, GetList<Category>, DeleteItem, Ne
         return this.httpClient.patch<Response<null>>(`${this.API}/${id}`, category)
     }
 
-    getAutocompleteList(): Observable<Response<Categories>> {
-        return this.httpClient.get<Response<Categories>>(`${this.API}/autocomplete`)
+    getAutocompleteList(isActive: BooleanAsNumber | null = null): Observable<Response<AutocompleteOptions>> {
+        const params = {}
+
+        if (isActive === BooleanAsNumber.FALSE || isActive === BooleanAsNumber.TRUE)
+            Object.assign(params, { is_active: isActive })
+
+        return this.httpClient
+                   .get<Response<Categories>>(`${this.API}/autocomplete`, { params })
+                   .pipe(
+                       map(({ data: categories, ...response }) => ({
+                           ...response,
+                           data: categories.map(({ categoryId, categoryName, isActive }) => ({ value: categoryId, text: categoryName, isActive }))
+                       }))
+                   )
     }
 }
