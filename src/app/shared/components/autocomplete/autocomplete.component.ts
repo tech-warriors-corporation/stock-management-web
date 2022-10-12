@@ -60,7 +60,7 @@ export class AutocompleteComponent implements OnInit{
         if(!this.control) return;
 
         this.filteredOptions = this.control.valueChanges.pipe(
-            startWith(NONE_VALUE),
+            startWith(this.control.value ?? NONE_VALUE),
             map((value: string | number | null) => {
                 if (typeof value === 'number') value = this.findOption(value)?.text || null
                 if (!value) value = NONE_VALUE
