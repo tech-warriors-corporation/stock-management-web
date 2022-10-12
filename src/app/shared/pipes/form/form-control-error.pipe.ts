@@ -20,8 +20,8 @@ export class FormControlErrorPipe implements PipeTransform {
                 return `O mínimo é de ${error.requiredLength} caractere${length >= 2 ? 's' : ''}`;
             }
         },
-        { key: ControlError.MIN, getMessage: ({ min }) => `O valor mínimo é ${min}` },
-        { key: ControlError.MAX, getMessage: ({ max }) => `O valor máximo é ${max}` },
+        { key: ControlError.MIN, getMessage: ({ min }) => `O valor mínimo permitido é ${min}` },
+        { key: ControlError.MAX, getMessage: ({ max }) => `O valor máximo permitido é ${max}` },
         { key: ControlError.PASSWORD_EQUALS_PASSWORD_CONFIRMATION, getMessage: () => 'As senhas não estão iguais' }
     ];
 
