@@ -16,6 +16,7 @@ import { BooleanAsNumber } from "../../shared/enums/boolean-as-number";
 import { ColorPalette } from "../../shared/enums/color-palette";
 import { SnackBarService } from "../../core/snack-bar/snack-bar.service";
 import { InputType } from "../../shared/enums/input-type";
+import { Dictionary } from "../../shared/types/dictionary";
 
 @Component({
     selector: 'app-users',
@@ -44,6 +45,7 @@ export class UsersComponent extends List<User> implements OnInit, Columns, OnDes
 
     protected page = 0
     protected readonly perPage = 10
+    protected filters: Dictionary = {};
 
     private getList$!: Subscription
     private deleteItem$!: Subscription
@@ -58,7 +60,7 @@ export class UsersComponent extends List<User> implements OnInit, Columns, OnDes
     }
 
     protected get(): void{
-        const { userName, email } = this.form.getRawValue()
+        const { userName, email } = this.filters
 
         if (!this.showMoreLoading) this.loading = true;
         if (this.getList$) this.getList$.unsubscribe()
@@ -93,6 +95,8 @@ export class UsersComponent extends List<User> implements OnInit, Columns, OnDes
     }
 
     submitForm(): void{
+        this.filters = this.form.getRawValue()
+
         this.startListing()
     }
 

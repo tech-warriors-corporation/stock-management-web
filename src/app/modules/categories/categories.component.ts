@@ -14,6 +14,7 @@ import { Path } from "../../shared/enums/path";
 import { ButtonOperation } from "../../shared/enums/button-operation";
 import { ColorPalette } from "../../shared/enums/color-palette";
 import { SnackBarService } from "../../core/snack-bar/snack-bar.service";
+import { Dictionary } from "../../shared/types/dictionary";
 
 @Component({
     selector: 'app-categories',
@@ -36,6 +37,7 @@ export class CategoriesComponent extends List<Category> implements OnInit, Colum
 
     protected page = 0
     protected readonly perPage = 10
+    protected filters: Dictionary = {}
 
     private getList$!: Subscription
     private deleteItem$!: Subscription
@@ -55,7 +57,7 @@ export class CategoriesComponent extends List<Category> implements OnInit, Colum
     }
 
     protected get(): void{
-        const { categoryName } = this.form.getRawValue()
+        const { categoryName } = this.filters
 
         if (!this.showMoreLoading) this.loading = true;
         if (this.getList$) this.getList$.unsubscribe()
@@ -83,6 +85,8 @@ export class CategoriesComponent extends List<Category> implements OnInit, Colum
     }
 
     submitForm(): void{
+        this.filters = this.form.getRawValue()
+
         this.startListing()
     }
 
