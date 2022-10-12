@@ -1,0 +1,32 @@
+<app-form class="products-form" [form]="form" (formSubmit)="submit()" formTitle="Novo produto">
+    <div class="products-form__content">
+        <app-input [form]="form"
+                   label="Nome"
+                   [autofocus]="true"
+                   [maxlength]="formConstants.PRODUCT_NAME_MAXLENGTH"
+                   name="productName"
+                   placeholder="Coloque o nome"
+                   [required]="true">
+        </app-input>
+        <app-autocomplete [form]="form"
+                          name="categoryId"
+                          [required]="true"
+                          label="Categoria"
+                          placeholder="Selecione uma categoria"
+                          [options]="categoriesOptions">
+        </app-autocomplete>
+        <div class="products-form__actions">
+            <app-button [link]="[path.DEFAULT, path.PRODUCTS]"
+                        [operation]="buttonOperation.LINK"
+                        [layout]="buttonLayout.STROKED"
+                        [color]="colorPalette.SECONDARY"
+                        label="Voltar">
+            </app-button>
+            <app-button [type]="buttonType.SUBMIT"
+                        [loading]="submitting"
+                        [disabled]="form.invalid | formInvalid: form.pristine"
+                        label="Criar produto">
+            </app-button>
+        </div>
+    </div>
+</app-form>
