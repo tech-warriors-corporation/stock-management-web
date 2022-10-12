@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
@@ -11,13 +11,14 @@ import { ButtonType } from "../../shared/enums/button-type";
 import { AuthService } from "../../core/auth/auth.service";
 import { SnackBarService } from "../../core/snack-bar/snack-bar.service";
 import { Path } from "../../shared/enums/path";
+import { FullLoadingService } from "../../core/full-loading/full-loading.service";
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit{
     loading = false
     formConstants = FormConstants
     inputMode = InputMode
@@ -33,8 +34,13 @@ export class LoginComponent {
         private formBuilder: FormBuilder,
         private authService: AuthService,
         private snackBarService: SnackBarService,
-        private router: Router
+        private router: Router,
+        private fullLoadingService: FullLoadingService,
     ){}
+
+    ngAfterViewInit(){
+        this.fullLoadingService.setShow(false);
+    }
 
     submit(): void {
         this.loading = true;
