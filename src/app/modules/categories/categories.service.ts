@@ -5,13 +5,21 @@ import { Observable } from "rxjs";
 
 import { Response } from "../../shared/types/response";
 import { environment } from "../../../environments/environment";
-import { API, DeleteItem, EditItem, GetItem, GetList, NewItem } from "../../shared/interfaces/restful";
+import {
+    API,
+    DeleteItem,
+    EditItem,
+    GetAutocompleteList,
+    GetItem,
+    GetList,
+    NewItem
+} from "../../shared/interfaces/restful";
 import { Categories, Category, EditCategory, NewCategory } from "../../shared/types/category";
 
 @Injectable({
     providedIn: 'root'
 })
-export class CategoriesService implements API, GetList<Category>, DeleteItem, NewItem<NewCategory>, GetItem<Category>, EditItem<EditCategory>{
+export class CategoriesService implements API, GetList<Category>, DeleteItem, NewItem<NewCategory>, GetItem<Category>, EditItem<EditCategory>, GetAutocompleteList<Category>{
     readonly API = `${environment.api}/categories`
 
     constructor(private httpClient: HttpClient){}
@@ -38,5 +46,9 @@ export class CategoriesService implements API, GetList<Category>, DeleteItem, Ne
 
     editItem(id: number, category: EditCategory): Observable<Response<null>> {
         return this.httpClient.patch<Response<null>>(`${this.API}/${id}`, category)
+    }
+
+    getAutocompleteList(): Observable<Response<Categories>> {
+        return this.httpClient.get<Response<Categories>>(`${this.API}/autocomplete`)
     }
 }

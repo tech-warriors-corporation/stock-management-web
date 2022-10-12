@@ -25,3 +25,7 @@ export interface GetItem<T>{
 export interface EditItem<T>{
     editItem(id: number, item: T): Observable<Response<null>>
 }
+
+export interface GetAutocompleteList<T> {
+    getAutocompleteList(): Observable<Response<T[]>>
+}
