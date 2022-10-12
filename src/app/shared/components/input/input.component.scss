@@ -1,3 +1,7 @@
 .input{
     width: 100%;
+
+    & &__button{
+        margin-left: var(--mat-input-horizontal-space);
+    }
 }

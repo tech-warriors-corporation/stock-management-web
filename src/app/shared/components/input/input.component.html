@@ -19,6 +19,7 @@
             matSuffix
             *ngIf="isPassword"
             type="button"
+            class="input__button"
             (click)="hidePassword = !hidePassword"
             [attr.aria-label]="hidePassword ? 'Mostrar senha' : 'Esconder senha'"
             [attr.aria-pressed]="hidePassword">
