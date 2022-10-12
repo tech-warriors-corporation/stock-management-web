@@ -1,0 +1,80 @@
+<div class="products">
+    <app-highlight-page highlightTitle="Lista de produtos">
+        <app-button [link]="path.NEW_PRODUCT"
+                    [operation]="buttonOperation.LINK"
+                    icon="add"
+                    label="Novo produto">
+        </app-button>
+    </app-highlight-page>
+
+    <app-filters [form]="form" [disabledSubmit]="loading" (inSubmit)="submitForm()">
+        <app-input [form]="form"
+                   class="products__field"
+                   label="Nome"
+                   [autofocus]="true"
+                   [maxlength]="formConstants.PRODUCT_NAME_MAXLENGTH"
+                   name="productName"
+                   placeholder="Pesquise pelo nome">
+        </app-input>
+        <app-autocomplete [form]="form"
+                          class="products__field"
+                          name="categoryId"
+                          label="Categoria"
+                          placeholder="Selecione uma categoria"
+                          [options]="categoriesOptions">
+        </app-autocomplete>
+    </app-filters>
+
+    <div *ngIf="!loading && list.length; else loadingTemplate" class="products__list">
+        <table mat-table [dataSource]="list" [class]="tableService.TABLE_CLASSES">
+            <ng-container matColumnDef="productName">
+                <th mat-header-cell *matHeaderCellDef>Nome</th>
+                <td mat-cell *matCellDef="let element">{{ element.productName }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="categoryName">
+                <th mat-header-cell *matHeaderCellDef>Categoria</th>
+                <td mat-cell *matCellDef="let element">{{ element.categoryName | situationText: element.categoryIsActive }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef aria-label="Ações"></th>
+                <td mat-cell *matCellDef="let element">
+                    <app-button [operation]="buttonOperation.LINK"
+                                [link]="element.productId"
+                                icon="edit"
+                                [layout]="buttonLayout.ICON"
+                                label="Editar produto">
+                    </app-button>
+                    <app-button (inClick)="delete(element.productId)"
+                                [color]="colorPalette.ERROR"
+                                [loading]="productIdThatIsDeleting === element.productId"
+                                [disabled]="!!productIdThatIsDeleting && productIdThatIsDeleting !== element.productId"
+                                icon="delete"
+                                [layout]="buttonLayout.ICON"
+                                label="Deletar produto">
+                    </app-button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        </table>
+
+        <app-button *ngIf="list | hasShowMore: count"
+                    [loading]="showMoreLoading"
+                    (inClick)="showMore()"
+                    icon="cached"
+                    [layout]="buttonLayout.STROKED"
+                    label="Carregar mais">
+        </app-button>
+    </div>
+
+    <ng-template #loadingTemplate>
+        <app-content-loading *ngIf="loading; else emptyStateTemplate"></app-content-loading>
+    </ng-template>
+
+    <ng-template #emptyStateTemplate>
+        <app-empty-state></app-empty-state>
+    </ng-template>
+</div>
