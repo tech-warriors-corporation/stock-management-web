@@ -7,4 +7,5 @@ export enum PageTitle{
     NOT_FOUND = 'Página não encontrada',
     PRODUCTS = 'Produtos',
     NEW_PRODUCT = 'Novo produto',
+    EDIT_PRODUCT = 'Editar produto',
 }

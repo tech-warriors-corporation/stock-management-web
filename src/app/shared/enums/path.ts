@@ -14,4 +14,5 @@ export enum Path{
     EDIT_CATEGORY = ':categoryId',
     PRODUCTS = 'produtos',
     NEW_PRODUCT = 'novo-produto',
+    EDIT_PRODUCT = ':productId',
 }
