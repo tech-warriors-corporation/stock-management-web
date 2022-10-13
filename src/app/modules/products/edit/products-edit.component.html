@@ -1,0 +1,48 @@
+<div class="products-form">
+    <app-form *ngIf="!loading; else loadingTemplate" class="products-form" [form]="form" (formSubmit)="submit()" formTitle="Editar produto">
+        <div class="products-form__content">
+            <app-input [form]="form"
+                       class="products-form__name"
+                       [ngClass]="{'products-form__name--full-columns': !showCategoryId}"
+                       label="Nome"
+                       [autofocus]="true"
+                       [maxlength]="formConstants.PRODUCT_NAME_MAXLENGTH"
+                       name="productName"
+                       placeholder="Coloque o nome"
+                       [required]="true">
+            </app-input>
+            <app-autocomplete [form]="form"
+                              *ngIf="showCategoryId"
+                              name="categoryId"
+                              [required]="true"
+                              label="Categoria"
+                              placeholder="Selecione uma categoria"
+                              [options]="categoriesOptions">
+            </app-autocomplete>
+            <app-input [form]="form"
+                       label="Quantidade"
+                       [inputType]="inputType.NUMBER"
+                       [inputMode]="inputMode.NUMERIC"
+                       name="quantity"
+                       placeholder="Coloque a quantidade">
+            </app-input>
+            <div class="products-form__actions">
+                <app-button [link]="[path.DEFAULT, path.PRODUCTS]"
+                            [operation]="buttonOperation.LINK"
+                            [layout]="buttonLayout.STROKED"
+                            [color]="colorPalette.SECONDARY"
+                            label="Cancelar">
+                </app-button>
+                <app-button [type]="buttonType.SUBMIT"
+                            [loading]="submitting"
+                            [disabled]="form.invalid | formInvalid: form.pristine"
+                            label="Salvar produto">
+                </app-button>
+            </div>
+        </div>
+    </app-form>
+
+    <ng-template #loadingTemplate>
+        <app-content-loading></app-content-loading>
+    </ng-template>
+</div>
