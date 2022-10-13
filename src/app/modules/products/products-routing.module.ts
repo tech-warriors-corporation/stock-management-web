@@ -5,6 +5,7 @@ import { ProductsComponent } from "./products.component";
 import { Path } from "../../shared/enums/path";
 import { ProductsNewComponent } from "./new/products-new.component";
 import { PageTitle } from "../../shared/enums/page-title";
+import { ProductsEditComponent } from "./edit/products-edit.component";
 
 const routes: Routes = [
     {
@@ -16,6 +17,13 @@ const routes: Routes = [
         component: ProductsNewComponent,
         data: {
             title: PageTitle.NEW_PRODUCT
+        }
+    },
+    {
+        path: Path.EDIT_PRODUCT,
+        component: ProductsEditComponent,
+        data: {
+            title: PageTitle.EDIT_PRODUCT
         }
     },
 ];

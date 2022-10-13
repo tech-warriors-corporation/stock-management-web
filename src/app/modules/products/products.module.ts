@@ -16,9 +16,10 @@ import { AutocompleteModule } from "../../shared/components/autocomplete/autocom
 import { ProductsNewComponent } from "./new/products-new.component";
 import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 import { FormModule } from "../../shared/components/form/form.module";
+import { ProductsEditComponent } from "./edit/products-edit.component";
 
 @NgModule({
-    declarations: [ProductsComponent, ProductsNewComponent],
+    declarations: [ProductsComponent, ProductsNewComponent, ProductsEditComponent],
     imports: [
         CommonModule,
         ProductsRoutingModule,
