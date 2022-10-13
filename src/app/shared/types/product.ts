@@ -18,4 +18,10 @@ export type Products = Product[]
 export type NewProduct = {
     productName: string
     categoryId: number
+    quantity: number
+}
+
+export type EditProduct = {
+    productName: string
+    categoryId: number
 }
