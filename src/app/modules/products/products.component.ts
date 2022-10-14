@@ -34,7 +34,7 @@ export class ProductsComponent extends List<Product> implements OnInit, Columns,
     loading = false;
     showMoreLoading = false;
     count = 0
-    columns = ['productName', 'categoryName', 'actions']
+    columns = ['productName', 'categoryName', 'quantity', 'actions']
     productIdThatIsDeleting: number | null = null
     categoriesOptions: AutocompleteOptions = []
     list: Products = [];

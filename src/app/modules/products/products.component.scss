@@ -15,4 +15,12 @@
         align-items: center;
         row-gap: var(--two-spaces);
     }
+
+    &__column-quantity{
+        font-weight: bold;
+
+        &.products__column-quantity--few{
+            color: var(--red-color);
+        }
+    }
 }

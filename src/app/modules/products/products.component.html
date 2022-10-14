@@ -37,9 +37,24 @@
                 <td mat-cell *matCellDef="let element">{{ element.categoryName | situationText: element.categoryIsActive }}</td>
             </ng-container>
 
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef>Quantidade do estoque</th>
+                <td mat-cell
+                    class="products__column-quantity"
+                    [class.products__column-quantity--few]="element.quantity <= 10"
+                    *matCellDef="let element">
+                    {{ element.quantity }} {{ element.quantity > 1 ? 'produtos' : 'produto' }}
+                </td>
+            </ng-container>
+
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef aria-label="Ações"></th>
                 <td mat-cell *matCellDef="let element">
+                    <app-button [color]="colorPalette.SECONDARY"
+                                icon="attach_money"
+                                [layout]="buttonLayout.ICON"
+                                label="Histórico de preços unitários">
+                    </app-button>
                     <app-button [operation]="buttonOperation.LINK"
                                 [link]="element.productId"
                                 icon="edit"
