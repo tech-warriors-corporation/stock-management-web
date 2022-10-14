@@ -16,14 +16,14 @@
                           [options]="categoriesOptions">
         </app-autocomplete>
         <app-input [form]="form"
-                   label="Quantidade inicial"
+                   label="Quantidade inicial do estoque"
                    [required]="true"
                    [inputType]="inputType.NUMBER"
                    [inputMode]="inputMode.NUMERIC"
                    [min]="formConstants.QUANTITY_MIN"
                    [max]="formConstants.QUANTITY_MAX"
                    name="quantity"
-                   placeholder="Coloque a quantidade inicial">
+                   placeholder="Coloque a quantidade inicial do estoque">
         </app-input>
         <div class="products-form__actions">
             <app-button [link]="[path.DEFAULT, path.PRODUCTS]"
