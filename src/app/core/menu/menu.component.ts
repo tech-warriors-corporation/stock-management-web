@@ -42,11 +42,6 @@ export class MenuComponent implements AfterViewInit, OnInit{
                 icon: 'sync_alt',
             },
             {
-                text: PageTitle.STOCK,
-                href: this.path.STOCK,
-                icon: 'inventory_2',
-            },
-            {
                 text: PageTitle.PRODUCTS,
                 href: this.path.PRODUCTS,
                 icon: 'sanitizer',

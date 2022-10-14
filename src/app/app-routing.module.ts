@@ -28,14 +28,6 @@ const routes: Routes = [
         }
     },
     {
-        path: Path.STOCK,
-        loadChildren: () => import('./modules/stock/stock.module').then(module => module.StockModule),
-        canLoad: [AuthGuard],
-        data: {
-            title: PageTitle.STOCK
-        }
-    },
-    {
         path: Path.PRODUCTS,
         loadChildren: () => import('./modules/products/products.module').then(module => module.ProductsModule),
         canLoad: [AuthGuard],

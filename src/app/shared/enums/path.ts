@@ -5,7 +5,6 @@ export enum Path{
     NOT_FOUND = 'pagina-nao-encontrada',
     DASHBOARD = 'dashboard',
     INPUTS_OUTPUTS = 'entradas-e-saidas',
-    STOCK = 'estoque',
     USERS = 'usuarios',
     NEW_USER = 'novo-usuario',
     EDIT_USER = ':userId',
