@@ -1,0 +1,68 @@
+@use "/src/mixins";
+
+.dialog{
+    $line-height: 1.2;
+
+    color: var(--black-color);
+    line-height: $line-height;
+
+    & &__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--two-spaces) var(--four-spaces);
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        column-gap: var(--four-spaces);
+    }
+
+    & &__button{
+        ::ng-deep .button{
+            color: var(--white-color);
+
+            .button__icon{
+                @include mixins.set-icon-size(28px)
+            }
+        }
+    }
+
+    & &__title{
+        line-height: $line-height;
+        font-size: 1.375rem;
+        font-weight: 500;
+    }
+
+    & &__subtitle{
+        line-height: $line-height;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    & &__body{
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--four-spaces);
+        padding: var(--four-spaces);
+        line-height: $line-height;
+    }
+
+    & &__content{
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--two-spaces);
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+
+    & &__actions{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        column-gap: var(--two-spaces);
+
+        ::ng-deep > *{
+            width: 100%;
+            display: block;
+        }
+    }
+}
