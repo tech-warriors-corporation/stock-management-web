@@ -40,6 +40,7 @@ html, body, app-root, .app{
 
 a {
     text-decoration: underline;
+    color: var(--primary-color);
 }
 
 ::-moz-selection {
@@ -102,5 +103,20 @@ mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat
         &:not(:first-child){
             margin-left: var(--two-spaces);
         }
+    }
+}
+
+.cdk-overlay-container{
+    .mat-dialog-container, .mat-dialog-content, .mat-dialog-actions, .mat-dialog-title{
+        padding: 0;
+        margin: 0;
+        min-width: 0;
+        min-height: 0;
+        max-width: initial;
+        max-height: initial;
+        width: 100%;
+        height: fit-content;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
 }
