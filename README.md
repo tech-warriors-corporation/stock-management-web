@@ -1,5 +1,5 @@
 # stock-management-web
-Stock management system for Casulo Social (NGO).
+Stock system for Projeto Casulo (NGO).
 
 ## Setup
 Run `npm i` to install dependencies.
