@@ -7,6 +7,7 @@ import { filter, Subscription } from "rxjs";
 import { AuthService } from "../auth/auth.service";
 import { ButtonType } from "../../shared/enums/button-type";
 import { MenuService } from "../menu/menu.service";
+import { SupportService } from "../support/support.service";
 
 @Component({
     selector: 'app-header',
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
         private route: ActivatedRoute,
         private menuService: MenuService,
         private router: Router,
+        private supportService: SupportService,
     ){}
 
     private updateInfos(): void{
@@ -59,6 +61,10 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
     toggleMenu(){
         this.menuService.emitToggle()
+    }
+
+    openSupportDialog(){
+        this.supportService.openDialog()
     }
 
     ngOnDestroy(): void{

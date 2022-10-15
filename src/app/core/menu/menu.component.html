@@ -8,10 +8,20 @@
             </ul>
 
             <app-break-line class="menu__break-line"></app-break-line>
-            <img class="menu__logo" src="./assets/images/logo.png" alt="Logo do Casulo Social">
+
+            <img class="menu__logo" src="./assets/images/logo.png" alt="Logo do Projeto Casulo">
+
             <app-break-line class="menu__break-line"></app-break-line>
-            <app-button class="menu__support" icon="headset_mic" [layout]="buttonLayout.STROKED" label="Suporte"></app-button>
+
+            <app-button (inClick)="openSupportDialog()"
+                        class="menu__support"
+                        icon="headset_mic"
+                        [layout]="buttonLayout.STROKED"
+                        label="Suporte">
+            </app-button>
+
             <app-break-line class="menu__break-line"></app-break-line>
+
             <app-developed-by></app-developed-by>
         </div>
     </mat-drawer>

@@ -10,6 +10,7 @@ import { PageTitle } from "../../shared/enums/page-title";
 import { Path } from "../../shared/enums/path";
 import { ButtonLayout } from "../../shared/enums/button-layout";
 import { AuthService } from "../auth/auth.service";
+import { SupportService } from "../support/support.service";
 
 @Component({
     selector: 'app-menu',
@@ -27,7 +28,12 @@ export class MenuComponent implements AfterViewInit, OnInit{
     private routerEvents$!: Subscription
     private watchUserChanged$!: Subscription
 
-    constructor(private menuService: MenuService, private authService: AuthService, private router: Router){}
+    constructor(
+        private menuService: MenuService,
+        private authService: AuthService,
+        private router: Router,
+        private supportService: SupportService,
+    ){}
 
     private updateRoutes(): void{
         this.items = [
@@ -68,6 +74,10 @@ export class MenuComponent implements AfterViewInit, OnInit{
 
     ngAfterViewInit(): void{
         this.drawerToggle$ = this.menuService.watchToggle().subscribe(() => this.drawer.toggle())
+    }
+
+    openSupportDialog(){
+        this.supportService.openDialog()
     }
 
     ngOnDestroy(): void{
