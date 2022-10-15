@@ -107,6 +107,10 @@ mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat
 }
 
 .cdk-overlay-container{
+    .cdk-global-overlay-wrapper{
+        overflow-y: auto;
+    }
+
     .mat-dialog-container, .mat-dialog-content, .mat-dialog-actions, .mat-dialog-title{
         padding: 0;
         margin: 0;
