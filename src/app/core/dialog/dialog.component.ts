@@ -20,6 +20,7 @@ import { ButtonLayout } from "../../shared/enums/button-layout";
                 <mat-dialog-content>
                     <div class="dialog__content">
                         <h3 class="dialog__subtitle">{{ secondaryTitle }}</h3>
+                        <p class="dialog__text" *ngIf="text" [innerHTML]="text | safeHtml"></p>
                         <ng-content></ng-content>
                     </div>
                 </mat-dialog-content>
@@ -34,6 +35,7 @@ import { ButtonLayout } from "../../shared/enums/button-layout";
 export class DialogComponent{
     @Input() primaryTitle!: string
     @Input() secondaryTitle!: string
+    @Input() text!: string
 
     buttonLayout = ButtonLayout
 

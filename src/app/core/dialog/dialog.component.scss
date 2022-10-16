@@ -50,6 +50,9 @@
         display: flex;
         flex-direction: column;
         row-gap: var(--two-spaces);
+    }
+
+    & &__text{
         font-size: 1.1rem;
         font-weight: 400;
     }
