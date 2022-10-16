@@ -8,6 +8,7 @@ import { AuthService } from "../auth/auth.service";
 import { ButtonType } from "../../shared/enums/button-type";
 import { MenuService } from "../menu/menu.service";
 import { SupportService } from "../support/support.service";
+import { UsersChangePasswordService } from "../../modules/users/change-password/users-change-password.service";
 
 @Component({
     selector: 'app-header',
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
         private menuService: MenuService,
         private router: Router,
         private supportService: SupportService,
+        private usersChangePasswordService: UsersChangePasswordService,
     ){}
 
     private updateInfos(): void{
@@ -65,6 +67,10 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
     openSupportDialog(){
         this.supportService.openDialog()
+    }
+
+    openChangePasswordDialog(){
+        this.usersChangePasswordService.openDialog()
     }
 
     ngOnDestroy(): void{

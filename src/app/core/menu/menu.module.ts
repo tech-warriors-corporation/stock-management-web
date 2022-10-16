@@ -10,7 +10,6 @@ import { DevelopedByModule } from "../../shared/components/developed-by/develope
 import { MenuLinkComponent } from './menu-link.component';
 import { ButtonModule } from "../../shared/components/button/button.module";
 import { CanAccessRouteModule } from "../../shared/pipes/can-access-route/can-access-route.module";
-import { SupportModule } from "../support/support.module";
 
 @NgModule({
     declarations: [MenuComponent, MenuLinkComponent],
@@ -22,8 +21,7 @@ import { SupportModule } from "../support/support.module";
         RouterModule,
         MatIconModule,
         ButtonModule,
-        CanAccessRouteModule,
-        SupportModule
+        CanAccessRouteModule
     ],
     exports: [MenuComponent]
 })

@@ -18,7 +18,7 @@
         </button>
 
         <mat-menu #userOptions="matMenu" xPosition="before">
-            <button mat-menu-item [type]="buttonType.BUTTON">
+            <button mat-menu-item [type]="buttonType.BUTTON" (click)="openChangePasswordDialog()">
                 <mat-icon aria-hidden="true">lock</mat-icon> Alterar senha
             </button>
             <button mat-menu-item [type]="buttonType.BUTTON" (click)="openSupportDialog()">

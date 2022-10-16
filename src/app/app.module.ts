@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { FullLoadingModule } from "./core/full-loading/full-loading.module";
 import { TokenInterceptor } from "./core/interceptors/token.interceptor";
 import { LayoutModule } from "./core/layout/layout.module";
+import { SupportModule } from "./core/support/support.module";
+import { UsersModule } from "./modules/users/users.module";
 
 @NgModule({
     declarations: [
@@ -25,6 +27,8 @@ import { LayoutModule } from "./core/layout/layout.module";
         MatSnackBarModule,
         NgxSnakeToCamelModule.forRoot(),
         LayoutModule,
+        SupportModule,
+        UsersModule
     ],
     providers: [
         {
