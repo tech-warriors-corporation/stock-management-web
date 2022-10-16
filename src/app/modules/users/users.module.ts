@@ -17,9 +17,11 @@ import { FormModule } from "../../shared/components/form/form.module";
 import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 import { CheckboxModule } from "../../shared/components/checkbox/checkbox.module";
 import { UsersEditComponent } from "./edit/users-edit.component";
+import { UsersChangePasswordComponent } from "./change-password/users-change-password.component";
+import { DialogModule } from "../../core/dialog/dialog.module";
 
 @NgModule({
-    declarations: [UsersComponent, UsersNewComponent, UsersEditComponent],
+    declarations: [UsersComponent, UsersNewComponent, UsersEditComponent, UsersChangePasswordComponent],
     imports: [
         CommonModule,
         UsersRoutingModule,
@@ -34,7 +36,8 @@ import { UsersEditComponent } from "./edit/users-edit.component";
         HighlightPageModule,
         FormModule,
         FormInvalidModule,
-        CheckboxModule
+        CheckboxModule,
+        DialogModule
     ]
 })
 export class UsersModule {}
