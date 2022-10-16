@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="form" (ngSubmit)="formSubmit.next()">
     <fieldset class="form__fieldset">
-        <legend class="form__legend">{{ formTitle }}</legend>
+        <legend class="form__legend" *ngIf="formTitle">{{ formTitle }}</legend>
         <ng-content></ng-content>
     </fieldset>
 </form>
