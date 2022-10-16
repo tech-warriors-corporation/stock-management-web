@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 
 import { InputType } from "../../enums/input-type";
 import { InputMode } from "../../enums/input-mode";
+import { generateUniqueId } from "../../helpers/unique-id";
 
 @Component({
     selector: 'app-input',
@@ -24,6 +25,7 @@ export class InputComponent implements OnInit{
     @Input() required = false;
     @Input() autofocus = false;
     @Input() isPassword = false;
+    @Input() id = generateUniqueId();
 
     control!: FormControl;
     hidePassword = true;
