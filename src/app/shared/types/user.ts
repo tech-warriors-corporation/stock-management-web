@@ -7,6 +7,7 @@ export type User = {
     isAdmin: BooleanAsNumber,
     isActive: BooleanAsNumber,
     dtCreated: Date,
+    alreadyChangedPassword: BooleanAsNumber,
     userPassword?: string,
     dtUpdated?: Date,
     createdByUserId?: number,
