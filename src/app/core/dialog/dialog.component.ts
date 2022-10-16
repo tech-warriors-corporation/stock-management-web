@@ -9,7 +9,8 @@ import { ButtonLayout } from "../../shared/enums/button-layout";
         <div class="dialog">
             <div class="dialog__header">
                 <h2 mat-dialog-title class="dialog__title">{{ primaryTitle }}</h2>
-                <app-button (inClick)="close()"
+                <app-button *ngIf="hasClose"
+                            (inClick)="close()"
                             class="dialog__button"
                             icon="close"
                             [layout]="buttonLayout.ICON"
@@ -36,6 +37,7 @@ export class DialogComponent{
     @Input() primaryTitle!: string
     @Input() secondaryTitle!: string
     @Input() text!: string
+    @Input() hasClose = true
 
     buttonLayout = ButtonLayout
 

@@ -14,6 +14,8 @@
         background-color: var(--primary-color);
         color: var(--white-color);
         column-gap: var(--four-spaces);
+
+        @include mixins.fix-height(56px);
     }
 
     & &__button{
