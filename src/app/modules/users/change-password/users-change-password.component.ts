@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
@@ -14,18 +14,28 @@ import { SnackBarService } from "../../../core/snack-bar/snack-bar.service";
 import { UsersService } from "../users.service";
 import { AuthService } from "../../../core/auth/auth.service";
 import { DialogService } from "../../../core/dialog/dialog.service";
+import { UsersChangePasswordLayout } from "../../../shared/enums/users-change-password-layout";
+import { Dictionary } from "../../../shared/types/dictionary";
+import { LabelsControl } from "../../../shared/types/labels-control";
+import { generateUniqueId } from "../../../shared/helpers/unique-id";
 
 @Component({
     selector: 'app-users-change-password',
     templateUrl: './users-change-password.component.html',
     styleUrls: ['./users-change-password.component.scss']
 })
-export class UsersChangePasswordComponent implements New, AfterViewInit{
+export class UsersChangePasswordComponent implements New, AfterViewInit, OnInit{
     buttonLayout = ButtonLayout
     buttonType = ButtonType
     formConstants = FormConstants
     inputType = InputType
     submitting = false;
+    inputPasswordId = generateUniqueId()
+    text!: string
+    secondaryTitle!: string
+    buttonText!: string
+    hasClose!: boolean
+    passwordConfirmationLabels!: LabelsControl
 
     form = this.formBuilder.group({
         userPassword: [
@@ -55,6 +65,53 @@ export class UsersChangePasswordComponent implements New, AfterViewInit{
         private dialogService: DialogService,
         private changeDetector: ChangeDetectorRef,
     ){}
+
+    private focusInputPassword(){
+        setTimeout(() => {
+            const input = document.getElementById(this.inputPasswordId) as HTMLInputElement
+
+            input.focus()
+        }, 1000)
+    }
+
+    private setLayout(text: string, secondaryTitle: string, buttonText: string, hasClose: boolean, passwordConfirmationLabel: string, passwordConfirmationPlaceholder: string){
+        this.text = text
+        this.secondaryTitle = secondaryTitle
+        this.buttonText = buttonText
+        this.hasClose = hasClose
+        this.passwordConfirmationLabels = { label: passwordConfirmationLabel, placeholder: passwordConfirmationPlaceholder }
+    }
+
+    ngOnInit(){
+        const { layout } = this.dialogService.getCurrentData() as Dictionary
+
+        switch (layout){
+            case UsersChangePasswordLayout.NORMAL:
+                this.setLayout(
+                    "Aqui você pode garantir a segurança da sua conta alterando a senha.",
+                    "Alterar senha",
+                    "Alterar para nova senha",
+                    true,
+                    "Repetir nova senha",
+                    "Coloque a repetição da nova senha",
+                )
+
+                break;
+            case UsersChangePasswordLayout.FIRST_TIME:
+                this.setLayout(
+                    "Como é seu primeiro login, você tem que trocar sua senha para poder seguir com segurança.",
+                    "Trocar senha",
+                    "Alterar senha",
+                    false,
+                    "Confirmação da nova senha",
+                    "Coloque a confirmação da nova senha",
+                )
+
+                break;
+        }
+
+        this.focusInputPassword()
+    }
 
     ngAfterViewInit(){
         this.changeDetector.detectChanges()
