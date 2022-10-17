@@ -9,12 +9,12 @@ const routes: Routes = [
     {
         path: Path.LOGIN,
         loadChildren: () => import('./modules/login/login.module').then(module => module.LoginModule),
-        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
     },
     {
         path: Path.DASHBOARD,
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule),
-        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
         data: {
             title: PageTitle.DASHBOARD
         }
@@ -22,7 +22,7 @@ const routes: Routes = [
     {
         path: Path.INPUTS_OUTPUTS,
         loadChildren: () => import('./modules/inputs-outputs/inputs-outputs.module').then(module => module.InputsOutputsModule),
-        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
         data: {
             title: PageTitle.INPUTS_OUTPUTS
         }
@@ -30,7 +30,7 @@ const routes: Routes = [
     {
         path: Path.PRODUCTS,
         loadChildren: () => import('./modules/products/products.module').then(module => module.ProductsModule),
-        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
         data: {
             title: PageTitle.PRODUCTS
         }
@@ -38,7 +38,7 @@ const routes: Routes = [
     {
         path: Path.CATEGORIES,
         loadChildren: () => import('./modules/categories/categories.module').then(module => module.CategoriesModule),
-        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
         data: {
             title: PageTitle.CATEGORIES
         }
@@ -46,7 +46,7 @@ const routes: Routes = [
     {
         path: Path.USERS,
         loadChildren: () => import('./modules/users/users.module').then(module => module.UsersModule),
-        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
         data: {
             title: PageTitle.USERS
         }
@@ -54,7 +54,7 @@ const routes: Routes = [
     {
         path: Path.NOT_FOUND,
         loadChildren: () => import('./modules/not-found/not-found.module').then(module => module.NotFoundModule),
-        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
         data: {
             title: PageTitle.NOT_FOUND
         }
