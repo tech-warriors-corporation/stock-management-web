@@ -63,6 +63,15 @@
        [color]="color"
        [attr.aria-label]="label"
        [class]="classes"
+       *ngIf="layout === buttonLayout.FLAT"
+       mat-flat-button>
+        <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
+    </a>
+
+    <a [routerLink]="link"
+       [color]="color"
+       [attr.aria-label]="label"
+       [class]="classes"
        *ngIf="layout === buttonLayout.STROKED"
        mat-stroked-button>
         <ng-container *ngTemplateOutlet="labelTemplate"></ng-container>
