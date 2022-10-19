@@ -6,7 +6,7 @@ export type Category = {
     createdByUserId: number
     isActive: BooleanAsNumber
     dtCreated: Date
-    dtUpdated?: Date
+    dtUpdated: Date | null
 }
 
 export type Categories = Category[]

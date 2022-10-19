@@ -8,9 +8,9 @@ export type User = {
     isActive: BooleanAsNumber,
     dtCreated: Date,
     alreadyChangedPassword: BooleanAsNumber,
-    userPassword?: string,
-    dtUpdated?: Date,
-    createdByUserId?: number,
+    userPassword: string | null,
+    dtUpdated: Date | null,
+    createdByUserId: number | null,
 }
 
 export type Users = User[]

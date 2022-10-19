@@ -10,7 +10,7 @@ export type Product = {
     dtCreated: Date
     categoryName: string
     categoryIsActive: BooleanAsNumber
-    dtUpdated?: Date
+    dtUpdated: Date | null
 }
 
 export type Products = Product[]
