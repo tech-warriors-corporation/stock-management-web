@@ -5,4 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class TableService {
     readonly TABLE_CLASSES = 'mat-table-border w-100'
+    readonly EMPTY_VALUE = '—'
 }
