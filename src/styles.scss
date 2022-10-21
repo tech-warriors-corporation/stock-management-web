@@ -72,13 +72,13 @@ th.mat-header-cell{
 
 table{
     mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
-        $vertical-padding: calc(var(--mat-horizontal-column-padding) / 2);
-
-        vertical-align: middle;
-        font-size: 1rem;
-        padding-top: $vertical-padding;
-        padding-bottom: $vertical-padding;
-        padding-right: var(--mat-horizontal-column-padding);
+        &, &:last-of-type{
+            vertical-align: middle;
+            font-size: 1rem;
+            padding-top: var(--two-spaces);
+            padding-bottom: var(--two-spaces);
+            padding-right: var(--two-spaces);
+        }
     }
 }
 
@@ -96,6 +96,8 @@ table{
 .mat-header-cell.cdk-header-cell.cdk-column-actions.mat-column-actions{
     visibility: hidden;
     padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 0;
 }
 
 .mat-cell.cdk-cell.cdk-column-actions.mat-column-actions{
