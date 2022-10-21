@@ -2,7 +2,7 @@
 Stock system for Projeto Casulo (NGO).
 
 ## Setup
-Run `npm i` to install dependencies.
+Run `npm i --force` to install dependencies.
 
 ## Development
 Run `ng serve` to start a local server.
