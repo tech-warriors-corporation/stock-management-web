@@ -70,9 +70,15 @@ th.mat-header-cell{
     font-weight: 600;
 }
 
-mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
-    vertical-align: middle;
-    font-size: 1rem;
+table{
+    mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+        $vertical-padding: calc(var(--mat-horizontal-column-padding) / 2);
+
+        vertical-align: middle;
+        font-size: 1rem;
+        padding-top: $vertical-padding;
+        padding-bottom: $vertical-padding;
+    }
 }
 
 .mat-form-field-appearance-outline .mat-form-field-wrapper{
