@@ -17,9 +17,12 @@ import { ProductsNewComponent } from "./new/products-new.component";
 import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 import { FormModule } from "../../shared/components/form/form.module";
 import { ProductsEditComponent } from "./edit/products-edit.component";
+import { ProductsCardComponent } from './card/products-card.component';
+import { FormatToBrlModule } from "../../shared/pipes/format-to-brl/format-to-brl.module";
 
 @NgModule({
-    declarations: [ProductsComponent, ProductsNewComponent, ProductsEditComponent],
+    declarations: [ProductsComponent, ProductsNewComponent, ProductsEditComponent, ProductsCardComponent],
+    exports: [ProductsCardComponent],
     imports: [
         CommonModule,
         ProductsRoutingModule,
@@ -35,6 +38,7 @@ import { ProductsEditComponent } from "./edit/products-edit.component";
         AutocompleteModule,
         FormInvalidModule,
         FormModule,
+        FormatToBrlModule,
     ]
 })
 export class ProductsModule {}

@@ -1,0 +1,22 @@
+.products-card{
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--one-space);
+    color: var(--grey-color);
+    font-size: 1rem;
+    line-height: 1.15;
+
+    & &__product-name{
+        color: var(--black-color);
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    & &__category-name{
+        font-weight: 600;
+    }
+
+    & &__unit-price{
+        font-weight: 500;
+    }
+}
