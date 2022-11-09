@@ -1,3 +1,3 @@
 export interface OpenDialog{
-    openDialog(): void;
+    openDialog(...args: any[]): void;
 }
