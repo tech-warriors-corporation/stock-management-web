@@ -4,7 +4,6 @@ export enum Path{
     LOGIN = 'login',
     NOT_FOUND = 'pagina-nao-encontrada',
     DASHBOARD = 'dashboard',
-    INPUTS_OUTPUTS = 'entradas-e-saidas',
     USERS = 'usuarios',
     NEW_USER = 'novo-usuario',
     EDIT_USER = ':userId',
@@ -14,4 +13,9 @@ export enum Path{
     PRODUCTS = 'produtos',
     NEW_PRODUCT = 'novo-produto',
     EDIT_PRODUCT = ':productId',
+    INPUTS_OUTPUTS = 'entradas-e-saidas',
+    INPUTS = 'entradas',
+    NEW_INPUT = 'nova-entrada',
+    OUTPUTS = 'saidas',
+    NEW_OUTPUT = 'nova-saida',
 }
