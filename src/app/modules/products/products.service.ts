@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 
 import { Response } from "../../shared/types/response";
 import { environment } from "../../../environments/environment";
-import { API, DeleteItem, EditItem, GetItem, GetList, NewItem } from "../../shared/interfaces/restful";
+import {
+    API,
+    DeleteItem,
+    EditItem,
+    GetAutocompleteList,
+    GetItem,
+    GetList,
+    NewItem
+} from "../../shared/interfaces/restful";
 import { EditProduct, NewProduct, Product, Products } from "../../shared/types/product";
+import { AutocompleteOption, AutocompleteOptions } from "../../shared/types/autocomplete";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductsService implements API, GetList<Product>, DeleteItem, NewItem<NewProduct>, GetItem<Product>, EditItem<EditProduct>{
+export class ProductsService implements API, GetList<Product>, DeleteItem, NewItem<NewProduct>, GetItem<Product>, EditItem<EditProduct>, GetAutocompleteList<AutocompleteOption>{
     readonly API = `${environment.api}/products`
 
     constructor(private httpClient: HttpClient){}
@@ -39,5 +48,16 @@ export class ProductsService implements API, GetList<Product>, DeleteItem, NewIt
 
     editItem(id: number, product: EditProduct): Observable<Response<null>> {
         return this.httpClient.patch<Response<null>>(`${this.API}/${id}`, product)
+    }
+
+    getAutocompleteList(): Observable<Response<AutocompleteOptions>> {
+        return this.httpClient
+                   .get<Response<Products>>(`${this.API}/autocomplete`)
+                   .pipe(
+                       map(({ data: products, ...response }) => ({
+                           ...response,
+                           data: products.map(({ productId, productName, isActive }) => ({ value: productId, text: productName, isActive }))
+                       }))
+                   )
     }
 }
