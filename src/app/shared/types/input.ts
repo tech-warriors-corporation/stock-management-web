@@ -10,7 +10,6 @@ export type Input = {
     productQuantity: number
     hasProductExpiration: BooleanAsNumber
     isDonation: BooleanAsNumber
-    isActive: BooleanAsNumber
     createdBy: User
     dtEntered: Date
     dtCreated: Date
