@@ -7,8 +7,7 @@ import { InputType } from "../../enums/input-type";
 import { InputMode } from "../../enums/input-mode";
 import { AutocompleteOption, AutocompleteOptions } from "../../types/autocomplete";
 import { SituationTextPipe } from "../../pipes/situation-text/situation-text.pipe";
-
-const NONE_VALUE = ''
+import { NONE_VALUE } from "../../helpers/manipulate";
 
 @Component({
     selector: 'app-autocomplete',

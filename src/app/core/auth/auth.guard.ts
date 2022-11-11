@@ -7,6 +7,7 @@ import { FullLoadingService } from "../full-loading/full-loading.service";
 import { BooleanAsNumber } from "../../shared/enums/boolean-as-number";
 import { UsersChangePasswordService } from "../../modules/users/change-password/users-change-password.service";
 import { UsersChangePasswordLayout } from "../../shared/enums/users-change-password-layout";
+import { NONE_VALUE } from "../../shared/helpers/manipulate";
 
 export const getAdminRoutes = () => [Path.USERS, Path.CATEGORIES, Path.PRODUCTS]
 
@@ -22,7 +23,7 @@ export class AuthGuard implements CanActivate {
     ){}
 
     async canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
-        const path = route.routeConfig?.path || '';
+        const path = route.routeConfig?.path || NONE_VALUE;
         const token = this.authService.token;
         const adminRoutes = getAdminRoutes()
         let isLogged = this.authService.isLogged;
