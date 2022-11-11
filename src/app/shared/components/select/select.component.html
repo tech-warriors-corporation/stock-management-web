@@ -1,0 +1,18 @@
+<mat-form-field *ngIf="control"
+                class="select"
+                [formGroup]="form"
+                appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+
+    <mat-select [required]="required"
+                [appAutofocus]="autofocus"
+                [formControl]="control"
+                [placeholder]="placeholder">
+        <mat-option *ngFor="let option of options" [value]="option.value">
+            {{ option.text | situationText: option.isActive }}
+        </mat-option>
+    </mat-select>
+
+    <mat-error *ngIf="control.invalid | formControlInvalid: control.touched">{{ control.errors | formControlError }}</mat-error>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+</mat-form-field>
