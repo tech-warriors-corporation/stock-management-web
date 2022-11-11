@@ -29,3 +29,7 @@ export interface EditItem<T>{
 export interface GetAutocompleteList<T> {
     getAutocompleteList(...args: any[]): Observable<Response<T[]>>
 }
+
+export interface GetSelectList<T> {
+    getSelectList(): Observable<Response<T[]>>
+}
