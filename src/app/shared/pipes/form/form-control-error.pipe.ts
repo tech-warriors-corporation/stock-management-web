@@ -3,6 +3,7 @@ import { ValidationErrors } from "@angular/forms";
 
 import { FormControlError } from "../../types/form-control-error";
 import { ControlError } from "../../enums/control-error";
+import { NONE_VALUE } from "../../helpers/manipulate";
 
 @Pipe({
     name: 'formControlError'
@@ -17,7 +18,7 @@ export class FormControlErrorPipe implements PipeTransform {
             getMessage: error => {
                 const length = error.requiredLength;
 
-                return `O mínimo é de ${error.requiredLength} caractere${length >= 2 ? 's' : ''}`;
+                return `O mínimo é de ${error.requiredLength} caractere${length >= 2 ? 's' : NONE_VALUE}`;
             }
         },
         { key: ControlError.MIN, getMessage: ({ min }) => `O valor mínimo permitido é ${min}` },
@@ -26,7 +27,7 @@ export class FormControlErrorPipe implements PipeTransform {
     ];
 
     transform(errors: ValidationErrors | null): string {
-        let message = '';
+        let message = NONE_VALUE;
 
         if (errors)
             this.errors.every(error => {

@@ -18,6 +18,7 @@ import { UsersChangePasswordLayout } from "../../../shared/enums/users-change-pa
 import { Dictionary } from "../../../shared/types/dictionary";
 import { LabelsControl } from "../../../shared/types/labels-control";
 import { generateUniqueId } from "../../../shared/helpers/unique-id";
+import { NONE_VALUE } from "../../../shared/helpers/manipulate";
 
 @Component({
     selector: 'app-users-change-password',
@@ -39,7 +40,7 @@ export class UsersChangePasswordComponent implements New, AfterViewInit, OnInit{
 
     form = this.formBuilder.group({
         userPassword: [
-            '',
+            NONE_VALUE,
             [
                 Validators.minLength(this.formConstants.PASSWORD_MINLENGTH),
                 Validators.maxLength(this.formConstants.PASSWORD_MAXLENGTH),
@@ -47,7 +48,7 @@ export class UsersChangePasswordComponent implements New, AfterViewInit, OnInit{
             ]
         ],
         userPasswordConfirmation: [
-            '',
+            NONE_VALUE,
             [
                 Validators.minLength(this.formConstants.PASSWORD_MINLENGTH),
                 Validators.maxLength(this.formConstants.PASSWORD_MAXLENGTH),

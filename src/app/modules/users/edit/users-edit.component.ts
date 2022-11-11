@@ -20,6 +20,7 @@ import { ChangePasswordUser, EditUser, User } from "../../../shared/types/user";
 import { SnackBarService } from "../../../core/snack-bar/snack-bar.service";
 import { AuthService } from "../../../core/auth/auth.service";
 import { AuthLogin } from "../../../shared/types/auth";
+import { NONE_VALUE } from "../../../shared/helpers/manipulate";
 
 @Component({
     selector: 'app-users-edit',
@@ -45,10 +46,10 @@ export class UsersEditComponent extends Edit<User> implements OnDestroy, OnInit{
     showPasswordFields = false
 
     form = this.formBuilder.group({
-        userName: ['', [Validators.required, Validators.maxLength(this.formConstants.USER_NAME_MAXLENGTH)]],
-        email: ['', [Validators.required, Validators.email, Validators.maxLength(this.formConstants.EMAIL_MAXLENGTH)]],
+        userName: [NONE_VALUE, [Validators.required, Validators.maxLength(this.formConstants.USER_NAME_MAXLENGTH)]],
+        email: [NONE_VALUE, [Validators.required, Validators.email, Validators.maxLength(this.formConstants.EMAIL_MAXLENGTH)]],
         userPassword: [
-            '',
+            NONE_VALUE,
             [
                 Validators.minLength(this.formConstants.PASSWORD_MINLENGTH),
                 Validators.maxLength(this.formConstants.PASSWORD_MAXLENGTH),
@@ -56,7 +57,7 @@ export class UsersEditComponent extends Edit<User> implements OnDestroy, OnInit{
             ]
         ],
         userPasswordConfirmation: [
-            '',
+            NONE_VALUE,
             [
                 Validators.minLength(this.formConstants.PASSWORD_MINLENGTH),
                 Validators.maxLength(this.formConstants.PASSWORD_MAXLENGTH),
@@ -151,8 +152,8 @@ export class UsersEditComponent extends Edit<User> implements OnDestroy, OnInit{
         const userPasswordConfirmationControl = this.form.get('userPasswordConfirmation') as FormControl
 
         this.wantToChangePasswordControlChanges$ = wantToChangePasswordControl.valueChanges.subscribe(value => {
-            userPasswordControl.reset('')
-            userPasswordConfirmationControl.reset('')
+            userPasswordControl.reset(NONE_VALUE)
+            userPasswordConfirmationControl.reset(NONE_VALUE)
 
             this.showPasswordFields = value
 

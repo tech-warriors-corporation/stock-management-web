@@ -19,6 +19,7 @@ import { CategoriesService } from "../../categories/categories.service";
 import { BooleanAsNumber } from "../../../shared/enums/boolean-as-number";
 import { InputType } from "../../../shared/enums/input-type";
 import { InputMode } from "../../../shared/enums/input-mode";
+import { NONE_VALUE } from "../../../shared/helpers/manipulate";
 
 @Component({
     selector: 'app-products-edit',
@@ -43,7 +44,7 @@ export class ProductsEditComponent extends Edit<Product> implements OnInit{
     inputMode = InputMode
 
     form = this.formBuilder.group<{ productName: any[], categoryId: any[], quantity: any[] }>({
-        productName: ['', [Validators.required, Validators.maxLength(this.formConstants.PRODUCT_NAME_MAXLENGTH)]],
+        productName: [NONE_VALUE, [Validators.required, Validators.maxLength(this.formConstants.PRODUCT_NAME_MAXLENGTH)]],
         categoryId: [null, Validators.required],
         quantity: [{ value: null, disabled: true }],
     })

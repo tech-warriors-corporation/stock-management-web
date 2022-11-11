@@ -14,6 +14,7 @@ import { ColorPalette } from "../../../shared/enums/color-palette";
 import { SnackBarService } from "../../../core/snack-bar/snack-bar.service";
 import { CategoriesService } from "../categories.service";
 import { Category, EditCategory } from "../../../shared/types/category";
+import { NONE_VALUE } from "../../../shared/helpers/manipulate";
 
 @Component({
     selector: 'app-categories-edit',
@@ -32,7 +33,7 @@ export class CategoriesEditComponent extends Edit<Category> implements OnInit{
     colorPalette = ColorPalette
     submitting = false
     loading = false
-    form = this.formBuilder.group({ categoryName: ['', [Validators.required, Validators.maxLength(this.formConstants.CATEGORY_NAME_MAXLENGTH)]] })
+    form = this.formBuilder.group({ categoryName: [NONE_VALUE, [Validators.required, Validators.maxLength(this.formConstants.CATEGORY_NAME_MAXLENGTH)]] })
 
     constructor(
         private formBuilder: FormBuilder,
