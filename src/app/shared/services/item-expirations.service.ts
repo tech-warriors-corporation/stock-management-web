@@ -17,7 +17,7 @@ export class ItemExpirationsService implements GetSelectList<SelectOption>{
             createResponse<SelectOptions>([
                 { value: BooleanAsNumber.TRUE, text: "Sim", isActive: BooleanAsNumber.TRUE },
                 { value: BooleanAsNumber.FALSE, text: "Não", isActive: BooleanAsNumber.TRUE },
-                { value: NONE_VALUE, text: "Ambos", isActive: BooleanAsNumber.TRUE },
+                { value: NONE_VALUE, text: "Indiferente", isActive: BooleanAsNumber.TRUE },
             ])
         )
     }
