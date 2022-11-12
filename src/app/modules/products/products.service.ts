@@ -15,12 +15,12 @@ import {
     NewItem
 } from "../../shared/interfaces/restful";
 import { EditProduct, NewProduct, Product, Products } from "../../shared/types/product";
-import { AutocompleteOption, AutocompleteOptions } from "../../shared/types/autocomplete";
+import { AutocompleteOptions } from "../../shared/types/autocomplete";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductsService implements API, GetList<Product>, DeleteItem, NewItem<NewProduct>, GetItem<Product>, EditItem<EditProduct>, GetAutocompleteList<AutocompleteOption>{
+export class ProductsService implements API, GetList<Product>, DeleteItem, NewItem<NewProduct>, GetItem<Product>, EditItem<EditProduct>, GetAutocompleteList{
     readonly API = `${environment.api}/products`
 
     constructor(private httpClient: HttpClient){}

@@ -16,12 +16,12 @@ import {
 } from "../../shared/interfaces/restful";
 import { Categories, Category, EditCategory, NewCategory } from "../../shared/types/category";
 import { BooleanAsNumber } from "../../shared/enums/boolean-as-number";
-import { AutocompleteOption, AutocompleteOptions } from "../../shared/types/autocomplete";
+import { AutocompleteOptions } from "../../shared/types/autocomplete";
 
 @Injectable({
     providedIn: 'root'
 })
-export class CategoriesService implements API, GetList<Category>, DeleteItem, NewItem<NewCategory>, GetItem<Category>, EditItem<EditCategory>, GetAutocompleteList<AutocompleteOption>{
+export class CategoriesService implements API, GetList<Category>, DeleteItem, NewItem<NewCategory>, GetItem<Category>, EditItem<EditCategory>, GetAutocompleteList{
     readonly API = `${environment.api}/categories`
 
     constructor(private httpClient: HttpClient){}

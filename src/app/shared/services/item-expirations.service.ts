@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from "rxjs";
 
 import { GetSelectList } from "../interfaces/restful";
-import { SelectOption, SelectOptions } from "../types/select";
+import { SelectOptions } from "../types/select";
 import { Response } from "../types/response";
 import { BooleanAsNumber } from "../enums/boolean-as-number";
 import { createResponse, NONE_VALUE } from "../helpers/manipulate";
@@ -11,7 +11,7 @@ import { createResponse, NONE_VALUE } from "../helpers/manipulate";
 @Injectable({
     providedIn: 'root'
 })
-export class ItemExpirationsService implements GetSelectList<SelectOption>{
+export class ItemExpirationsService implements GetSelectList{
     getSelectList(): Observable<Response<SelectOptions>> {
         return of(
             createResponse<SelectOptions>([
