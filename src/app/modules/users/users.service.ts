@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { ChangePasswordUser, EditUser, NewUser, User, Users } from "../../shared/types/user";
 import { Response } from "../../shared/types/response";
 import { environment } from "../../../environments/environment";
-import { API, DeleteItem, EditItem, GetItem, GetList, NewItem } from "../../shared/interfaces/restful";
+import { API, DeleteItem, EditItem, GetItem, GetList, GetSelectList, NewItem } from "../../shared/interfaces/restful";
+import { SelectOptions } from "../../shared/types/select";
+import { NONE_VALUE } from "../../shared/helpers/manipulate";
+import { BooleanAsNumber } from "../../shared/enums/boolean-as-number";
 
 @Injectable({
     providedIn: 'root'
 })
-export class UsersService implements API, GetList<User>, DeleteItem, NewItem<NewUser>, GetItem<User>, EditItem<EditUser> {
+export class UsersService implements API, GetList<User>, DeleteItem, NewItem<NewUser>, GetItem<User>, EditItem<EditUser>, GetSelectList {
     readonly API = `${environment.api}/users`
 
     constructor(private httpClient: HttpClient){}
@@ -43,5 +46,19 @@ export class UsersService implements API, GetList<User>, DeleteItem, NewItem<New
 
     changePassword(id: number, passwordUser: ChangePasswordUser): Observable<Response<null>>{
         return this.httpClient.patch<Response<null>>(`${this.API}/${id}/change_password`, passwordUser)
+    }
+
+    getSelectList(): Observable<Response<SelectOptions>>{
+        return this.httpClient
+                   .get<Response<Users>>(`${this.API}/select`)
+                   .pipe(
+                       map(({ data: users, ...response }) => {
+                           const data: SelectOptions = users.map(({ userId, userName, isActive }) => ({ value: userId, text: userName, isActive }))
+
+                           data.unshift({ value: NONE_VALUE, text: "Todos", isActive: BooleanAsNumber.TRUE })
+
+                           return { ...response, data }
+                       })
+                    )
     }
 }
