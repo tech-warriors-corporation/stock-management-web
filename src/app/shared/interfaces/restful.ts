@@ -1,6 +1,8 @@
 import { Observable } from "rxjs";
 
 import { Response } from "../types/response";
+import { AutocompleteOption } from "../types/autocomplete";
+import { SelectOption } from "../types/select";
 
 export interface API {
     readonly API: string
@@ -26,10 +28,10 @@ export interface EditItem<T>{
     editItem(id: number, item: T): Observable<Response<null>>
 }
 
-export interface GetAutocompleteList<T> {
+export interface GetAutocompleteList<T = AutocompleteOption> {
     getAutocompleteList(...args: any[]): Observable<Response<T[]>>
 }
 
-export interface GetSelectList<T> {
+export interface GetSelectList<T = SelectOption> {
     getSelectList(): Observable<Response<T[]>>
 }
