@@ -4,4 +4,5 @@ export type InputOutputFilter = {
     productId: number | null
     hasProductExpiration: BooleanAsNumber | null
     createdById: number | null
+    dtCreated: Date | null
 }
