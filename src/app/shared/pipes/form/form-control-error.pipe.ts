@@ -5,6 +5,8 @@ import { FormControlError } from "../../types/form-control-error";
 import { ControlError } from "../../enums/control-error";
 import { NONE_VALUE } from "../../helpers/manipulate";
 
+const getInvalidDateMessage = () => "Data inválida"
+
 @Pipe({
     name: 'formControlError'
 })
@@ -23,7 +25,10 @@ export class FormControlErrorPipe implements PipeTransform {
         },
         { key: ControlError.MIN, getMessage: ({ min }) => `O valor mínimo permitido é ${min}` },
         { key: ControlError.MAX, getMessage: ({ max }) => `O valor máximo permitido é ${max}` },
-        { key: ControlError.PASSWORD_EQUALS_PASSWORD_CONFIRMATION, getMessage: () => 'As senhas não estão iguais' }
+        { key: ControlError.PASSWORD_EQUALS_PASSWORD_CONFIRMATION, getMessage: () => 'As senhas não estão iguais' },
+        { key: ControlError.INVALID_DATE, getMessage: getInvalidDateMessage },
+        { key: ControlError.MAT_DATEPICKER_PARSE, getMessage: getInvalidDateMessage },
+        { key: ControlError.MAT_DATEPICKER_MAX, getMessage: getInvalidDateMessage },
     ];
 
     transform(errors: ValidationErrors | null): string {
