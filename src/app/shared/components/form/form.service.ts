@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 import { ControlError } from "../../enums/control-error";
+import { DATE_LENGTH, formatDateToString } from "../../helpers/date";
 
 @Injectable({
     providedIn: 'root'
@@ -25,5 +26,22 @@ export class FormService {
 
             return !isEqual ? { [ControlError.PASSWORD_EQUALS_PASSWORD_CONFIRMATION]: true } : null;
         };
+    }
+
+    static validateDate(id: string): ValidatorFn{
+        let input: HTMLInputElement | null = null
+
+        return (control: AbstractControl): ValidationErrors | null => {
+            if(!input) input = document.getElementById(id) as HTMLInputElement;
+
+            const value = control.value || null
+            const dateString = value instanceof Date ? formatDateToString(value) : null
+            const inputValue = input?.value || null
+
+            if(dateString && inputValue && (dateString !== inputValue || dateString?.length !== DATE_LENGTH || inputValue?.length !== DATE_LENGTH))
+                return { [ControlError.INVALID_DATE]: true }
+
+            return null
+        }
     }
 }
