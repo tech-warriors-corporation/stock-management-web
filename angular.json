@@ -56,7 +56,9 @@
                         ],
                         "scripts": [],
                         "allowedCommonJsDependencies": [
-                            "@ridi/object-case-converter"
+                            "@ridi/object-case-converter",
+                            "moment",
+                            "vanilla-text-mask/dist/vanillaTextMask.js"
                         ]
                     },
                     "configurations": {
