@@ -6,4 +6,7 @@ export enum ControlError{
     PASSWORD_EQUALS_PASSWORD_CONFIRMATION = 'passwordEqualsPasswordConfirmation',
     MAX = 'max',
     MIN = 'min',
+    MAT_DATEPICKER_PARSE = 'matDatepickerParse',
+    INVALID_DATE = 'invalidDate',
+    MAT_DATEPICKER_MAX = 'matDatepickerMax',
 }
