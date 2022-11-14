@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from "@angular/material-moment-adapter";
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from "@angular/material/core";
 
 import { NgxSnakeToCamelModule } from "ngx-snake-to-camel";
 
@@ -13,6 +15,7 @@ import { TokenInterceptor } from "./core/interceptors/token.interceptor";
 import { LayoutModule } from "./core/layout/layout.module";
 import { SupportModule } from "./core/support/support.module";
 import { UsersModule } from "./modules/users/users.module";
+import { Lang } from "./shared/enums/lang";
 
 @NgModule({
     declarations: [
@@ -28,14 +31,42 @@ import { UsersModule } from "./modules/users/users.module";
         NgxSnakeToCamelModule.forRoot(),
         LayoutModule,
         SupportModule,
-        UsersModule
+        UsersModule,
+        MatNativeDateModule,
     ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,
             multi: true
-        }
+        },
+        {
+            provide: MAT_DATE_LOCALE,
+            useValue: Lang.PT_BR
+        },
+        {
+            provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+            useValue: { strict: true, useUtc: true },
+        },
+        {
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+        },
+        {
+            provide: MAT_DATE_FORMATS,
+            useValue: {
+                parse: {
+                    dateInput: ['l', 'LL'],
+                },
+                display: {
+                    dateInput: 'L',
+                    monthYearLabel: 'MMM YYYY',
+                    dateA11yLabel: 'LL',
+                    monthYearA11yLabel: 'MMMM YYYY',
+                },
+            },
+        },
     ],
     bootstrap: [AppComponent]
 })
