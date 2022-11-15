@@ -1,6 +1,7 @@
 export enum PageTitle{
     DASHBOARD = 'Dashboard',
     INPUTS_OUTPUTS = 'Entradas e saídas',
+    NEW_INPUT = 'Nova entrada',
     CATEGORIES = 'Categorias',
     USERS = 'Usuários',
     NOT_FOUND = 'Página não encontrada',
