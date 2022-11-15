@@ -2,6 +2,7 @@ const dateSeparator = '/'
 const addPadZeroToDate = (datePart: string | number) => `${datePart}`.padStart(2, '0')
 export const dateTextMask = [/\d/, /\d/, dateSeparator, /\d/, /\d/, dateSeparator, /\d/, /\d/, /\d/, /\d/]
 export const DATE_LENGTH = dateTextMask.length
+export const DATE_FORMAT_HINT = 'dd/mm/aaaa'
 
 export const formatDateToString = (date: Date) => {
     const day = addPadZeroToDate(date.getDate())
