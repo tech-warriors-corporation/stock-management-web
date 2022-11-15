@@ -1,0 +1,29 @@
+<mat-form-field appearance="outline"
+                *ngIf="control"
+                [formGroup]="form"
+                class="date-picker">
+    <mat-label>{{ label }}</mat-label>
+
+    <input matInput
+           [id]="id"
+           [type]="inputType.TEXT"
+           [attr.inputmode]="inputMode.NUMERIC"
+           [required]="required"
+           [name]="name"
+           [formControl]="control"
+           [appAutofocus]="autofocus"
+           [max]="maxDate"
+           (dateChange)="control.updateValueAndValidity()"
+           [placeholder]="placeholder"
+           [matDatepicker]="picker">
+
+    <mat-error *ngIf="control.invalid | formControlInvalid: control.touched">{{ control.errors | formControlError }}</mat-error>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+
+    <mat-datepicker-toggle [aria-label]="picker.opened ? 'Fechar calendário' : 'Abrir calendário'"
+                           matSuffix
+                           [for]="picker">
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
