@@ -10,9 +10,10 @@ import { DevelopedByModule } from "../../shared/components/developed-by/develope
 import { MenuLinkComponent } from './menu-link.component';
 import { ButtonModule } from "../../shared/components/button/button.module";
 import { CanAccessRouteModule } from "../../shared/pipes/can-access-route/can-access-route.module";
+import { MenuLinkActivePipe } from './menu-link-active.pipe';
 
 @NgModule({
-    declarations: [MenuComponent, MenuLinkComponent],
+    declarations: [MenuComponent, MenuLinkComponent, MenuLinkActivePipe],
     imports: [
         CommonModule,
         MatSidenavModule,

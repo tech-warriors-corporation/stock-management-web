@@ -1,4 +1,7 @@
-<a class="menu-link" rel="noopener" [routerLink]="href" [routerLinkActive]="'menu-link--active'">
+<a class="menu-link"
+   [class.menu-link--active]="href | menuLinkActive"
+   rel="noopener"
+   [routerLink]="href">
     <mat-icon class="menu-link__icon" aria-hidden="true">{{ icon }}</mat-icon>
     <span class="menu-link__text">{{ text }}</span>
 </a>
