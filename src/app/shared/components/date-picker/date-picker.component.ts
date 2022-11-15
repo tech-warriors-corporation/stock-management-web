@@ -7,7 +7,7 @@ import * as textMask from "vanilla-text-mask/dist/vanillaTextMask.js";
 import { InputType } from "../../enums/input-type";
 import { InputMode } from "../../enums/input-mode";
 import { FormService } from "../form/form.service";
-import { dateTextMask } from "../../helpers/date";
+import { DATE_LENGTH, dateTextMask, formatDateToString, formatStringToDate } from "../../helpers/date";
 import { generateUniqueId } from "../../helpers/unique-id";
 
 @Component({
@@ -28,6 +28,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit, OnDestroy{
     readonly id = generateUniqueId()
     readonly inputType = InputType
     readonly inputMode = InputMode
+    private input!: HTMLInputElement
     control!: FormControl
     maskInputController!: any;
 
@@ -38,11 +39,30 @@ export class DatePickerComponent implements OnInit, AfterViewInit, OnDestroy{
     }
 
     ngAfterViewInit() {
+        this.input = document.getElementById(this.id) as HTMLInputElement
+
         this.maskInputController = textMask.maskInput({
-            inputElement: document.getElementById(this.id),
+            inputElement: this.input,
             mask: dateTextMask,
             guide: false,
         });
+    }
+
+    onInput(event: Event){
+        setTimeout(() => {
+            const value = this.input?.value?.substr(0, DATE_LENGTH) || null
+
+            if(value && value.length >= DATE_LENGTH){
+                event.preventDefault()
+
+                const date = formatStringToDate(value)
+                const dateString = date instanceof Date ? formatDateToString(date) : null
+
+                if(dateString && dateString === value) this.control.setValue(date, { onlySelf: true, emitEvent: false });
+            }
+
+            this.control.updateValueAndValidity()
+        })
     }
 
     ngOnDestroy(){
