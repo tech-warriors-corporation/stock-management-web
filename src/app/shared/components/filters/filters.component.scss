@@ -1,3 +1,5 @@
+@use "/src/mixins";
+
 .filters{
     display: flex;
     flex-direction: column;
@@ -14,16 +16,8 @@
     }
 
     ::ng-deep{
-        .mat-form-field-subscript-wrapper{
-            display: none;
-        }
-
-        .mat-form-field-wrapper{
-            padding-bottom: 0;
-        }
-
         .button{
-            height: 100%;
+            @include mixins.fix-height(var(--mat-control-height));
         }
     }
 }
