@@ -1,0 +1,46 @@
+@use "/src/mixins";
+
+@mixin anchor-style($background-color){
+    ::ng-deep a{
+        background-color: $background-color;
+    }
+}
+
+.inputs-outputs{
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--eight-spaces);
+
+    & &__new{
+        &.inputs-outputs__new--input{
+            @include anchor-style(var(--green-color));
+        }
+
+        &.inputs-outputs__new--output{
+            @include anchor-style(var(--orange-color));
+        }
+    }
+
+    & &__field{
+        width: 100%;
+        max-width: 350px;
+
+        &.inputs-outputs__field--small{
+            max-width: 160px;
+        }
+
+        &.inputs-outputs__field--medium{
+            max-width: 280px;
+        }
+
+        &.inputs-outputs__field--date{
+            max-width: 210px;
+        }
+    }
+
+    ::ng-deep {
+        > app-highlight-page .highlight-page .highlight-page__title{
+            font-size: 1.675rem;
+        }
+    }
+}

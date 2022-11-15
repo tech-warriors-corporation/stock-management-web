@@ -1,0 +1,52 @@
+<div class="inputs-outputs">
+    <app-highlight-page highlightTitle="Lista de entradas e saídas">
+        <app-button [link]="[path.DEFAULT, path.INPUTS, path.NEW_INPUT]"
+                    [layout]="buttonLayout.FLAT"
+                    class="inputs-outputs__new inputs-outputs__new--input"
+                    [operation]="buttonOperation.LINK"
+                    icon="arrow_forward"
+                    label="Nova entrada">
+        </app-button>
+        <app-button [link]="[path.DEFAULT, path.OUTPUTS, path.NEW_OUTPUT]"
+                    [layout]="buttonLayout.FLAT"
+                    class="inputs-outputs__new inputs-outputs__new--output"
+                    [operation]="buttonOperation.LINK"
+                    icon="arrow_back"
+                    label="Nova saída">
+        </app-button>
+    </app-highlight-page>
+
+    <app-filters [form]="form" (inSubmit)="submitForm()">
+        <app-autocomplete [form]="form"
+                          class="inputs-outputs__field"
+                          name="productId"
+                          label="Produto"
+                          placeholder="Selecione um produto"
+                          [options]="productOptions">
+        </app-autocomplete>
+        <app-select label="Criado por"
+                    class="inputs-outputs__field inputs-outputs__field--medium"
+                    [options]="userOptions"
+                    name="createdById"
+                    [form]="form"
+                    placeholder="Selecione um usuário">
+        </app-select>
+        <app-select label="Tem validade"
+                    class="inputs-outputs__field inputs-outputs__field--small"
+                    [options]="expirationOptions"
+                    name="hasProductExpiration"
+                    [form]="form"
+                    placeholder="Selecione uma opção">
+        </app-select>
+        <app-date-picker label="Cadastrado em"
+                         [form]="form"
+                         class="inputs-outputs__field inputs-outputs__field--date"
+                         name="dtCreated"
+                         [hint]="dateFormatHint"
+                         [maxDate]="maxDtCreated"
+                         placeholder="Coloque uma data">
+        </app-date-picker>
+    </app-filters>
+
+    <app-inputs [filters]="filters"></app-inputs>
+</div>
