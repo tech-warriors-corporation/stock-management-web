@@ -20,7 +20,7 @@ export class InputsService implements API, GetList<Input>, DeleteItem{
     getList(page: number, perPage: number, { productId, hasProductExpiration, createdById, dtCreated }: InputOutputFilter){
         const params: Dictionary = { page, per_page: perPage }
 
-        if(productId) params['product_id'] = productId
+        if(typeof(productId) === 'number') params['product_id'] = productId
         if(typeof(hasProductExpiration) === 'number') params['has_product_expiration'] = hasProductExpiration
         if(typeof(createdById) === 'number') params['created_by_id'] = createdById
         if(dtCreated instanceof Date) params['dt_created'] = formatDateToString(dtCreated)
