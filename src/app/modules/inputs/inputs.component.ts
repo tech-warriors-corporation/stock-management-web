@@ -97,7 +97,7 @@ export class InputsComponent extends List<InputType> implements Columns, OnDestr
                 this.startListing()
                 this.snackBarService.open('Entrada deletada')
             },
-            error: () => this.snackBarService.open('Ocorreu um problema ao deletar a entrada'),
+            error: ({ error }) => this.snackBarService.open(error.data || 'Ocorreu um problema ao deletar a entrada'),
         })
     }
 
