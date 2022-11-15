@@ -46,7 +46,7 @@ import { Lang } from "./shared/enums/lang";
         },
         {
             provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-            useValue: { strict: true, useUtc: true },
+            useValue: { strict: true, useUtc: false },
         },
         {
             provide: DateAdapter,
