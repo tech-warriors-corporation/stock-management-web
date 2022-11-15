@@ -20,6 +20,11 @@ const routes: Routes = [
         }
     },
     {
+        path: Path.INPUTS,
+        loadChildren: () => import('./modules/inputs/inputs.module').then(module => module.InputsModule),
+        canActivate: [AuthGuard],
+    },
+    {
         path: Path.INPUTS_OUTPUTS,
         loadChildren: () => import('./modules/inputs-outputs/inputs-outputs.module').then(module => module.InputsOutputsModule),
         canActivate: [AuthGuard],
