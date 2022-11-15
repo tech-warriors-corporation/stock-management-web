@@ -1,0 +1,12 @@
+.inputs{
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--four-spaces);
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: var(--two-spaces);
+    }
+}
