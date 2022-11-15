@@ -112,6 +112,7 @@ table{
 .mat-cell.cdk-cell.cdk-column-actions.mat-column-actions{
     text-align: right;
     padding-right: var(--two-spaces);
+    white-space: nowrap;
 
     > * {
         width: fit-content;
