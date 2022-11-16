@@ -16,6 +16,8 @@ import { BooleanAsNumberToTextModule } from "../../shared/pipes/boolean-as-numbe
 import { InputsRoutingModule } from "./inputs-routing.module";
 import { InputsNewComponent } from "./new/inputs-new.component";
 import { BuildingPageModule } from "../../shared/components/building-page/building-page.module";
+import { FormModule } from "../../shared/components/form/form.module";
+import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 
 @NgModule({
     declarations: [InputsComponent, InputsNewComponent],
@@ -37,6 +39,8 @@ import { BuildingPageModule } from "../../shared/components/building-page/buildi
         ProductsModule,
         BooleanAsNumberToTextModule,
         BuildingPageModule,
+        FormModule,
+        FormInvalidModule,
     ]
 })
 export class InputsModule {}

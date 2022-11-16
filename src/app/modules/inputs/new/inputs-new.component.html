@@ -1,0 +1,19 @@
+<app-form class="inputs-outputs-save" [form]="form" (formSubmit)="submit()" formTitle="Nova entrada">
+    <div class="inputs-outputs-save__content">
+        <!-- TODO: implement fields here -->
+
+        <div class="inputs-outputs-save__actions">
+            <app-button [link]="[path.DEFAULT, path.INPUTS_OUTPUTS]"
+                        [operation]="buttonOperation.LINK"
+                        [layout]="buttonLayout.STROKED"
+                        [color]="colorPalette.SECONDARY"
+                        label="Voltar">
+            </app-button>
+            <app-button [type]="buttonType.SUBMIT"
+                        [loading]="submitting"
+                        [disabled]="form.invalid | formInvalid: form.pristine"
+                        label="Criar entrada">
+            </app-button>
+        </div>
+    </div>
+</app-form>
