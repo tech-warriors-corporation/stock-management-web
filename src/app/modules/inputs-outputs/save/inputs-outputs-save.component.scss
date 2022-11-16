@@ -1,0 +1,19 @@
+.inputs-outputs-save{
+    & &__content{
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--two-spaces);
+    }
+
+    & &__actions{
+        display: flex;
+        justify-content: flex-end;
+        column-gap: var(--two-spaces);
+
+        > * {
+            display: block;
+            width: 100%;
+            max-width: 150px;
+        }
+    }
+}
