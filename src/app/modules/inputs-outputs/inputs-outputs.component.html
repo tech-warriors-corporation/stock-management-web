@@ -17,6 +17,15 @@
     </app-highlight-page>
 
     <app-filters [form]="form" (inSubmit)="submitForm()">
+        <app-date-picker label="Cadastrado em"
+                         [form]="form"
+                         [autofocus]="true"
+                         class="inputs-outputs__field inputs-outputs__field--date"
+                         name="dtCreated"
+                         [hint]="dateFormatHint"
+                         [maxDate]="maxDtCreated"
+                         placeholder="Coloque uma data">
+        </app-date-picker>
         <app-autocomplete [form]="form"
                           class="inputs-outputs__field"
                           name="productId"
@@ -38,14 +47,6 @@
                     [form]="form"
                     placeholder="Selecione uma opção">
         </app-select>
-        <app-date-picker label="Cadastrado em"
-                         [form]="form"
-                         class="inputs-outputs__field inputs-outputs__field--date"
-                         name="dtCreated"
-                         [hint]="dateFormatHint"
-                         [maxDate]="maxDtCreated"
-                         placeholder="Coloque uma data">
-        </app-date-picker>
     </app-filters>
 
     <app-inputs [filters]="filters"></app-inputs>
