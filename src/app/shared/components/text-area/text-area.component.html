@@ -1,0 +1,22 @@
+<mat-form-field class="text-area"
+                *ngIf="control"
+                [formGroup]="form"
+                appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+
+    <textarea [id]="id"
+              class="text-area__field"
+              matInput
+              [appAutofocus]="autofocus"
+              [maxlength]="maxlength"
+              [name]="name"
+              [rows]="rows"
+              [formControl]="control"
+              [placeholder]="placeholder"
+              [required]="required">
+    </textarea>
+
+    <mat-error *ngIf="control.invalid | formControlInvalid: control.touched">{{ control.errors | formControlError }}</mat-error>
+    <mat-hint *ngIf="maxlength" align="end">{{ control.value | controlLength: maxlength }}</mat-hint>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+</mat-form-field>

@@ -1,0 +1,8 @@
+.text-area{
+    width: 100%;
+
+    & &__field{
+        min-height: 76px;
+        max-height: 472px;
+    }
+}
