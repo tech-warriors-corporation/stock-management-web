@@ -1,7 +1,15 @@
 <app-form class="inputs-outputs-save" [form]="form" (formSubmit)="submit()" formTitle="Nova entrada">
     <div class="inputs-outputs-save__content">
-        <app-text-area [autofocus]="true"
-                       name="inputDescription"
+        <app-date-picker label="Data de entrada"
+                         [form]="form"
+                         [autofocus]="true"
+                         name="dtEntered"
+                         [required]="isRequiredDtEntered"
+                         [maxDate]="maxDtEntered"
+                         placeholder="Coloque a data de entrada">
+        </app-date-picker>
+        <app-text-area name="inputDescription"
+                       class="inputs-outputs-save__half-column-right"
                        label="Descrição"
                        [form]="form"
                        [maxlength]="formConstants.INPUT_DESCRIPTION_MAXLENGTH"

@@ -19,6 +19,7 @@ import { BuildingPageModule } from "../../shared/components/building-page/buildi
 import { FormModule } from "../../shared/components/form/form.module";
 import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 import { TextAreaModule } from "../../shared/components/text-area/text-area.module";
+import { DatePickerModule } from "../../shared/components/date-picker/date-picker.module";
 
 @NgModule({
     declarations: [InputsComponent, InputsNewComponent],
@@ -43,6 +44,7 @@ import { TextAreaModule } from "../../shared/components/text-area/text-area.modu
         FormModule,
         FormInvalidModule,
         TextAreaModule,
+        DatePickerModule,
     ]
 })
 export class InputsModule {}

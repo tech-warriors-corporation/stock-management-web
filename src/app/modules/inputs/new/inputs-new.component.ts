@@ -22,9 +22,12 @@ export class InputsNewComponent implements New{
     colorPalette = ColorPalette
     path = Path
     formConstants = FormConstants
+    maxDtEntered = new Date()
+    isRequiredDtEntered = false
 
     form = this.formBuilder.group({
-        inputDescription: [null, Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)]
+        dtEntered: [null],
+        inputDescription: [null, Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)],
     });
 
     constructor(private formBuilder: FormBuilder){}

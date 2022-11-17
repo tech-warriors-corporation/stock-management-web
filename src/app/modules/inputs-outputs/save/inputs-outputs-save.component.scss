@@ -1,14 +1,23 @@
 .inputs-outputs-save{
+    $last-column: 5;
+
     & &__content{
-        display: flex;
-        flex-direction: column;
-        row-gap: var(--two-spaces);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: var(--two-spaces);
+    }
+
+    & &__half-column{
+        &-right{
+            grid-column: 3 / #{$last-column};
+        }
     }
 
     & &__actions{
         display: flex;
         justify-content: flex-end;
         column-gap: var(--two-spaces);
+        grid-column: 1 / #{$last-column};
 
         > * {
             display: block;
