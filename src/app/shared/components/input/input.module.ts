@@ -10,10 +10,11 @@ import { InputComponent } from './input.component';
 import { AutofocusModule } from "../../directives/autofocus/autofocus.module";
 import { FormControlErrorModule } from "../../pipes/form/form-control-error.module";
 import { FormControlInvalidModule } from "../../pipes/form/form-control-invalid.module";
+import { ControlLengthModule } from "../../pipes/control-length/control-length.module";
 
 @NgModule({
     declarations: [InputComponent],
-    imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, AutofocusModule, FormControlErrorModule, FormControlInvalidModule, MatButtonModule, MatIconModule],
+    imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, AutofocusModule, FormControlErrorModule, FormControlInvalidModule, MatButtonModule, MatIconModule, ControlLengthModule],
     exports: [InputComponent]
 })
 export class InputModule{}
