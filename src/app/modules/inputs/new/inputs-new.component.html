@@ -1,6 +1,12 @@
 <app-form class="inputs-outputs-save" [form]="form" (formSubmit)="submit()" formTitle="Nova entrada">
     <div class="inputs-outputs-save__content">
-        <!-- TODO: implement fields here -->
+        <app-text-area [autofocus]="true"
+                       name="inputDescription"
+                       label="Descrição"
+                       [form]="form"
+                       [maxlength]="formConstants.INPUT_DESCRIPTION_MAXLENGTH"
+                       placeholder="Coloque a descrição">
+        </app-text-area>
 
         <div class="inputs-outputs-save__actions">
             <app-button [link]="[path.DEFAULT, path.INPUTS_OUTPUTS]"

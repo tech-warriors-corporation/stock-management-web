@@ -18,6 +18,7 @@ import { InputsNewComponent } from "./new/inputs-new.component";
 import { BuildingPageModule } from "../../shared/components/building-page/building-page.module";
 import { FormModule } from "../../shared/components/form/form.module";
 import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
+import { TextAreaModule } from "../../shared/components/text-area/text-area.module";
 
 @NgModule({
     declarations: [InputsComponent, InputsNewComponent],
@@ -41,6 +42,7 @@ import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
         BuildingPageModule,
         FormModule,
         FormInvalidModule,
+        TextAreaModule,
     ]
 })
 export class InputsModule {}
