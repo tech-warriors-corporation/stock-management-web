@@ -1,5 +1,17 @@
 <app-form class="inputs-outputs-save" [form]="form" (formSubmit)="submit()" formTitle="Nova entrada">
     <div class="inputs-outputs-save__content">
+        <app-input [form]="form"
+                   label="Quantidade unitária"
+                   class="inputs-outputs-save__half-column-right"
+                   [required]="true"
+                   [autofocus]="true"
+                   [inputType]="inputType.NUMBER"
+                   [inputMode]="inputMode.NUMERIC"
+                   [min]="formConstants.INPUT_OUTPUT_MIN_QUANTITY"
+                   [max]="formConstants.INPUT_OUTPUT_MAX_QUANTITY"
+                   name="productQuantity"
+                   placeholder="Coloque a quantidade unitária">
+        </app-input>
         <app-checkbox name="enteredSameDateAsCreated"
                       [form]="form"
                       [label]="enteredSameDateAsCreatedLabel">
@@ -12,7 +24,6 @@
                          placeholder="Coloque a data de entrada">
         </app-date-picker>
         <app-text-area name="inputDescription"
-                       [autofocus]="true"
                        class="inputs-outputs-save__half-column-right"
                        label="Descrição"
                        [form]="form"

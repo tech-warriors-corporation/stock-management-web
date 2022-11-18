@@ -8,5 +8,8 @@ export class FormConstants{
     static readonly DEFAULT_QUANTITY = 0;
     static readonly QUANTITY_MIN = 0;
     static readonly QUANTITY_MAX = 99999999;
+    static readonly INPUT_OUTPUT_MAX_QUANTITY = 9999;
+    static readonly INPUT_OUTPUT_MIN_QUANTITY = 1;
+    static readonly INPUT_OUTPUT_DEFAULT_QUANTITY = 1;
     static readonly INPUT_DESCRIPTION_MAXLENGTH = 800;
 }

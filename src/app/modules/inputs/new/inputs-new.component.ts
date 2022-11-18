@@ -14,6 +14,8 @@ import { formatDateToString, getPreviousDate } from "../../../shared/helpers/dat
 import { BooleanAsNumber } from "../../../shared/enums/boolean-as-number";
 import { FormService } from "../../../shared/components/form/form.service";
 import { unsubscribeForAll } from "../../../shared/helpers/manipulate";
+import { InputType } from "../../../shared/enums/input-type";
+import { InputMode } from "../../../shared/enums/input-mode";
 
 @Component({
     selector: 'app-inputs-new',
@@ -28,6 +30,8 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     colorPalette = ColorPalette
     path = Path
     formConstants = FormConstants
+    inputType = InputType
+    inputMode = InputMode
     yesterday = getPreviousDate()
     enteredSameDateAsCreatedValidators = [FormService.shouldBeBooleanAsNumberWithTrueValue]
     enteredSameDateAsCreatedLabel!: string
@@ -35,6 +39,10 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     isRequiredDtEntered = false
 
     form = this.formBuilder.group({
+        productQuantity: [
+            this.formConstants.INPUT_OUTPUT_DEFAULT_QUANTITY,
+            [Validators.required, Validators.min(this.formConstants.INPUT_OUTPUT_MIN_QUANTITY), Validators.max(this.formConstants.INPUT_OUTPUT_MAX_QUANTITY)]
+        ],
         enteredSameDateAsCreated: [BooleanAsNumber.TRUE, this.enteredSameDateAsCreatedValidators],
         dtEntered: [{ value: null, disabled: true }],
         inputDescription: [null, Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)],
