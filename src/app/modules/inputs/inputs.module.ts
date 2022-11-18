@@ -20,6 +20,7 @@ import { FormModule } from "../../shared/components/form/form.module";
 import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 import { TextAreaModule } from "../../shared/components/text-area/text-area.module";
 import { DatePickerModule } from "../../shared/components/date-picker/date-picker.module";
+import { CheckboxModule } from "../../shared/components/checkbox/checkbox.module";
 
 @NgModule({
     declarations: [InputsComponent, InputsNewComponent],
@@ -45,6 +46,7 @@ import { DatePickerModule } from "../../shared/components/date-picker/date-picke
         FormInvalidModule,
         TextAreaModule,
         DatePickerModule,
+        CheckboxModule,
     ]
 })
 export class InputsModule {}
