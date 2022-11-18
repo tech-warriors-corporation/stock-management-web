@@ -1,14 +1,18 @@
 <app-form class="inputs-outputs-save" [form]="form" (formSubmit)="submit()" formTitle="Nova entrada">
     <div class="inputs-outputs-save__content">
+        <app-checkbox name="enteredSameDateAsCreated"
+                      [form]="form"
+                      [label]="enteredSameDateAsCreatedLabel">
+        </app-checkbox>
         <app-date-picker label="Data de entrada"
                          [form]="form"
-                         [autofocus]="true"
                          name="dtEntered"
                          [required]="isRequiredDtEntered"
-                         [maxDate]="maxDtEntered"
+                         [maxDate]="yesterday"
                          placeholder="Coloque a data de entrada">
         </app-date-picker>
         <app-text-area name="inputDescription"
+                       [autofocus]="true"
                        class="inputs-outputs-save__half-column-right"
                        label="Descrição"
                        [form]="form"
