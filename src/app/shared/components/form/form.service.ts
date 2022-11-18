@@ -3,6 +3,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 import { ControlError } from "../../enums/control-error";
 import { DATE_LENGTH, formatDateToString } from "../../helpers/date";
+import { BooleanAsNumber } from "../../enums/boolean-as-number";
 
 @Injectable({
     providedIn: 'root'
@@ -43,5 +44,14 @@ export class FormService {
 
             return null
         }
+    }
+
+    static shouldBeBooleanAsNumberWithTrueValue(control: AbstractControl): ValidationErrors | null{
+        const { value } = control
+
+        if(value !== BooleanAsNumber.TRUE)
+            return { [ControlError.BOOLEAN_AS_NUMBER_WITH_TRUE_VALUE]: true }
+
+        return null;
     }
 }
