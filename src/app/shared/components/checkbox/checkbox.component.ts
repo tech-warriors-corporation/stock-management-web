@@ -26,5 +26,7 @@ export class CheckboxComponent {
 
     onChange(event: MatCheckboxChange){
         this.control.setValue(event.checked ? BooleanAsNumber.TRUE : BooleanAsNumber.FALSE)
+        this.control.markAsTouched()
+        this.control.markAsDirty()
     }
 }
