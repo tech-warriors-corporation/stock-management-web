@@ -1,5 +1,5 @@
 <app-form class="inputs-outputs-save" [form]="form" (formSubmit)="submit()" formTitle="Nova entrada">
-    <div class="inputs-outputs-save__content">
+    <div class="inputs-outputs-save__grid">
         <app-input [form]="form"
                    label="Quantidade unitária"
                    class="inputs-outputs-save__half-column-right"
@@ -12,17 +12,28 @@
                    name="productQuantity"
                    placeholder="Coloque a quantidade unitária">
         </app-input>
-        <app-checkbox name="enteredSameDateAsCreated"
-                      [form]="form"
-                      [label]="enteredSameDateAsCreatedLabel">
-        </app-checkbox>
-        <app-date-picker label="Data de entrada"
-                         [form]="form"
-                         name="dtEntered"
-                         [required]="isRequiredDtEntered"
-                         [maxDate]="yesterday"
-                         placeholder="Coloque a data de entrada">
-        </app-date-picker>
+
+        <div class="inputs-outputs-save__grid inputs-outputs-save__half-column-left">
+            <app-checkbox name="enteredSameDateAsCreated"
+                          class="inputs-outputs-save__half-column-left"
+                          [form]="form"
+                          [label]="enteredSameDateAsCreatedLabel">
+            </app-checkbox>
+            <app-date-picker label="Data de entrada"
+                             class="inputs-outputs-save__half-column-right"
+                             [form]="form"
+                             name="dtEntered"
+                             [required]="isRequiredDtEntered"
+                             [maxDate]="yesterday"
+                             placeholder="Coloque a data de entrada">
+            </app-date-picker>
+            <app-checkbox name="hasProductExpiration"
+                          class="inputs-outputs-save__full-column"
+                          [form]="form"
+                          label="Esse produto tem validade">
+            </app-checkbox>
+        </div>
+
         <app-text-area name="inputDescription"
                        class="inputs-outputs-save__half-column-right"
                        label="Descrição"

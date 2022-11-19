@@ -43,6 +43,7 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
             this.formConstants.INPUT_OUTPUT_DEFAULT_QUANTITY,
             [Validators.required, Validators.min(this.formConstants.INPUT_OUTPUT_MIN_QUANTITY), Validators.max(this.formConstants.INPUT_OUTPUT_MAX_QUANTITY)]
         ],
+        hasProductExpiration: [BooleanAsNumber.FALSE],
         enteredSameDateAsCreated: [BooleanAsNumber.TRUE, this.enteredSameDateAsCreatedValidators],
         dtEntered: [{ value: null, disabled: true }],
         inputDescription: [null, Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)],
