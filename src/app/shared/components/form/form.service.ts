@@ -54,4 +54,14 @@ export class FormService {
 
         return null;
     }
+
+    static notBe(wrongValue: number): ValidatorFn{
+        return (control: AbstractControl): ValidationErrors | null => {
+            const { value } = control
+
+            if(value === wrongValue) return { [ControlError.WRONG_VALUE]: true }
+
+            return null
+        }
+    }
 }
