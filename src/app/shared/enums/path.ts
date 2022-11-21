@@ -16,6 +16,7 @@ export enum Path{
     INPUTS_OUTPUTS = 'entradas-e-saidas',
     INPUTS = 'entradas',
     NEW_INPUT = 'nova-entrada',
+    EDIT_INPUT = ':inputId',
     OUTPUTS = 'saidas',
     NEW_OUTPUT = 'nova-saida',
 }
