@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
+import { Observable } from "rxjs";
+
 import { Response } from "../../shared/types/response";
 import { environment } from "../../../environments/environment";
-import { API, DeleteItem, GetList, NewItem } from "../../shared/interfaces/restful";
-import { Input, Inputs, NewInput } from "../../shared/types/input";
+import { API, DeleteItem, EditItem, GetItem, GetList, NewItem } from "../../shared/interfaces/restful";
+import { EditInput, Input, Inputs, NewInput } from "../../shared/types/input";
 import { InputOutputFilter } from "../../shared/types/input-output";
 import { Dictionary } from "../../shared/types/dictionary";
 import { formatDateToString } from "../../shared/helpers/date";
@@ -12,7 +14,7 @@ import { formatDateToString } from "../../shared/helpers/date";
 @Injectable({
     providedIn: 'root'
 })
-export class InputsService implements API, GetList<Input>, DeleteItem, NewItem<NewInput>{
+export class InputsService implements API, GetList<Input>, DeleteItem, NewItem<NewInput>, GetItem<Input>, EditItem<EditInput>{
     readonly API = `${environment.api}/inputs`
 
     constructor(private httpClient: HttpClient){}
@@ -36,5 +38,13 @@ export class InputsService implements API, GetList<Input>, DeleteItem, NewItem<N
         if (!dtEntered) dtEntered = new Date()
 
         return this.httpClient.post<Response<null>>(this.API, { ...input, dtEntered });
+    }
+
+    getItem(id: number): Observable<Response<Input>> {
+        return this.httpClient.get<Response<Input>>(`${this.API}/${id}`)
+    }
+
+    editItem(id: number, input: EditInput): Observable<Response<null>> {
+        return this.httpClient.patch<Response<null>>(`${this.API}/${id}`, input)
     }
 }
