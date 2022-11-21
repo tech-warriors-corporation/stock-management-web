@@ -14,6 +14,21 @@
         </app-input>
 
         <div class="inputs-outputs-save__grid inputs-outputs-save__half-column-left">
+            <app-checkbox name="isDonation"
+                          class="inputs-outputs-save__half-column-left"
+                          [form]="form"
+                          label="É doação">
+            </app-checkbox>
+            <app-input [required]="isRequiredUnitPrice"
+                       class="inputs-outputs-save__half-column-right"
+                       label="Preço do produto unitário"
+                       placeholder="Coloque o preço do produto unitário"
+                       name="unitPrice"
+                       [layout]="inputLayout.CURRENCY"
+                       [min]="formConstants.UNIT_PRICE_MIN"
+                       [max]="formConstants.UNIT_PRICE_MAX"
+                       [form]="form">
+            </app-input>
             <app-checkbox name="enteredSameDateAsCreated"
                           class="inputs-outputs-save__half-column-left"
                           [form]="form"
@@ -37,6 +52,7 @@
         <app-text-area name="inputDescription"
                        class="inputs-outputs-save__half-column-right"
                        label="Descrição"
+                       [rows]="formConstants.DESCRIPTION_ROWS"
                        [form]="form"
                        [maxlength]="formConstants.INPUT_DESCRIPTION_MAXLENGTH"
                        placeholder="Coloque a descrição">

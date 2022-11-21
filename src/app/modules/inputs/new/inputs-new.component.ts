@@ -16,6 +16,7 @@ import { FormService } from "../../../shared/components/form/form.service";
 import { unsubscribeForAll } from "../../../shared/helpers/manipulate";
 import { InputType } from "../../../shared/enums/input-type";
 import { InputMode } from "../../../shared/enums/input-mode";
+import { InputLayout } from "../../../shared/enums/input-layout";
 
 @Component({
     selector: 'app-inputs-new',
@@ -32,17 +33,23 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     formConstants = FormConstants
     inputType = InputType
     inputMode = InputMode
+    inputLayout = InputLayout
     yesterday = getPreviousDate()
     enteredSameDateAsCreatedValidators = [FormService.shouldBeBooleanAsNumberWithTrueValue]
     enteredSameDateAsCreatedLabel!: string
     dtEnteredValidators = [Validators.required]
     isRequiredDtEntered = false
+    isDonationValidators = [FormService.shouldBeBooleanAsNumberWithTrueValue]
+    unitPriceValidators = [Validators.required]
+    isRequiredUnitPrice = true
 
     form = this.formBuilder.group({
         productQuantity: [
             this.formConstants.INPUT_OUTPUT_DEFAULT_QUANTITY,
             [Validators.required, Validators.min(this.formConstants.INPUT_OUTPUT_MIN_QUANTITY), Validators.max(this.formConstants.INPUT_OUTPUT_MAX_QUANTITY)]
         ],
+        unitPrice: [this.formConstants.UNIT_PRICE_MIN, this.unitPriceValidators],
+        isDonation: [BooleanAsNumber.FALSE],
         hasProductExpiration: [BooleanAsNumber.FALSE],
         enteredSameDateAsCreated: [BooleanAsNumber.TRUE, this.enteredSameDateAsCreatedValidators],
         dtEntered: [{ value: null, disabled: true }],
@@ -50,6 +57,7 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     });
 
     private subscriptions: Subscription[] = []
+    private updateAndValidityOptions: { onlySelf?: boolean; emitEvent?: boolean; } = { emitEvent: false }
 
     constructor(private formBuilder: FormBuilder){}
 
@@ -57,6 +65,7 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
         this.enteredSameDateAsCreatedLabel = `Entrou na mesma data de cadastro (${formatDateToString(new Date())})`
 
         this.watchEnteredSameDateAsCreatedChanges()
+        this.watchIsDonationChanges()
     }
 
     submit(): void {
@@ -84,8 +93,37 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
                 dtEnteredControl.addValidators(this.dtEnteredValidators)
                 this.isRequiredDtEntered = true
             }
+
+            enteredSameDateAsCreatedControl.updateValueAndValidity(this.updateAndValidityOptions)
+            dtEnteredControl.updateValueAndValidity(this.updateAndValidityOptions)
         })
 
         this.subscriptions.push(subscription);
+    }
+
+    private watchIsDonationChanges(){
+        const isDonationControl = this.form.get('isDonation') as FormControl
+        const unitPriceControl = this.form.get('unitPrice') as FormControl
+
+        const subscription = isDonationControl.valueChanges.subscribe(value => {
+            if(value){
+                isDonationControl.addValidators(this.isDonationValidators)
+                unitPriceControl.disable()
+                unitPriceControl.removeValidators(this.unitPriceValidators)
+                unitPriceControl.setValue(null)
+                this.isRequiredUnitPrice = false;
+            } else{
+                isDonationControl.removeValidators(this.isDonationValidators)
+                unitPriceControl.enable()
+                unitPriceControl.addValidators(this.unitPriceValidators)
+                unitPriceControl.setValue(this.formConstants.UNIT_PRICE_MIN)
+                this.isRequiredUnitPrice = true;
+            }
+
+            isDonationControl.updateValueAndValidity(this.updateAndValidityOptions)
+            unitPriceControl.updateValueAndValidity(this.updateAndValidityOptions)
+        })
+
+        this.subscriptions.push(subscription)
     }
 }
