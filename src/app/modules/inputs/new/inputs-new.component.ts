@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
-import { Subscription } from "rxjs";
+import { finalize, Subscription } from "rxjs";
 
 import { New } from "../../../shared/base/new";
 import { ButtonType } from "../../../shared/enums/button-type";
@@ -19,6 +20,9 @@ import { InputMode } from "../../../shared/enums/input-mode";
 import { InputLayout } from "../../../shared/enums/input-layout";
 import { AutocompleteOptions } from "../../../shared/types/autocomplete";
 import { ProductsService } from "../../products/products.service";
+import { InputsService } from "../inputs.service";
+import { SnackBarService } from "../../../core/snack-bar/snack-bar.service";
+import { NewInput } from "../../../shared/types/input";
 
 @Component({
     selector: 'app-inputs-new',
@@ -47,7 +51,7 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     productOptions: AutocompleteOptions = []
 
     form = this.formBuilder.group({
-        productId: [{ value: null, disabled: true }, [Validators.required]],
+        productId: [{ value: this.formConstants.PRODUCT_ID_DEFAULT, disabled: true }, [Validators.required, FormService.notBe(this.formConstants.PRODUCT_ID_DEFAULT)]],
         productQuantity: [
             this.formConstants.INPUT_OUTPUT_DEFAULT_QUANTITY,
             [Validators.required, Validators.min(this.formConstants.INPUT_OUTPUT_MIN_QUANTITY), Validators.max(this.formConstants.INPUT_OUTPUT_MAX_QUANTITY)]
@@ -63,7 +67,13 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     private subscriptions: Subscription[] = []
     private updateAndValidityOptions: { onlySelf?: boolean; emitEvent?: boolean; } = { emitEvent: false }
 
-    constructor(private formBuilder: FormBuilder, private productsService: ProductsService){}
+    constructor(
+        private formBuilder: FormBuilder,
+        private productsService: ProductsService,
+        private inputsService: InputsService,
+        private snackBarService: SnackBarService,
+        private router: Router,
+    ){}
 
     ngOnInit(){
         this.enteredSameDateAsCreatedLabel = `Entrou na mesma data de cadastro (${formatDateToString(new Date())})`
@@ -74,7 +84,20 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     }
 
     submit(): void {
-        // TODO: implement this method
+        this.submitting = true;
+
+        const { enteredSameDateAsCreated, productQuantity, ...formValues } = this.form.getRawValue()
+
+        this.inputsService
+            .newItem({ ...formValues, productQuantity: +(productQuantity as number) } as NewInput)
+            .pipe(finalize(() => this.submitting = false))
+            .subscribe({
+                next: () => {
+                    this.snackBarService.open('Entrada cadastrada')
+                    this.router.navigate([Path.DEFAULT, Path.INPUTS_OUTPUTS])
+                },
+                error: () => this.snackBarService.open('Tente novamente, não foi possível cadastrar essa entrada')
+            })
     }
 
     ngOnDestroy(){
