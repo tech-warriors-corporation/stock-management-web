@@ -11,7 +11,7 @@ import { ButtonLayout } from "../../../shared/enums/button-layout";
 import { ColorPalette } from "../../../shared/enums/color-palette";
 import { Path } from "../../../shared/enums/path";
 import { FormConstants } from "../../../shared/components/form/form-constants";
-import { formatDateToString, getPreviousDate } from "../../../shared/helpers/date";
+import { DATE_FORMAT_HINT, formatDateToString, getPreviousDate } from "../../../shared/helpers/date";
 import { BooleanAsNumber } from "../../../shared/enums/boolean-as-number";
 import { FormService } from "../../../shared/components/form/form.service";
 import { unsubscribeForAll } from "../../../shared/helpers/manipulate";
@@ -49,6 +49,7 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     unitPriceValidators = [Validators.required]
     isRequiredUnitPrice = true
     productOptions: AutocompleteOptions = []
+    dateFormatHint = DATE_FORMAT_HINT
 
     form = this.formBuilder.group({
         productId: [{ value: this.formConstants.PRODUCT_ID_DEFAULT, disabled: true }, [Validators.required, FormService.notBe(this.formConstants.PRODUCT_ID_DEFAULT)]],
