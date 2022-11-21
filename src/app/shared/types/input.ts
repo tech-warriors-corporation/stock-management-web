@@ -30,3 +30,10 @@ export type NewInput = {
     dtEntered: Date | null,
     inputDescription: string | null,
 }
+
+export type EditInput = {
+    unitPrice: number | null,
+    isDonation: BooleanAsNumber,
+    hasProductExpiration: BooleanAsNumber,
+    inputDescription: string | null,
+}
