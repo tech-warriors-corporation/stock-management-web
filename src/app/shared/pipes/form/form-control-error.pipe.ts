@@ -29,6 +29,7 @@ export class FormControlErrorPipe implements PipeTransform {
         { key: ControlError.INVALID_DATE, getMessage: getInvalidDateMessage },
         { key: ControlError.MAT_DATEPICKER_PARSE, getMessage: getInvalidDateMessage },
         { key: ControlError.MAT_DATEPICKER_MAX, getMessage: getInvalidDateMessage },
+        { key: ControlError.WRONG_VALUE, getMessage: () => 'Campo inválido' },
     ];
 
     transform(errors: ValidationErrors | null): string {

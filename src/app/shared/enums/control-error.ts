@@ -9,5 +9,6 @@ export enum ControlError{
     MAT_DATEPICKER_PARSE = 'matDatepickerParse',
     INVALID_DATE = 'invalidDate',
     MAT_DATEPICKER_MAX = 'matDatepickerMax',
-    BOOLEAN_AS_NUMBER_WITH_TRUE_VALUE = 'booleanAsNumberWithTrueValue'
+    BOOLEAN_AS_NUMBER_WITH_TRUE_VALUE = 'booleanAsNumberWithTrueValue',
+    WRONG_VALUE = 'wrongValue',
 }
