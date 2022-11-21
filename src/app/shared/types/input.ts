@@ -20,3 +20,13 @@ export type Input = {
 }
 
 export type Inputs = Input[]
+
+export type NewInput = {
+    productId: number,
+    productQuantity: number,
+    unitPrice: number | null,
+    isDonation: BooleanAsNumber,
+    hasProductExpiration: BooleanAsNumber,
+    dtEntered: Date | null,
+    inputDescription: string | null,
+}
