@@ -16,6 +16,8 @@ import {
 } from "../../shared/interfaces/restful";
 import { EditProduct, NewProduct, Product, Products } from "../../shared/types/product";
 import { AutocompleteOptions } from "../../shared/types/autocomplete";
+import { BooleanAsNumber } from "../../shared/enums/boolean-as-number";
+import { Dictionary } from "../../shared/types/dictionary";
 
 @Injectable({
     providedIn: 'root'
@@ -50,9 +52,13 @@ export class ProductsService implements API, GetList<Product>, DeleteItem, NewIt
         return this.httpClient.patch<Response<null>>(`${this.API}/${id}`, product)
     }
 
-    getAutocompleteList(): Observable<Response<AutocompleteOptions>> {
+    getAutocompleteList(isActive?: BooleanAsNumber): Observable<Response<AutocompleteOptions>> {
+        const params: Dictionary = {}
+
+        if(typeof(isActive) === 'number') params['is_active'] = isActive
+
         return this.httpClient
-                   .get<Response<Products>>(`${this.API}/autocomplete`)
+                   .get<Response<Products>>(`${this.API}/autocomplete`, { params })
                    .pipe(
                        map(({ data: products, ...response }) => ({
                            ...response,
