@@ -17,6 +17,8 @@ import { unsubscribeForAll } from "../../../shared/helpers/manipulate";
 import { InputType } from "../../../shared/enums/input-type";
 import { InputMode } from "../../../shared/enums/input-mode";
 import { InputLayout } from "../../../shared/enums/input-layout";
+import { AutocompleteOptions } from "../../../shared/types/autocomplete";
+import { ProductsService } from "../../products/products.service";
 
 @Component({
     selector: 'app-inputs-new',
@@ -42,8 +44,10 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     isDonationValidators = [FormService.shouldBeBooleanAsNumberWithTrueValue]
     unitPriceValidators = [Validators.required]
     isRequiredUnitPrice = true
+    productOptions: AutocompleteOptions = []
 
     form = this.formBuilder.group({
+        productId: [{ value: null, disabled: true }, [Validators.required]],
         productQuantity: [
             this.formConstants.INPUT_OUTPUT_DEFAULT_QUANTITY,
             [Validators.required, Validators.min(this.formConstants.INPUT_OUTPUT_MIN_QUANTITY), Validators.max(this.formConstants.INPUT_OUTPUT_MAX_QUANTITY)]
@@ -59,11 +63,12 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
     private subscriptions: Subscription[] = []
     private updateAndValidityOptions: { onlySelf?: boolean; emitEvent?: boolean; } = { emitEvent: false }
 
-    constructor(private formBuilder: FormBuilder){}
+    constructor(private formBuilder: FormBuilder, private productsService: ProductsService){}
 
     ngOnInit(){
         this.enteredSameDateAsCreatedLabel = `Entrou na mesma data de cadastro (${formatDateToString(new Date())})`
 
+        this.getProductOptions();
         this.watchEnteredSameDateAsCreatedChanges()
         this.watchIsDonationChanges()
     }
@@ -74,6 +79,15 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
 
     ngOnDestroy(){
         unsubscribeForAll(this.subscriptions)
+    }
+
+    private getProductOptions(){
+        this.productsService.getAutocompleteList(BooleanAsNumber.TRUE).subscribe(({ data: products }) => {
+            const productIdControl = this.form.get('productId') as FormControl
+            this.productOptions = products
+
+            productIdControl.enable()
+        })
     }
 
     private watchEnteredSameDateAsCreatedChanges(){

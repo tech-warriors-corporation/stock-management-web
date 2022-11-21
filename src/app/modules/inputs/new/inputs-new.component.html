@@ -1,10 +1,18 @@
 <app-form class="inputs-outputs-save" [form]="form" (formSubmit)="submit()" formTitle="Nova entrada">
     <div class="inputs-outputs-save__grid">
+        <app-autocomplete [form]="form"
+                          class="inputs-outputs-save__half-column-left"
+                          name="productId"
+                          label="Produto"
+                          [required]="true"
+                          placeholder="Selecione um produto"
+                          [options]="productOptions">
+        </app-autocomplete>
+
         <app-input [form]="form"
                    label="Quantidade unitária"
                    class="inputs-outputs-save__half-column-right"
                    [required]="true"
-                   [autofocus]="true"
                    [inputType]="inputType.NUMBER"
                    [inputMode]="inputMode.NUMERIC"
                    [min]="formConstants.INPUT_OUTPUT_MIN_QUANTITY"
@@ -68,7 +76,7 @@
             <app-button [type]="buttonType.SUBMIT"
                         [loading]="submitting"
                         [disabled]="form.invalid | formInvalid: form.pristine"
-                        label="Criar entrada">
+                        label="Cadastrar entrada">
             </app-button>
         </div>
     </div>

@@ -22,6 +22,7 @@ import { TextAreaModule } from "../../shared/components/text-area/text-area.modu
 import { DatePickerModule } from "../../shared/components/date-picker/date-picker.module";
 import { CheckboxModule } from "../../shared/components/checkbox/checkbox.module";
 import { InputModule } from "../../shared/components/input/input.module";
+import { AutocompleteModule } from "../../shared/components/autocomplete/autocomplete.module";
 
 @NgModule({
     declarations: [InputsComponent, InputsNewComponent],
@@ -49,6 +50,7 @@ import { InputModule } from "../../shared/components/input/input.module";
         DatePickerModule,
         CheckboxModule,
         InputModule,
+        AutocompleteModule,
     ]
 })
 export class InputsModule {}
