@@ -62,8 +62,8 @@ export class UsersComponent extends List<User> implements OnInit, Columns, OnDes
     protected get(): void{
         const { userName, email } = this.filters
 
-        if (!this.showMoreLoading) this.loading = true;
         if (this.getList$) this.getList$.unsubscribe()
+        if (!this.showMoreLoading) this.loading = true;
 
         this.getList$ = this.usersService.getList(this.page, this.perPage, userName, email)
                                          .pipe(finalize(() => {

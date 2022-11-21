@@ -59,8 +59,8 @@ export class CategoriesComponent extends List<Category> implements OnInit, Colum
     protected get(): void{
         const { categoryName } = this.filters
 
-        if (!this.showMoreLoading) this.loading = true;
         if (this.getList$) this.getList$.unsubscribe()
+        if (!this.showMoreLoading) this.loading = true;
 
         this.getList$ = this.categoriesService
                             .getList(this.page, this.perPage, categoryName)

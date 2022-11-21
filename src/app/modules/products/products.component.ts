@@ -78,8 +78,8 @@ export class ProductsComponent extends List<Product> implements OnInit, Columns,
     protected get(): void{
         let { productName, categoryId } = this.filters
 
-        if (!this.showMoreLoading) this.loading = true;
         if (this.getList$) this.getList$.unsubscribe()
+        if (!this.showMoreLoading) this.loading = true;
         if (typeof categoryId !== 'number') categoryId = null
 
         this.getList$ = this.productsService
