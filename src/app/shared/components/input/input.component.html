@@ -4,19 +4,35 @@
                 appearance="outline">
     <mat-label>{{ label }}</mat-label>
 
-    <input [type]="type"
-           [id]="id"
-           [attr.inputmode]="inputMode"
-           [required]="required"
-           matInput
-           [appAutofocus]="autofocus"
-           [maxlength]="maxlength"
-           [minlength]="minlength"
-           [max]="max"
-           [min]="min"
-           [name]="name"
-           [formControl]="control"
-           [placeholder]="placeholder">
+    <ng-container [ngSwitch]="layout">
+        <input *ngSwitchCase="inputLayoutEnum.DEFAULT"
+               [type]="type"
+               [id]="id"
+               [attr.inputmode]="inputMode"
+               [required]="required"
+               matInput
+               [appAutofocus]="autofocus"
+               [maxlength]="maxlength"
+               [minlength]="minlength"
+               [max]="max"
+               [min]="min"
+               [name]="name"
+               [formControl]="control"
+               [placeholder]="placeholder">
+
+        <input *ngSwitchCase="inputLayoutEnum.CURRENCY"
+               [type]="inputTypeEnum.TEXT"
+               [id]="id"
+               [attr.inputmode]="inputModeEnum.NUMERIC"
+               [required]="required"
+               matInput
+               [appAutofocus]="autofocus"
+               [name]="name"
+               [formControl]="control"
+               [placeholder]="placeholder"
+               [options]="currencyMaskOptions"
+               currencyMask>
+    </ng-container>
 
     <button mat-icon-button
             matSuffix

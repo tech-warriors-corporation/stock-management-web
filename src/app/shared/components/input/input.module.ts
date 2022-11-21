@@ -6,6 +6,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 
+import { NgxCurrencyModule } from "ngx-currency";
+
 import { InputComponent } from './input.component';
 import { AutofocusModule } from "../../directives/autofocus/autofocus.module";
 import { FormControlErrorModule } from "../../pipes/form/form-control-error.module";
@@ -14,7 +16,19 @@ import { ControlLengthModule } from "../../pipes/control-length/control-length.m
 
 @NgModule({
     declarations: [InputComponent],
-    imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, AutofocusModule, FormControlErrorModule, FormControlInvalidModule, MatButtonModule, MatIconModule, ControlLengthModule],
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        AutofocusModule,
+        FormControlErrorModule,
+        FormControlInvalidModule,
+        MatButtonModule,
+        MatIconModule,
+        ControlLengthModule,
+        NgxCurrencyModule,
+    ],
     exports: [InputComponent]
 })
 export class InputModule{}
