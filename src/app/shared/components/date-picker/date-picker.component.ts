@@ -48,20 +48,18 @@ export class DatePickerComponent implements OnInit, AfterViewInit, OnDestroy{
         });
     }
 
-    onInput(event: Event){
+    onNextValue(){
         setTimeout(() => {
             const value = this.input?.value?.substr(0, DATE_LENGTH) || null
 
             if(value && value.length >= DATE_LENGTH){
-                event.preventDefault()
-
                 const date = formatStringToDate(value)
                 const dateString = date instanceof Date ? formatDateToString(date) : null
 
                 if(dateString && dateString === value) this.control.setValue(date, { onlySelf: true, emitEvent: false });
             }
 
-            this.control.updateValueAndValidity()
+            this.control.updateValueAndValidity({ emitEvent: false })
         })
     }
 

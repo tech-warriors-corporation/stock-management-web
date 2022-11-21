@@ -13,7 +13,8 @@
            [formControl]="control"
            [appAutofocus]="autofocus"
            [max]="maxDate"
-           (input)="onInput($event)"
+           (dateInput)="onNextValue()"
+           (dateChange)="onNextValue()"
            [placeholder]="placeholder"
            [matDatepicker]="picker">
 
