@@ -5,6 +5,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: var(--two-spaces);
+        height: fit-content;
     }
 
     & &__half-column{
