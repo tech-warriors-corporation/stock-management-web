@@ -69,8 +69,8 @@ export class InputsComponent extends List<InputType> implements Columns, OnDestr
     }
 
     protected get(): void{
-        if (!this.showMoreLoading) this.loading = true;
         if (this.getList$) this.getList$.unsubscribe()
+        if (!this.showMoreLoading) this.loading = true;
 
         this.getList$ = this.inputsService
                             .getList(this.page, this.perPage, this.filters)
