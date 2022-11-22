@@ -13,7 +13,6 @@ import { Path } from "../../shared/enums/path";
 import { ButtonOperation } from "../../shared/enums/button-operation";
 import { ColorPalette } from "../../shared/enums/color-palette";
 import { SnackBarService } from "../../core/snack-bar/snack-bar.service";
-import { AutocompleteOptions } from "../../shared/types/autocomplete";
 import { Input as InputType, Inputs } from "../../shared/types/input";
 import { BadgeColor } from "../../shared/enums/badge-color";
 import { InputOutputFilter } from "../../shared/types/input-output";
@@ -44,7 +43,6 @@ export class InputsComponent extends List<InputType> implements Columns, OnDestr
     count = 0
     columns = ['product', 'productQuantity', 'totalPrice', 'hasProductExpiration', 'type', 'createdBy', 'dtEntered', 'dtCreated', 'actions']
     inputIdThatIsDeleting: number | null = null
-    categoriesOptions: AutocompleteOptions = []
     list: Inputs = [];
     formConstants = FormConstants
     buttonLayout = ButtonLayout
