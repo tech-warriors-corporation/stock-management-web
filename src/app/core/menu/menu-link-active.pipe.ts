@@ -14,9 +14,11 @@ export class MenuLinkActivePipe implements PipeTransform {
         const { url } = this.router;
         const inputsOutputsRootRoute = `${Path.DEFAULT}${Path.INPUTS_OUTPUTS}`
         const inputsRootRoute = `${Path.DEFAULT}${Path.INPUTS}`
+        const outputsRootRoute = `${Path.DEFAULT}${Path.OUTPUTS}`
         let isActive = url.startsWith(link)
 
-        if(!isActive) isActive = link.startsWith(inputsOutputsRootRoute) && url.startsWith(inputsRootRoute)
+        if(!isActive) 
+            isActive = link.startsWith(inputsOutputsRootRoute) && (url.startsWith(inputsRootRoute) || url.startsWith(outputsRootRoute))
 
         return isActive;
     }
