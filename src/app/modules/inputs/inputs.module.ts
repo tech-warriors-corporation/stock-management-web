@@ -23,9 +23,10 @@ import { DatePickerModule } from "../../shared/components/date-picker/date-picke
 import { CheckboxModule } from "../../shared/components/checkbox/checkbox.module";
 import { InputModule } from "../../shared/components/input/input.module";
 import { AutocompleteModule } from "../../shared/components/autocomplete/autocomplete.module";
+import { InputsEditComponent } from "./edit/inputs-edit.component";
 
 @NgModule({
-    declarations: [InputsComponent, InputsNewComponent],
+    declarations: [InputsComponent, InputsNewComponent, InputsEditComponent],
     exports: [
         InputsComponent
     ],
