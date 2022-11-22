@@ -19,4 +19,5 @@ export enum Path{
     EDIT_INPUT = ':inputId',
     OUTPUTS = 'saidas',
     NEW_OUTPUT = 'nova-saida',
+    EDIT_OUTPUT = ':outputId'
 }
