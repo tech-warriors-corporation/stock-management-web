@@ -42,5 +42,15 @@
         > app-highlight-page .highlight-page .highlight-page__title{
             font-size: 1.675rem;
         }
+
+        .content-loading{
+            padding: var(--four-spaces);
+            border: var(--mat-grey-border);
+            border-radius: var(--one-space);
+
+            .content-loading__text{
+                line-height: 1.2 !important;
+            }
+        }
     }
 }
