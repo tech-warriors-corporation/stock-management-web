@@ -29,7 +29,7 @@ import { NewInput } from "../../../shared/types/input";
     templateUrl: './inputs-new.component.html',
     styleUrls: ['../../inputs-outputs/save/inputs-outputs-save.component.scss']
 })
-export class InputsNewComponent implements New, OnInit, OnDestroy{
+export class InputsNewComponent extends New implements OnInit, OnDestroy{
     submitting = false;
     buttonType = ButtonType
     buttonOperation = ButtonOperation
@@ -74,7 +74,9 @@ export class InputsNewComponent implements New, OnInit, OnDestroy{
         private inputsService: InputsService,
         private snackBarService: SnackBarService,
         private router: Router,
-    ){}
+    ){
+        super()
+    }
 
     ngOnInit(){
         this.enteredSameDateAsCreatedLabel = `Entrou na mesma data de cadastro (${formatDateToString(new Date())})`
