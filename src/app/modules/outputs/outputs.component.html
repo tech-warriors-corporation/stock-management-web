@@ -1,0 +1,99 @@
+<div class="outputs">
+    <app-highlight-page highlightTitle="Lista de saídas"></app-highlight-page>
+
+    <div *ngIf="!loading && list.length; else loadingTemplate" class="outputs__list">
+        <table mat-table [dataSource]="list" [class]="tableService.TABLE_CLASSES">
+            <ng-container matColumnDef="product">
+                <th mat-header-cell *matHeaderCellDef>Produto</th>
+                <td mat-cell *matCellDef="let element">
+                    <app-products-card [productName]="element.product.productName"
+                                       [categoryName]="element.category.categoryName">
+                    </app-products-card>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="productQuantity">
+                <th mat-header-cell *matHeaderCellDef class="column-to-right">Quantidade</th>
+                <td mat-cell *matCellDef="let element" class="column-to-right">{{ element.productQuantity }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="hasProductExpiration">
+                <th mat-header-cell *matHeaderCellDef>Tem validade</th>
+                <td mat-cell *matCellDef="let element">{{ element.hasProductExpiration | booleanAsNumberToText }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="productWentTo">
+                <th mat-header-cell *matHeaderCellDef>Para quem foi</th>
+                <td mat-cell *matCellDef="let element">{{ element.productWentTo }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef>Tipo</th>
+                <td mat-cell *matCellDef="let element">
+                    <app-badge text="Saída" [color]="badgeColor.ORANGE"></app-badge>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdBy">
+                <th mat-header-cell *matHeaderCellDef>Criado por</th>
+                <td mat-cell *matCellDef="let element">{{ element.createdBy.userName }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="dtExited">
+                <th mat-header-cell *matHeaderCellDef>Saiu em</th>
+                <td mat-cell *matCellDef="let element">{{ element.dtExited | transformDate }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="dtCreated">
+                <th mat-header-cell *matHeaderCellDef>Cadastrado em</th>
+                <td mat-cell *matCellDef="let element">{{ element.dtCreated | transformDate }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef aria-label="Ações"></th>
+                <td mat-cell *matCellDef="let element">
+                    <app-button (inClick)="openDescriptionDialog(element)"
+                                *ngIf="element.outputDescription"
+                                icon="notes"
+                                [layout]="buttonLayout.ICON"
+                                label="Ver descrição da saída">
+                    </app-button>
+                    <app-button [operation]="buttonOperation.LINK"
+                                [link]="[path.DEFAULT, path.OUTPUTS, element.outputId]"
+                                icon="edit"
+                                [color]="colorPalette.SECONDARY"
+                                [layout]="buttonLayout.ICON"
+                                label="Editar saída">
+                    </app-button>
+                    <app-button (inClick)="delete(element.outputId)"
+                                [color]="colorPalette.ERROR"
+                                [loading]="outputIdThatIsDeleting === element.outputId"
+                                [disabled]="!!outputIdThatIsDeleting && outputIdThatIsDeleting !== element.outputId"
+                                icon="delete"
+                                [layout]="buttonLayout.ICON"
+                                label="Deletar saída">
+                    </app-button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        </table>
+
+        <app-button *ngIf="list | hasShowMore: count"
+                    [loading]="showMoreLoading"
+                    (inClick)="showMore()"
+                    icon="cached"
+                    [layout]="buttonLayout.STROKED"
+                    label="Carregar mais">
+        </app-button>
+    </div>
+
+    <ng-template #loadingTemplate>
+        <app-content-loading *ngIf="loading; else emptyStateTemplate"></app-content-loading>
+    </ng-template>
+
+    <ng-template #emptyStateTemplate>
+        <app-empty-state></app-empty-state>
+    </ng-template>
+</div>

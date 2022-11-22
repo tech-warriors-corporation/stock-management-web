@@ -13,6 +13,7 @@ import { InputsOutputsDescriptionComponent } from "./description/inputs-outputs-
 import { DialogModule } from "../../core/dialog/dialog.module";
 import { SelectModule } from "../../shared/components/select/select.module";
 import { DatePickerModule } from "../../shared/components/date-picker/date-picker.module";
+import { OutputsModule } from "../outputs/outputs.module";
 
 @NgModule({
     declarations: [InputsOutputsComponent, InputsOutputsDescriptionComponent],
@@ -28,6 +29,7 @@ import { DatePickerModule } from "../../shared/components/date-picker/date-picke
         DialogModule,
         SelectModule,
         DatePickerModule,
+        OutputsModule,
     ]
 })
 export class InputsOutputsModule {}
