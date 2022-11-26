@@ -22,7 +22,7 @@ import { formatDateToString } from "../../../shared/helpers/date";
 import { AutocompleteOptions } from "../../../shared/types/autocomplete";
 import { ProductsService } from "../../products/products.service";
 import { FormService } from "../../../shared/components/form/form.service";
-import { unsubscribeForAll } from "../../../shared/helpers/manipulate";
+import { NONE_VALUE, unsubscribeForAll } from "../../../shared/helpers/manipulate";
 
 @Component({
     selector: 'app-inputs-edit',
@@ -63,7 +63,7 @@ export class InputsEditComponent extends Edit<Input> implements OnInit, OnDestro
         hasProductExpiration: [BooleanAsNumber.FALSE],
         enteredSameDateAsCreated: [{ value: BooleanAsNumber.TRUE, disabled: this.enteredSameDateAsCreatedDisabled }],
         dtEntered: [{ value: new Date(), disabled: true }],
-        inputDescription: ['', Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)],
+        inputDescription: [NONE_VALUE, Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)],
     })
 
     constructor(
