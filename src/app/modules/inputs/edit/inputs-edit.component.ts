@@ -147,7 +147,7 @@ export class InputsEditComponent extends Edit<Input> implements OnInit, OnDestro
 
     private getProductOptions(){
         this.productsService
-            .getAutocompleteList(BooleanAsNumber.TRUE)
+            .getAutocompleteList()
             .subscribe(({ data: products }) => this.productOptions = products)
     }
 
