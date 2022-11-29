@@ -1,0 +1,79 @@
+<app-form class="inputs-outputs-save" [form]="form" (formSubmit)="submit()" formTitle="Nova saída">
+    <div class="inputs-outputs-save__grid">
+        <app-autocomplete [form]="form"
+                          class="inputs-outputs-save__half-column-left"
+                          name="productId"
+                          label="Produto"
+                          [required]="true"
+                          placeholder="Selecione um produto"
+                          [options]="productOptions">
+        </app-autocomplete>
+
+        <app-input [form]="form"
+                   label="Quantidade unitária"
+                   class="inputs-outputs-save__half-column-right"
+                   [required]="true"
+                   [inputType]="inputType.NUMBER"
+                   [inputMode]="inputMode.NUMERIC"
+                   [min]="formConstants.INPUT_OUTPUT_MIN_QUANTITY"
+                   [max]="formConstants.INPUT_OUTPUT_MAX_QUANTITY"
+                   name="productQuantity"
+                   placeholder="Coloque a quantidade unitária">
+        </app-input>
+
+        <div class="inputs-outputs-save__grid inputs-outputs-save__half-column-left">
+            <app-checkbox name="exitedSameDateAsCreated"
+                          class="inputs-outputs-save__half-column-left"
+                          [form]="form"
+                          [label]="exitedSameDateAsCreatedLabel">
+            </app-checkbox>
+            <app-date-picker label="Data de saída"
+                             class="inputs-outputs-save__half-column-right"
+                             [form]="form"
+                             name="dtExited"
+                             [required]="isRequiredDtExited"
+                             [hint]="dateFormatHint"
+                             [maxDate]="yesterday"
+                             placeholder="Coloque a data de saída">
+            </app-date-picker>
+        </div>
+
+        <app-input [form]="form"
+                   label="Para quem foi"
+                   class="inputs-outputs-save__half-column-right"
+                   [required]="true"
+                   [maxlength]="formConstants.PRODUCT_WENT_TO_MAXLENGTH"
+                   name="productWentTo"
+                   placeholder="Escreva para quem foi (nome ou setor da pessoa)">
+        </app-input>
+
+        <app-checkbox name="hasProductExpiration"
+                      class="inputs-outputs-save__half-column-left"
+                      [form]="form"
+                      label="Esse produto tem validade">
+        </app-checkbox>
+
+        <app-text-area name="outputDescription"
+                       class="inputs-outputs-save__half-column-right"
+                       label="Descrição"
+                       [rows]="formConstants.DESCRIPTION_ROWS"
+                       [form]="form"
+                       [maxlength]="formConstants.INPUT_DESCRIPTION_MAXLENGTH"
+                       placeholder="Coloque a descrição">
+        </app-text-area>
+
+        <div class="inputs-outputs-save__actions">
+            <app-button [link]="[path.DEFAULT, path.INPUTS_OUTPUTS]"
+                        [operation]="buttonOperation.LINK"
+                        [layout]="buttonLayout.STROKED"
+                        [color]="colorPalette.SECONDARY"
+                        label="Voltar">
+            </app-button>
+            <app-button [type]="buttonType.SUBMIT"
+                        [loading]="submitting"
+                        [disabled]="form.invalid | formInvalid: form.pristine"
+                        label="Cadastrar saída">
+            </app-button>
+        </div>
+    </div>
+</app-form>

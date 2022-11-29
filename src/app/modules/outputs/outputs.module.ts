@@ -16,6 +16,13 @@ import { ProductsModule } from "../products/products.module";
 import { TransformDateModule } from "../../shared/pipes/transform-date/transform-date.module";
 import { BooleanAsNumberToTextModule } from "../../shared/pipes/boolean-as-number-to-text/boolean-as-number-to-text.module";
 import { HasShowMoreModule } from "../../shared/pipes/has-show-more/has-show-more.module";
+import { FormModule } from "../../shared/components/form/form.module";
+import { AutocompleteModule } from "../../shared/components/autocomplete/autocomplete.module";
+import { InputModule } from "../../shared/components/input/input.module";
+import { CheckboxModule } from "../../shared/components/checkbox/checkbox.module";
+import { DatePickerModule } from "../../shared/components/date-picker/date-picker.module";
+import { TextAreaModule } from "../../shared/components/text-area/text-area.module";
+import { FormInvalidModule } from "../../shared/pipes/form/form-invalid.module";
 
 @NgModule({
     declarations: [OutputsComponent, OutputsNewComponent, OutputsEditComponent],
@@ -36,6 +43,13 @@ import { HasShowMoreModule } from "../../shared/pipes/has-show-more/has-show-mor
         TransformDateModule,
         BooleanAsNumberToTextModule,
         HasShowMoreModule,
+        FormModule,
+        AutocompleteModule,
+        InputModule,
+        CheckboxModule,
+        DatePickerModule,
+        TextAreaModule,
+        FormInvalidModule,
     ]
 })
 export class OutputsModule {}
