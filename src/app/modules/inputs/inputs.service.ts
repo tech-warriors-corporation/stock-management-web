@@ -9,7 +9,7 @@ import { API, DeleteItem, EditItem, GetItem, GetList, NewItem } from "../../shar
 import { EditInput, Input, Inputs, NewInput } from "../../shared/types/input";
 import { InputOutputFilter } from "../../shared/types/input-output";
 import { Dictionary } from "../../shared/types/dictionary";
-import { formatDateToString } from "../../shared/helpers/date";
+import { formatDateToString, today } from "../../shared/helpers/date";
 
 @Injectable({
     providedIn: 'root'
@@ -35,7 +35,7 @@ export class InputsService implements API, GetList<Input>, DeleteItem, NewItem<N
     }
 
     newItem({ dtEntered, ...input }: NewInput){
-        if (!dtEntered) dtEntered = new Date()
+        if (!dtEntered) dtEntered = today()
 
         return this.httpClient.post<Response<null>>(this.API, { ...input, dtEntered });
     }

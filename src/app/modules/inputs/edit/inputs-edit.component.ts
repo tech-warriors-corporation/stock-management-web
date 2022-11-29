@@ -18,7 +18,7 @@ import { InputType } from "../../../shared/enums/input-type";
 import { InputMode } from "../../../shared/enums/input-mode";
 import { InputLayout } from "../../../shared/enums/input-layout";
 import { BooleanAsNumber } from "../../../shared/enums/boolean-as-number";
-import { formatDateToString } from "../../../shared/helpers/date";
+import { formatDateToString, today } from "../../../shared/helpers/date";
 import { AutocompleteOptions } from "../../../shared/types/autocomplete";
 import { ProductsService } from "../../products/products.service";
 import { FormService } from "../../../shared/components/form/form.service";
@@ -62,7 +62,7 @@ export class InputsEditComponent extends Edit<Input> implements OnInit, OnDestro
         isDonation: [BooleanAsNumber.FALSE],
         hasProductExpiration: [BooleanAsNumber.FALSE],
         enteredSameDateAsCreated: [{ value: BooleanAsNumber.TRUE, disabled: this.enteredSameDateAsCreatedDisabled }],
-        dtEntered: [{ value: new Date(), disabled: true }],
+        dtEntered: [{ value: today(), disabled: true }],
         inputDescription: [NONE_VALUE, Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)],
     })
 

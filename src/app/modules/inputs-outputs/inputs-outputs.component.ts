@@ -10,7 +10,7 @@ import { ProductsService } from "../products/products.service";
 import { ItemExpirationsService } from "../../shared/services/item-expirations.service";
 import { SelectOptions } from "../../shared/types/select";
 import { UsersService } from "../users/users.service";
-import { DATE_FORMAT_HINT } from "../../shared/helpers/date";
+import { DATE_FORMAT_HINT, today } from "../../shared/helpers/date";
 
 @Component({
     selector: 'app-inputs-outputs',
@@ -24,7 +24,7 @@ export class InputsOutputsComponent implements OnInit{
     productOptions: AutocompleteOptions = []
     expirationOptions: SelectOptions = []
     userOptions: SelectOptions = []
-    maxDtCreated = new Date()
+    maxDtCreated = today()
     dateFormatHint = DATE_FORMAT_HINT
 
     form = this.formBuilder.group({

@@ -11,7 +11,7 @@ import { ButtonLayout } from "../../../shared/enums/button-layout";
 import { ColorPalette } from "../../../shared/enums/color-palette";
 import { Path } from "../../../shared/enums/path";
 import { FormConstants } from "../../../shared/components/form/form-constants";
-import { DATE_FORMAT_HINT, formatDateToString, getPreviousDate } from "../../../shared/helpers/date";
+import { DATE_FORMAT_HINT, formatDateToString, getPreviousDate, today } from "../../../shared/helpers/date";
 import { BooleanAsNumber } from "../../../shared/enums/boolean-as-number";
 import { FormService } from "../../../shared/components/form/form.service";
 import { unsubscribeForAll } from "../../../shared/helpers/manipulate";
@@ -79,7 +79,7 @@ export class InputsNewComponent extends New implements OnInit, OnDestroy{
     }
 
     ngOnInit(){
-        this.enteredSameDateAsCreatedLabel = `Entrou na mesma data de cadastro (${formatDateToString(new Date())})`
+        this.enteredSameDateAsCreatedLabel = `Entrou na mesma data de cadastro (${formatDateToString(today())})`
 
         this.getProductOptions();
         this.watchEnteredSameDateAsCreatedChanges()
