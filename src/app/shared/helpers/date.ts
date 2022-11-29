@@ -3,7 +3,16 @@ const addPadZeroToDate = (datePart: string | number) => `${datePart}`.padStart(2
 export const dateTextMask = [/\d/, /\d/, dateSeparator, /\d/, /\d/, dateSeparator, /\d/, /\d/, /\d/, /\d/]
 export const DATE_LENGTH = dateTextMask.length
 export const DATE_FORMAT_HINT = 'dd/mm/aaaa'
-export const getPreviousDate = (date = new Date(), previousDays = 1) => new Date(date.setDate(date.getDate() - previousDays))
+export const getPreviousDate = (date = today(), previousDays = 1) => new Date(date.setDate(date.getDate() - previousDays))
+
+export const today = () => {
+    const date = new Date()
+    const timeZone = date.getTimezoneOffset() / 60
+
+    date.setHours(23 - timeZone, 59, 59, 59)
+
+    return date
+}
 
 export const formatDateToString = (date: Date) => {
     const day = addPadZeroToDate(date.getDate())
