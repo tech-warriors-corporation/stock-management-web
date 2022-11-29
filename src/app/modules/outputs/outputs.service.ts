@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
+import { Observable } from "rxjs";
+
 import { environment } from "../../../environments/environment";
-import { API, DeleteItem, GetList } from "../../shared/interfaces/restful";
-import { Output, Outputs } from "../../shared/types/output";
+import { API, DeleteItem, GetList, NewItem } from "../../shared/interfaces/restful";
+import { NewOutput, Output, Outputs } from "../../shared/types/output";
 import { InputOutputFilter } from "../../shared/types/input-output";
 import { Dictionary } from "../../shared/types/dictionary";
-import { formatDateToString } from "../../shared/helpers/date";
+import { formatDateToString, today } from "../../shared/helpers/date";
 import { Response } from "../../shared/types/response";
 
 @Injectable({
     providedIn: 'root'
 })
-export class OutputsService implements API, GetList<Output>, DeleteItem{
+export class OutputsService implements API, GetList<Output>, DeleteItem, NewItem<NewOutput>{
     readonly API = `${environment.api}/outputs`
 
     constructor(private httpClient: HttpClient){}
@@ -30,5 +32,11 @@ export class OutputsService implements API, GetList<Output>, DeleteItem{
 
     deleteItem(id: number){
         return this.httpClient.delete<Response<null>>(`${this.API}/${id}`)
+    }
+
+    newItem({ dtExited, ...output }: NewOutput): Observable<Response<null>> {
+        if (!dtExited) dtExited = today()
+
+        return this.httpClient.post<Response<null>>(this.API, { ...output, dtExited });
     }
 }
