@@ -16,4 +16,6 @@ export class FormConstants{
     static readonly UNIT_PRICE_MAX = 999999999.99;
     static readonly DESCRIPTION_ROWS = 10;
     static readonly PRODUCT_ID_DEFAULT = -1;
+    static readonly PRODUCT_WENT_TO_MAXLENGTH = 50;
+    static readonly OUTPUT_DESCRIPTION_MAXLENGTH = 800;
 }
