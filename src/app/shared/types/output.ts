@@ -18,3 +18,12 @@ export type Output = {
 }
 
 export type Outputs = Output[]
+
+export type NewOutput = {
+    productId: number,
+    productQuantity: number,
+    hasProductExpiration: BooleanAsNumber,
+    productWentTo: string
+    dtExited: Date | null,
+    outputDescription: string | null,
+}
