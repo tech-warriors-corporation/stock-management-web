@@ -27,3 +27,9 @@ export type NewOutput = {
     dtExited: Date | null,
     outputDescription: string | null,
 }
+
+export type EditOutput = {
+    hasProductExpiration: BooleanAsNumber
+    productWentTo: string
+    outputDescription: string | null
+}
