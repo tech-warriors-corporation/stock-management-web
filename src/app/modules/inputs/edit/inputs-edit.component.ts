@@ -63,7 +63,7 @@ export class InputsEditComponent extends Edit<Input> implements OnInit, OnDestro
         hasProductExpiration: [BooleanAsNumber.FALSE],
         enteredSameDateAsCreated: [{ value: BooleanAsNumber.TRUE, disabled: this.enteredSameDateAsCreatedDisabled }],
         dtEntered: [{ value: today(), disabled: true }],
-        inputDescription: [NONE_VALUE, Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)],
+        inputDescription: [NONE_VALUE, Validators.maxLength(this.formConstants.DESCRIPTION_MAXLENGTH)],
     })
 
     constructor(

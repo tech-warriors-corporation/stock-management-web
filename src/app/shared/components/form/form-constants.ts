@@ -11,7 +11,7 @@ export class FormConstants{
     static readonly INPUT_OUTPUT_MAX_QUANTITY = 9999;
     static readonly INPUT_OUTPUT_MIN_QUANTITY = 1;
     static readonly INPUT_OUTPUT_DEFAULT_QUANTITY = 1;
-    static readonly INPUT_DESCRIPTION_MAXLENGTH = 800;
+    static readonly DESCRIPTION_MAXLENGTH = 800;
     static readonly UNIT_PRICE_MIN = 0.01;
     static readonly UNIT_PRICE_MAX = 999999999.99;
     static readonly DESCRIPTION_ROWS = 10;

@@ -62,7 +62,7 @@ export class InputsNewComponent extends New implements OnInit, OnDestroy{
         hasProductExpiration: [BooleanAsNumber.FALSE],
         enteredSameDateAsCreated: [BooleanAsNumber.TRUE, this.enteredSameDateAsCreatedValidators],
         dtEntered: [{ value: null, disabled: true }],
-        inputDescription: [null, Validators.maxLength(this.formConstants.INPUT_DESCRIPTION_MAXLENGTH)],
+        inputDescription: [null, Validators.maxLength(this.formConstants.DESCRIPTION_MAXLENGTH)],
     });
 
     private subscriptions: Subscription[] = []
