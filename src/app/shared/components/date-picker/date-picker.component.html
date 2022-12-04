@@ -26,5 +26,8 @@
                            [for]="picker">
     </mat-datepicker-toggle>
 
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker #picker
+                    [startView]="startView"
+                    (yearSelected)="onYearSelected($event)">
+    </mat-datepicker>
 </mat-form-field>
