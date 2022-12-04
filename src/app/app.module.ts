@@ -56,9 +56,10 @@ import { Lang } from "./shared/enums/lang";
         {
             provide: MAT_DATE_FORMATS,
             useValue: {
+                parse: {},
                 display: {
                     dateA11yLabel: 'LL'
-                }
+                },
             },
         },
     ],
