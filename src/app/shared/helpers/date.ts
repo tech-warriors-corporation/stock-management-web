@@ -1,8 +1,11 @@
 const dateSeparator = '/'
 const addPadZeroToDate = (datePart: string | number) => `${datePart}`.padStart(2, '0')
 export const dateTextMask = [/\d/, /\d/, dateSeparator, /\d/, /\d/, dateSeparator, /\d/, /\d/, /\d/, /\d/]
+export const yearTextMask = [/\d/, /\d/, /\d/, /\d/]
 export const DATE_LENGTH = dateTextMask.length
+export const YEAR_LENGTH = yearTextMask.length
 export const DATE_FORMAT_HINT = 'dd/mm/aaaa'
+export const YEAR_FORMAT_HINT = 'aaaa'
 export const getPreviousDate = (date = today(), previousDays = 1) => new Date(date.setDate(date.getDate() - previousDays))
 
 export const today = () => {
