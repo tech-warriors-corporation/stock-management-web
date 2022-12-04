@@ -56,15 +56,9 @@ import { Lang } from "./shared/enums/lang";
         {
             provide: MAT_DATE_FORMATS,
             useValue: {
-                parse: {
-                    dateInput: ['l', 'LL'],
-                },
                 display: {
-                    dateInput: 'L',
-                    monthYearLabel: 'MMM YYYY',
-                    dateA11yLabel: 'LL',
-                    monthYearA11yLabel: 'MMMM YYYY',
-                },
+                    dateA11yLabel: 'LL'
+                }
             },
         },
     ],
