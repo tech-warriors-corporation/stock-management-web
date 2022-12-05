@@ -17,7 +17,18 @@ import { DatePickerFormat } from "../../enums/date-picker-format";
 @Component({
     selector: 'app-date-picker',
     templateUrl: './date-picker.component.html',
-    styleUrls: ['./date-picker.component.scss']
+    styleUrls: ['./date-picker.component.scss'],
+    providers: [
+        {
+            provide: MAT_DATE_FORMATS,
+            useValue: {
+                parse: {},
+                display: {
+                    dateA11yLabel: 'LL'
+                },
+            },
+        },
+    ]
 })
 export class DatePickerComponent implements OnInit, AfterViewInit, OnDestroy{
     @ViewChild('picker', { static: false }) private picker!: MatDatepicker<moment.Moment>;
