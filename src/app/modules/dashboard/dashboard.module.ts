@@ -10,6 +10,7 @@ import { FiltersModule } from "../../shared/components/filters/filters.module";
 import { DatePickerModule } from "../../shared/components/date-picker/date-picker.module";
 import { ContentLoadingModule } from "../../shared/components/content-loading/content-loading.module";
 import { PluralizeModule } from "../../shared/pipes/pluralize/pluralize.module";
+import { FormatToBrlModule } from "../../shared/pipes/format-to-brl/format-to-brl.module";
 
 @NgModule({
     declarations: [DashboardComponent, DashboardCardComponent],
@@ -22,6 +23,7 @@ import { PluralizeModule } from "../../shared/pipes/pluralize/pluralize.module";
         DatePickerModule,
         ContentLoadingModule,
         PluralizeModule,
+        FormatToBrlModule,
     ]
 })
 export class DashboardModule{}

@@ -14,6 +14,8 @@ import { SnackBarService } from "../../core/snack-bar/snack-bar.service";
 export class DashboardComponent implements AfterViewInit{
     productsDonatedAmount = 0
     productsDonatedLoading = false
+    investedMoneyValue = 0
+    investedMoneyLoading = false
 
     constructor(
         private inputsService: InputsService,
@@ -34,6 +36,18 @@ export class DashboardComponent implements AfterViewInit{
             .subscribe(
                 ({ count }) => this.productsDonatedAmount = count as number,
                 () => this.snackBarService.open('Ocorreu um problema ao obter a quantidade de produtos doados nas entradas'),
+            )
+    }
+
+    getInvestedMoney(filters: DashboardCardFilter){
+        this.investedMoneyLoading = true
+
+        this.inputsService
+            .getInvestedMoney(filters)
+            .pipe(finalize(() => this.investedMoneyLoading = false))
+            .subscribe(
+                ({ data }) => this.investedMoneyValue = data,
+                () => this.snackBarService.open('Ocorreu um problema ao obter o valor investido nas entradas'),
             )
     }
 }

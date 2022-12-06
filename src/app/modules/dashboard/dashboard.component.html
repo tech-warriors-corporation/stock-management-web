@@ -1,6 +1,12 @@
 <section class="dashboard">
     <app-highlight-page class="dashboard__title" highlightTitle="Dashboard"></app-highlight-page>
 
+    <app-dashboard-card highlightTitle="Valor investido nas entradas"
+                        (inSubmit)="getInvestedMoney($event)"
+                        [loading]="investedMoneyLoading">
+        {{ investedMoneyValue | formatToBrl }}
+    </app-dashboard-card>
+
     <app-dashboard-card highlightTitle="Quantidade de produtos doados nas entradas"
                         (inSubmit)="getProductsDonated($event)"
                         [loading]="productsDonatedLoading">
