@@ -1,0 +1,23 @@
+<section class="dashboard-card">
+    <app-highlight-page [highlightTitle]="highlightTitle"></app-highlight-page>
+    <app-filters [form]="form" [disabledSubmit]="loading" (inSubmit)="submit()">
+        <app-date-picker label="Ano"
+                         [form]="form"
+                         name="year"
+                         [required]="true"
+                         [maxDate]="today"
+                         [format]="datePickerFormat.YEAR"
+                         [hint]="yearFormatHint"
+                         placeholder="Coloque o ano">
+        </app-date-picker>
+    </app-filters>
+    <p class="dashboard-card__box">
+        <span *ngIf="!loading; else loadingTemplate" class="dashboard-card__text">
+            <ng-content></ng-content>
+        </span>
+
+        <ng-template #loadingTemplate>
+            <app-content-loading></app-content-loading>
+        </ng-template>
+    </p>
+</section>

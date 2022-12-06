@@ -1,0 +1,26 @@
+@use './src/mixins';
+
+.dashboard-card{
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--four-spaces);
+
+    & &__box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--eight-spaces);
+        text-align: center;
+        border-radius: var(--one-space);
+        border: var(--border) var(--primary-color);
+        color: var(--primary-color);
+        background-color: var(--primary-color-12-percent);
+        font-weight: 600;
+
+        @include mixins.fix-height(200px)
+    }
+
+    & &__text{
+        font-size: 3.25rem;
+    }
+}
