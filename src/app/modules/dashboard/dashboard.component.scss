@@ -1,0 +1,9 @@
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--eight-spaces);
+
+    & &__title ::ng-deep .highlight-page__title{
+        font-size: 1.675rem;
+    }
+}

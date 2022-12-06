@@ -1,0 +1,9 @@
+<section class="dashboard">
+    <app-highlight-page class="dashboard__title" highlightTitle="Dashboard"></app-highlight-page>
+
+    <app-dashboard-card highlightTitle="Quantidade de produtos doados nas entradas"
+                        (inSubmit)="getProductsDonated($event)"
+                        [loading]="productsDonatedLoading">
+        {{ productsDonatedAmount }} {{ productsDonatedAmount | pluralize : 'produto doado' : 'produtos doados' }}
+    </app-dashboard-card>
+</section>
