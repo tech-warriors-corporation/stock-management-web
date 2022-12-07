@@ -10,6 +10,13 @@
                          [hint]="yearFormatHint"
                          placeholder="Coloque o ano">
         </app-date-picker>
+        <app-autocomplete [form]="form"
+                          class="dashboard-card__product-control"
+                          name="productId"
+                          label="Produto"
+                          placeholder="Selecione um produto"
+                          [options]="productOptions">
+        </app-autocomplete>
     </app-filters>
     <p class="dashboard-card__box">
         <span *ngIf="!loading; else loadingTemplate" class="dashboard-card__text">

@@ -11,6 +11,7 @@ import { DatePickerModule } from "../../shared/components/date-picker/date-picke
 import { ContentLoadingModule } from "../../shared/components/content-loading/content-loading.module";
 import { PluralizeModule } from "../../shared/pipes/pluralize/pluralize.module";
 import { FormatToBrlModule } from "../../shared/pipes/format-to-brl/format-to-brl.module";
+import { AutocompleteModule } from "../../shared/components/autocomplete/autocomplete.module";
 
 @NgModule({
     declarations: [DashboardComponent, DashboardCardComponent],
@@ -24,6 +25,7 @@ import { FormatToBrlModule } from "../../shared/pipes/format-to-brl/format-to-br
         ContentLoadingModule,
         PluralizeModule,
         FormatToBrlModule,
+        AutocompleteModule,
     ]
 })
 export class DashboardModule{}

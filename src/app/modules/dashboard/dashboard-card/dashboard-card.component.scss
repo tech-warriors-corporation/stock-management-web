@@ -23,4 +23,8 @@
     & &__text{
         font-size: 3.25rem;
     }
+
+    & &__product-control{
+        @include mixins.fix-width(386px);
+    }
 }
