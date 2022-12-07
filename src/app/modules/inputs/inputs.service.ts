@@ -49,14 +49,18 @@ export class InputsService implements API, GetList<Input>, DeleteItem, NewItem<N
         return this.httpClient.patch<Response<null>>(`${this.API}/${id}`, input)
     }
 
-    getProductsDonated({ year }: DashboardCardFilter){
+    getProductsDonated({ year, productId }: DashboardCardFilter){
         const params: Dictionary = { year }
+
+        if (productId) params['product_id'] = productId
 
         return this.httpClient.get<Response<null>>(`${this.API}/products_donated`, { params })
     }
 
-    getInvestedMoney({ year }: DashboardCardFilter){
+    getInvestedMoney({ year, productId }: DashboardCardFilter){
         const params: Dictionary = { year }
+
+        if (productId) params['product_id'] = productId
 
         return this.httpClient.get<Response<number>>(`${this.API}/invested_money`, { params })
     }
