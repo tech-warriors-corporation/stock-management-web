@@ -5,6 +5,22 @@
     flex-direction: column;
     row-gap: var(--four-spaces);
 
+    &.dashboard-card--chart{
+        .dashboard-card__box{
+            border: var(--mat-grey-border);
+            color: var(--black-color);
+            background-color: transparent;
+
+            @include mixins.fix-height(fit-content);
+        }
+
+        &:not(.dashboard-card--loading){
+            .dashboard-card__box{
+                padding: 0;
+            }
+        }
+    }
+
     & &__box{
         display: flex;
         align-items: center;
@@ -16,15 +32,29 @@
         color: var(--primary-color);
         background-color: var(--primary-color-12-percent);
         font-weight: 600;
+        font-size: 1rem;
 
         @include mixins.fix-height(200px)
     }
 
     & &__text{
         font-size: 3.25rem;
+        display: inline-block;
+
+        @include mixins.fix-width(100%);
     }
 
     & &__product-control{
         @include mixins.fix-width(386px);
+    }
+
+    ::ng-deep {
+        google-chart{
+            font-weight: 400;
+        }
+
+        svg {
+            border-radius: var(--one-space);
+        }
     }
 }

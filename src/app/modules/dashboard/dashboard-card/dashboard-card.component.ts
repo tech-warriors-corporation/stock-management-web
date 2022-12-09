@@ -6,6 +6,7 @@ import { DatePickerFormat } from "../../../shared/enums/date-picker-format";
 import { DashboardCardFilter } from "../../../shared/types/dashboard-card-filter";
 import { AutocompleteOptions } from "../../../shared/types/autocomplete";
 import { ProductsService } from "../../products/products.service";
+import { DashboardCardContentType } from "../../../shared/enums/dashboard-card-content-type";
 
 @Component({
     selector: 'app-dashboard-card',
@@ -13,8 +14,11 @@ import { ProductsService } from "../../products/products.service";
     styleUrls: ['./dashboard-card.component.scss']
 })
 export class DashboardCardComponent implements OnInit{
+    readonly dashboardCardContentType = DashboardCardContentType
+
     @Output() inSubmit = new EventEmitter<DashboardCardFilter>()
     @Input() loading = false
+    @Input() contentType = this.dashboardCardContentType.LITERAL
     @Input() highlightTitle!: string
 
     today = today()

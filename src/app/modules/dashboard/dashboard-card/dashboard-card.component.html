@@ -1,4 +1,6 @@
-<section class="dashboard-card">
+<section class="dashboard-card"
+         [class.dashboard-card--loading]="loading"
+         [class.dashboard-card--chart]="contentType === dashboardCardContentType.CHART">
     <app-highlight-page [highlightTitle]="highlightTitle"></app-highlight-page>
     <app-filters [form]="form" [disabledSubmit]="loading" (inSubmit)="submit()">
         <app-date-picker label="Ano"
