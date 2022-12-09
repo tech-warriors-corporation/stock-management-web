@@ -151,3 +151,9 @@ table{
 .mat-checkbox-layout .mat-checkbox-label{
     white-space: normal;
 }
+
+google-chart{
+    display: block;
+
+    @include mixins.fix-width(100% !important);
+}
