@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { GoogleChartsModule } from "angular-google-charts";
+
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { DashboardComponent } from "./dashboard.component";
 import { BuildingPageModule } from "../../shared/components/building-page/building-page.module";
@@ -26,6 +28,7 @@ import { AutocompleteModule } from "../../shared/components/autocomplete/autocom
         PluralizeModule,
         FormatToBrlModule,
         AutocompleteModule,
+        GoogleChartsModule,
     ]
 })
 export class DashboardModule{}
