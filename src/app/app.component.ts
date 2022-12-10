@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Lang } from "./shared/enums/lang";
 
 @Component({
     selector: 'app-root',
@@ -9,4 +11,8 @@ import { Component } from '@angular/core';
         </div>
     `
 })
-export class AppComponent{}
+export class AppComponent implements OnInit{
+    ngOnInit(){
+        google.charts.load('current', { packages: ['corechart'], language: Lang.PT_BR });
+    }
+}
