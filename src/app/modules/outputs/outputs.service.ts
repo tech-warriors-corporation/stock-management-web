@@ -10,6 +10,7 @@ import { InputOutputFilter } from "../../shared/types/input-output";
 import { Dictionary } from "../../shared/types/dictionary";
 import { formatDateToString, today } from "../../shared/helpers/date";
 import { Response } from "../../shared/types/response";
+import { DashboardCardFilter } from "../../shared/types/dashboard-card-filter";
 
 @Injectable({
     providedIn: 'root'
@@ -46,5 +47,13 @@ export class OutputsService implements API, GetList<Output>, DeleteItem, NewItem
 
     editItem(id: number, output: EditOutput): Observable<Response<null>> {
         return this.httpClient.patch<Response<null>>(`${this.API}/${id}`, output)
+    }
+
+    getOutputsQuantity({ year, productId }: DashboardCardFilter){
+        const params: Dictionary = { year }
+
+        if(productId) params['product_id'] = productId
+
+        return this.httpClient.get<Response<Outputs>>(`${this.API}/quantity`, { params })
     }
 }
