@@ -6,6 +6,7 @@
     & &__content{
         flex-grow: 1;
         padding: var(--eight-spaces);
+        overflow-x: hidden;
     }
 
     & &__menu{
