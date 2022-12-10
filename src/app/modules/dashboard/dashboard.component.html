@@ -1,6 +1,20 @@
 <section class="dashboard">
     <app-highlight-page class="dashboard__title" highlightTitle="Dashboard"></app-highlight-page>
 
+    <app-dashboard-card highlightTitle="Quantidade de entradas e saídas"
+                        (inSubmit)="getInputsOutputsQuantity($event)"
+                        [contentType]="dashboardCardContentType.CHART"
+                        [loading]="inputsOutputsQuantityLoading">
+        <google-chart #inputsOutputsQuantityElement
+                      [height]="inputsOutputsQuantityChart.height"
+                      [type]="inputsOutputsQuantityChart.type"
+                      [dynamicResize]="inputsOutputsQuantityChart.dynamicResize"
+                      [data]="inputsOutputsQuantityChart.data"
+                      [options]="inputsOutputsQuantityChart.options"
+                      [columns]="inputsOutputsQuantityChart.columns">
+        </google-chart>
+    </app-dashboard-card>
+
     <app-dashboard-card highlightTitle="Valor investido nas entradas"
                         (inSubmit)="getInvestedMoney($event)"
                         [loading]="investedMoneyLoading">
