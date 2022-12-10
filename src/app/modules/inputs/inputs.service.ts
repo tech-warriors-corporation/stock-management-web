@@ -64,4 +64,12 @@ export class InputsService implements API, GetList<Input>, DeleteItem, NewItem<N
 
         return this.httpClient.get<Response<number>>(`${this.API}/invested_money`, { params })
     }
+
+    getInputsQuantity({ year, productId }: DashboardCardFilter){
+        const params: Dictionary = { year }
+
+        if(productId) params['product_id'] = productId
+
+        return this.httpClient.get<Response<Inputs>>(`${this.API}/quantity`, { params })
+    }
 }
