@@ -156,4 +156,8 @@ google-chart{
     display: block;
 
     @include mixins.fix-width(100% !important);
+
+    > div > div{
+        margin: 0 auto;
+    }
 }
