@@ -16,8 +16,11 @@
 }
 
 @mixin selection {
+    $color: var(--white-color);
+
     background: var(--primary-color);
-    color: var(--white-color);
+    color: $color;
+    fill: $color;
 }
 
 @mixin force-center(){
